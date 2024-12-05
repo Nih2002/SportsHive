@@ -8,8 +8,55 @@
 </head>
 <body class="bg-gray-100 text-gray-800 bg-cover h-[25vh]" style="background-image: url('../images/sign1.jpg');">
   <header class="bg-blue-900 text-white w-full h-10">
+      <!-- Main Header -->
+      <div class="bg-black text-white">
+        <div class="container mx-auto flex justify-between items-center py-3 px-4">
+          <!-- Logo -->
+          <a href="#" class="flex items-center space-x-2">
+            <img src="../images/logo.png" alt="Logo" class="w-12 h-12">
+            <span class="text-lg font-bold">SportHive</span>
+          </a>
+
+          <!-- Search Bar -->
+          <div class="flex items-center w-full max-w-md mx-4">
+            <input 
+              type="text" 
+              placeholder="What are you looking for?" 
+              class="w-full bg-white text-black rounded-l-lg px-4 py-2 focus:outline-none">
+            <button class="bg-pink-600 text-white px-4 py-2 rounded-r-lg hover:bg-pink-500">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+          <!-- Right Section -->
+          <div class="flex items-center space-x-6">
+            <!-- Contact -->
+            <div class="flex flex-col text-right">
+              <span class="text-xs">Need Help?</span>
+              <span class="font-bold">CALL 0115 964 964</span>
+            </div>
+            <!-- Sign In & Cart -->
+            <div class="flex space-x-4">
+                <!-- Sign In Button -->
+                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <i class="fas fa-user"></i>
+                  <span>Sign In</span>
+                </a>
+
+                <!-- Log In Button -->
+                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span>Log In</span>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Top Bar -->
-      <div class="container mx-auto flex justify-between items-center py-2 px-4 text-sm">
+      <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-blue-900">
+
+
         <!-- Left Links --><!-- sports drop down-->
       <div class="flex space-x-4">
           <div class="relative group">
@@ -239,56 +286,31 @@
       </div>
       </div>
 
-      <!-- Main Header -->
-      <div class="bg-black text-white">
-        <div class="container mx-auto flex justify-between items-center py-3 px-4">
-          <!-- Logo -->
-          <a href="#" class="flex items-center space-x-2">
-            <img src="../images/logo.png" alt="Logo" class="w-12 h-12">
-            <span class="text-lg font-bold">SportHive</span>
-          </a>
-
-          <!-- Search Bar -->
-          <div class="flex items-center w-full max-w-md mx-4">
-            <input 
-              type="text" 
-              placeholder="What are you looking for?" 
-              class="w-full bg-white text-black rounded-l-lg px-4 py-2 focus:outline-none">
-            <button class="bg-pink-600 text-white px-4 py-2 rounded-r-lg hover:bg-pink-500">
-              <i class="fas fa-search"></i>
-            </button>
+      <!-- Navigation Bar -->
+      <nav class="relative bg-white shadow-md">
+        <div class="relative z-50">
+          <button id="menu-toggle" class="text-green-600 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <!-- Collapsible Menu -->
+          <div id="menu-links" class="hidden absolute bg-white border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
+            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-t-lg">Home</a>
+            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100">About Us</a>
+            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
           </div>
-
-          <!-- Right Section -->
-          <div class="flex items-center space-x-6">
-            <!-- Contact -->
-            <div class="flex flex-col text-right">
-              <span class="text-xs">Need Help?</span>
-              <span class="font-bold">CALL 0115 964 964</span>
-            </div>
-            <!-- Sign In & Cart -->
-            <a href="#" class="hover:opacity-75 flex items-center space-x-2">
-              <i class="fas fa-user"></i>
-              <span>Sign In</span>
-            </a>
-            <a href="#" class="hover:opacity-75 flex items-center space-x-2">
-              <i class="fas fa-user"></i>
-              <span>Log In</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Navigation -->
-      <nav class="bg-white text-black">
-        <div class="container mx-auto flex justify-center space-x-8 py-3">
-          <a href="#" class="hover:text-purple-600">Home</a>
-          <a href="#" class="hover:text-purple-600">About</a>
-          <a href="#" class="hover:text-purple-600">Shop</a>
-          <a href="#" class="hover:text-purple-600">New Arrivals</a>
-          <a href="#" class="hover:text-purple-600">Contact Us</a>
         </div>
       </nav>
+
+      <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuLinks = document.getElementById("menu-links");
+
+        menuToggle.addEventListener("click", () => {
+          menuLinks.classList.toggle("hidden");
+        });
+      </script>
   </header>
 
   <!-- Main Section -->

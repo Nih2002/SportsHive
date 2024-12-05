@@ -273,28 +273,48 @@
             <span class="font-bold">CALL 0115 964 964</span>
           </div>
           <!-- Sign In & Cart -->
-          <a href="#" class="hover:opacity-75 flex items-center space-x-2">
-            <i class="fas fa-user"></i>
-            <span>Sign In</span>
-          </a>
-          <a href="#" class="hover:opacity-75 flex items-center space-x-2">
-            <i class="fas fa-user"></i>
-            <span>Log In</span>
-          </a>
+          <div class="flex space-x-4">
+                <!-- Sign In Button -->
+                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <i class="fas fa-user"></i>
+                  <span>Sign In</span>
+                </a>
+
+                <!-- Log In Button -->
+                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span>Log In</span>
+                </a>
+            </div>
         </div>
       </div>
     </div>
-
-    <!-- Navigation -->
-    <nav class="bg-white text-black">
-      <div class="container mx-auto flex justify-center space-x-8 py-3">
-        <a href="#" class="hover:text-purple-600">Home</a>
-        <a href="#" class="hover:text-purple-600">About</a>
-        <a href="#" class="hover:text-purple-600">Shop</a>
-        <a href="#" class="hover:text-purple-600">New Arrivals</a>
-        <a href="#" class="hover:text-purple-600">Contact Us</a>
+      <!-- Navigation Bar -->
+      <nav class="relative bg-white shadow-md">
+      <div class="relative z-50">
+        <button id="menu-toggle" class="text-green-600 focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <!-- Collapsible Menu -->
+        <div id="menu-links" class="hidden absolute bg-white border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
+          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-t-lg">Home</a>
+          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100">About Us</a>
+          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
+        </div>
       </div>
-    </nav>
+      </nav>
+
+      <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuLinks = document.getElementById("menu-links");
+
+        menuToggle.addEventListener("click", () => {
+          menuLinks.classList.toggle("hidden");
+        });
+      </script>
+
   </header>
 
 <!-- Add FontAwesome -->
@@ -334,6 +354,7 @@
       </div>
     </div>
 
+
     <script>
       // JavaScript for Carousel
       const slides = document.querySelectorAll(".carousel-slide");
@@ -353,7 +374,6 @@
       // Rotate slides every 5 seconds
       setInterval(nextSlide, 5000);
     </script>
-
 
   <!-- About Us -->
   <section id="about" class="py-16 bg-gray-50">
@@ -513,3 +533,4 @@
 
 </body>
 </html>
+
