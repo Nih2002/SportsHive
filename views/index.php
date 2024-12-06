@@ -7,50 +7,154 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
+
+    <!-- Main Header -->
+    <div class="bg-black text-white">
+      <div class="container mx-auto flex justify-between items-center py-3 px-4">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+          <img src="../images/logo.png" alt="Logo" class="w-20 h-20">
+          <span class="text-lg font-bold">SportHive</span>
+        </a>
+
+        <!-- Search Bar -->
+        <div class="flex items-center w-full max-w-md mx-4">
+          <input 
+            type="text" 
+            placeholder="What are you looking for?" 
+            class="w-full bg-white text-black rounded-l-lg px-4 py-2 focus:outline-none">
+          <button class="bg-pink-600 text-white px-4 py-2 rounded-r-lg hover:bg-pink-500">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Right Section -->
+        <div class="flex items-center space-x-6">
+          <!-- Contact -->
+          <div class="flex flex-col text-right">
+            <span class="text-xs">Need Help?</span>
+            <span class="font-bold">CALL 0115 964 964</span>
+          </div>
+          <!-- Sign In & Cart -->
+          <div class="flex space-x-4">
+                <!-- Sign In Button -->
+                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <i class="fas fa-user"></i>
+                  <span>Sign In</span>
+                </a>
+
+                <!-- Log In Button -->
+                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span>Log In</span>
+                </a>
+            </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Top Bar -->
-    <div class="container mx-auto flex justify-between items-center py-2 px-4 text-sm">
+    <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-blue-900 mx-96">
+      <!-- Navigation Bar -->
+      <nav class="relative bg-blue shadow-md">
+      <div class="relative z-50">
+        <button id="menu-toggle" class="text-black-900 focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <!-- Collapsible Menu -->
+        <div id="menu-links" class="hidden absolute bg-white border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
+          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-t-lg">Home</a>
+          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100">About Us</a>
+          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
+        </div>
+      </div>
+      </nav>
       <!-- Left Links --><!-- sports drop down-->
-      <div class="flex space-x-4">
-        <div class="relative group">
-          <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Sports</a>
-          <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
-           <!-- Dropdown content here -->
-            <div>
-              <h3 class="font-semibold text-lg text-blue-900">Cycling</h3>
-              <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Electric Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Cycling Clothing</a></li>
-                <li><a href="#" class="hover:text-blue-600">Bike Helmets</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-semibold text-lg text-blue-900">Hiking</h3>
-              <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Outdoor Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Hiking Clothes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Hiking Backpacks</a></li>
-                <li><a href="#" class="hover:text-blue-600">Hiking Gear</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-semibold text-lg text-blue-900">Fitness & Gym</h3>
-              <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Gym Equipment</a></li>
-                <li><a href="#" class="hover:text-blue-600">Training Supports</a></li>
-                <li><a href="#" class="hover:text-blue-600">Proteins & Supplements</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-semibold text-lg text-blue-900">Winter Sports</h3>
-              <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Ski Equipment</a></li>
-                <li><a href="#" class="hover:text-blue-600">Snowboard Equipment</a></li>
-                <li><a href="#" class="hover:text-blue-600">Winter Sports Clothing</a></li>
-              </ul>
-            </div>
+      <div class="relative group">
+  <!-- Trigger Button -->
+  <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-600 transition-all duration-300">
+    Sports
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div class="absolute left-0 mt-1 hidden group-hover:block w-[400px] bg-white shadow-2xl rounded-xl z-50">
+    <!-- Content Grid -->
+    <div class="p-6 grid grid-cols-2 gap-4">
+      <!-- Dropdown items -->
+      <div class="group bg-gray-100 p-2 rounded-lg hover:bg-gray-200 transition-all duration-300">
+        <div class="flex items-center space-x-3">
+          <div class="bg-blue-500 text-white p-3 rounded-full">
+            <span class="text-xl">🚴‍♀️</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 group-hover:text-blue-600">Cycling</h3>
+            <ul class="mt-2 text-sm text-gray-600 space-y-1">
+              <li><a href="#" class="hover:text-blue-500">Bikes</a></li>
+              <li><a href="#" class="hover:text-blue-500">Electric Bikes</a></li>
+              <li><a href="#" class="hover:text-blue-500">Clothing</a></li>
+              <li><a href="#" class="hover:text-blue-500">Helmets</a></li>
+            </ul>
           </div>
         </div>
+      </div>
+
+      <!-- Hiking Section -->
+      <div class="group bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-all duration-300">
+        <div class="flex items-center space-x-3">
+          <div class="bg-green-500 text-white p-3 rounded-full">
+            <span class="text-xl">🥾</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 group-hover:text-green-600">Hiking</h3>
+            <ul class="mt-2 text-sm text-gray-600 space-y-1">
+              <li><a href="#" class="hover:text-green-500">Shoes</a></li>
+              <li><a href="#" class="hover:text-green-500">Clothing</a></li>
+              <li><a href="#" class="hover:text-green-500">Backpacks</a></li>
+              <li><a href="#" class="hover:text-green-500">Gear</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Running Section -->
+      <div class="group bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-all duration-300">
+        <div class="flex items-center space-x-3">
+          <div class="bg-red-500 text-white p-3 rounded-full">
+            <span class="text-xl">🏃‍♂️</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 group-hover:text-red-600">Running</h3>
+            <ul class="mt-2 text-sm text-gray-600 space-y-1">
+              <li><a href="#" class="hover:text-red-500">Shoes</a></li>
+              <li><a href="#" class="hover:text-red-500">Clothing</a></li>
+              <li><a href="#" class="hover:text-red-500">Accessories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swimming Section -->
+      <div class="group bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-all duration-300">
+        <div class="flex items-center space-x-3">
+          <div class="bg-teal-500 text-white p-3 rounded-full">
+            <span class="text-xl">🏊‍♂️</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 group-hover:text-teal-600">Swimming</h3>
+            <ul class="mt-2 text-sm text-gray-600 space-y-1">
+              <li><a href="#" class="hover:text-teal-500">Swimwear</a></li>
+              <li><a href="#" class="hover:text-teal-500">Goggles</a></li>
+              <li><a href="#" class="hover:text-teal-500">Caps</a></li>
+              <li><a href="#" class="hover:text-teal-500">Accessories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         <div class="relative group">
         <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Women</a>
         <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
@@ -244,67 +348,7 @@
         <a href="#" class="hover:opacity-75"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
-
-    <!-- Main Header -->
-    <div class="bg-black text-white">
-      <div class="container mx-auto flex justify-between items-center py-3 px-4">
-        <!-- Logo -->
-        <a href="#" class="flex items-center space-x-2">
-          <img src="../images/logo.png" alt="Logo" class="w-12 h-12">
-          <span class="text-lg font-bold">SportHive</span>
-        </a>
-
-        <!-- Search Bar -->
-        <div class="flex items-center w-full max-w-md mx-4">
-          <input 
-            type="text" 
-            placeholder="What are you looking for?" 
-            class="w-full bg-white text-black rounded-l-lg px-4 py-2 focus:outline-none">
-          <button class="bg-pink-600 text-white px-4 py-2 rounded-r-lg hover:bg-pink-500">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-
-        <!-- Right Section -->
-        <div class="flex items-center space-x-6">
-          <!-- Contact -->
-          <div class="flex flex-col text-right">
-            <span class="text-xs">Need Help?</span>
-            <span class="font-bold">CALL 0115 964 964</span>
-          </div>
-          <!-- Sign In & Cart -->
-          <div class="flex space-x-4">
-                <!-- Sign In Button -->
-                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                  <i class="fas fa-user"></i>
-                  <span>Sign In</span>
-                </a>
-
-                <!-- Log In Button -->
-                <a href="#" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <span>Log In</span>
-                </a>
-            </div>
-        </div>
-      </div>
-    </div>
-      <!-- Navigation Bar -->
-      <nav class="relative bg-white shadow-md">
-      <div class="relative z-50">
-        <button id="menu-toggle" class="text-green-600 focus:outline-none">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-        <!-- Collapsible Menu -->
-        <div id="menu-links" class="hidden absolute bg-white border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-t-lg">Home</a>
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100">About Us</a>
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
-        </div>
-      </div>
-      </nav>
+      
 
       <script>
         const menuToggle = document.getElementById("menu-toggle");
