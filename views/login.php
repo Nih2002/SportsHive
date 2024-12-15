@@ -326,7 +326,7 @@
             type="submit" class="w-full bg-teal-500 p-3 rounded-lg text-gray-100 font-semibold opacity-50 cursor-not-allowed" disabled>Login</button>
         </form>
         <p class="text-center text-gray-400">Don't have an account? 
-        <a href="#" class="text-teal-400">Sign up</a>
+        <a href="signin.php" class="text-teal-400">Sign up</a>
         </p>
     </div>
     </div>
