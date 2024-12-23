@@ -68,307 +68,120 @@
 
 
         <!-- Left Links --><!-- sports drop down-->
-        <div class="relative group absolute left-0">
-        <button class="hover:bg-gray-700 px-4 py-2 rounded text-gray-800 font-semibold transition-colors">Sports</button>
+        <div class="relative group">
+        <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Sports</button>
         <!-- Dropdown Menu -->
-        <div class="absolute left-0 hidden group-hover:block mt-0.5 bg-white p-6 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-          <!-- Content Grid -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-lg hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-            <!-- Dropdown items -->
-            
-            <div class="flex items-center space-x-4">
-              <!-- Icon -->
-              <div class="bg-blue-500 text-white p-3 rounded-full flex justify-center items-center"><span class="text-2xl">🚴‍♀️</span></div>
+        <div class="absolute hidden group-hover:block mt-1 bg-gray p-2 rounded-xl shadow-lg w-70 z-50 max-h-[80vh] overflow-y-auto">
+          <!-- Cycling Section -->
+          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Cycling</h3>
+          </div>
 
-              <!-- Content -->
-              <div>
-                <h3 class="font-semibold text-lg text-gray-800 group-hover:text-blue-600 transition-colors">Cycling</h3>
-                <ul class="mt-3 text-sm text-gray-600 space-y-2">
-                  <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Bikes</a></li>
-                  <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Electric Bikes </a></li>
-                  <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Clothing</a></li>
-                  <li><a href="#" class="hover:text-blue-500 font-medium transition-colors"> Helmets</a></li>
-                </ul>
+          <!-- Hiking Section -->
+          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Hiking</h3>
+          </div>
+
+          <!-- Running Section -->
+          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Running</h3>
+          </div>
+
+          <!-- Swimming Section -->
+          <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Swimming</h3>
+          </div>
+
+      </div>
+    </div>
+
+        <div class="relative group">
+          <button class="hover:bg-gray-700 px-2 py-2 rounded text-white-800 font-semibold transition-colors">Brands</button>
+          <!-- Dropdown Menu -->
+          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
+            <div class="grid grid-cols-3 gap-4">
+              <!-- Column 1: 5 Brands -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ADIDAS</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">SALOMON</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">KIPRUN</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">PUMA</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ASICS</h3>
+                </div>
               </div>
-            </div>
-          
 
-            <!-- Hiking Section -->
-            <div class="group bg-gray-50 p-4 rounded-xl shadow-lg hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center space-x-4">
-              <!-- Icon -->
-              <div class="bg-green-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🥾</span>
+              <!-- Column 2: 3 Brands -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">OLAIAN</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ROXY</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ROCKRIDER</h3>
+                </div>
               </div>
 
-              <!-- Content -->
-              <div>
-                <h3 class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors">Hiking</h3>
-                <ul class="mt-3 text-sm text-gray-600 space-y-2">
-                  <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Shoes</a></li>
-                  <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Clothing</a></li>
-                  <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Backpacks</a></li>
-                  <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Gear</a></li>
-                </ul>
+              <!-- Column 3: 2 Brands -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">KIPSTA</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">DOMYOS</h3>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-
-            <!-- Running Section -->
-            <div class="group bg-gray-100 p-4 rounded-xl shadow-lg hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-              <div class="flex items-center space-x-4">
-                <div class="bg-red-500 text-white p-3 rounded-full flex justify-center items-center">
-                  <span class="text-2xl">🏃‍♂️</span>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-gray-800 group-hover:text-red-600">Running</h3>
-                  <ul class="mt-2 text-sm text-gray-600 space-y-1">
-                    <li><a href="#" class="hover:text-red-500">Shoes</a></li>
-                    <li><a href="#" class="hover:text-red-500">Clothing</a></li>
-                    <li><a href="#" class="hover:text-red-500">Accessories</a></li>
+        <div class="relative group">
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Repair and Services</button>
+          <!-- Dropdown Menu -->
+          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Column 1 -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-4 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">Repair with Us</h3>
+                  <!-- Links -->
+                  <ul class="mt-3 space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Maintenance Packages</a></li>
                   </ul>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Swimming Section -->
-            <div class="group bg-gray-100 p-4 rounded-xl shadow-lg hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-              <div class="flex items-center space-x-4">
-                <div class="bg-teal-500 text-white p-3 rounded-full flex justify-center items-center">
-                  <span class="text-xl">🏊‍♂️</span>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-gray-800 group-hover:text-teal-600">Swimming</h3>
-                  <ul class="mt-2 text-sm text-gray-600 space-y-1">
-                    <li><a href="#" class="hover:text-teal-500">Swimwear</a></li>
-                    <li><a href="#" class="hover:text-teal-500">Goggles</a></li>
-                    <li><a href="#" class="hover:text-teal-500">Caps</a></li>
-                    <li><a href="#" class="hover:text-teal-500">Accessories</a></li>
+        <div class="relative group">
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Others</button>
+          <!-- Dropdown Menu -->
+          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Column 1 -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-4 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">Repair with Us</h3>
+                  <!-- Links -->
+                  <ul class="mt-3 space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Maintenance Packages</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="relative group ">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded text-gray-800 font-semibold transition-colors">Women & Men</a>
-        <div class="absolute left-0 hidden group-hover:block mt-4 bg-white p-6 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-          <!-- Clothing Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center space-x-4">
-              <div class="bg-blue-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">👕</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-blue-600 transition-colors">Clothing</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Tops</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Sports Bras</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Leggings</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Jackets</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Underwear</a></li>
-            </ul>
-          </div>
-
-          <!-- Accessories Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-green-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🎒</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors">Accessories</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Yoga Mats</a></li>
-              <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Headbands</a></li>
-              <li><a href="#" class="hover:text-green-500 font-medium transition-colors">Gym Bags</a></li>
-            </ul>
-          </div>
-
-          <!-- Bikes Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-yellow-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🚴‍♀️</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-yellow-600 transition-colors">Bikes</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-yellow-500 font-medium transition-colors">Hybrid and City Bikes</a></li>
-              <li><a href="#" class="hover:text-yellow-500 font-medium transition-colors">Mountain Bikes</a></li>
-              <li><a href="#" class="hover:text-yellow-500 font-medium transition-colors">Electric Bikes</a></li>
-              <li><a href="#" class="hover:text-yellow-500 font-medium transition-colors">Road Bikes</a></li>
-              <li><a href="#" class="hover:text-yellow-500 font-medium transition-colors">Cycling Helmets</a></li>
-            </ul>
-          </div>
-
-          <!-- Activewear Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-purple-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🏋️‍♂️</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-purple-600 transition-colors">Activewear</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Gym Leggings</a></li>
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Gym Tops</a></li>
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Sports Bras</a></li>
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Yoga Pants</a></li>
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Tank Tops</a></li>
-            </ul>
-          </div>
-
-          <!-- Swimwear Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-teal-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🏊‍♂️</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-teal-600 transition-colors">Swimwear</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Wetsuits</a></li>
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Rash Vests</a></li>
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Swim Shorts</a></li>
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Swim Briefs</a></li>
-            </ul>
-          </div>
-
-          <!-- Shoes Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-red-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">👟</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-red-600 transition-colors">Shoes</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Running Shoes</a></li>
-              <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Training Shoes</a></li>
-              <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Hiking Boots</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-                
-      <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded text-gray-800 font-semibold transition-colors">Kids</a>
-        <div class="absolute left-0 hidden group-hover:block mt-4 bg-white p-6 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-          <!-- Baby Clothing Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center space-x-4">
-              <div class="bg-blue-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🍼</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-blue-600 transition-colors">Baby Clothing</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Coats and Jackets</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Bottoms</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Tops</a></li>
-              <li><a href="#" class="hover:text-blue-500 font-medium transition-colors">Underwear</a></li>
-            </ul>
-          </div>
-
-          <!-- Baby Swimwear Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-teal-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🏊‍♂️</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-teal-600 transition-colors">Baby Swimwear</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Wetsuits</a></li>
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Rash Vests</a></li>
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Swim Shorts</a></li>
-              <li><a href="#" class="hover:text-teal-500 font-medium transition-colors">Swim Briefs</a></li>
-            </ul>
-          </div>
-
-          <!-- Shoes Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-orange-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">👟</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-orange-600 transition-colors">Shoes</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-orange-500 font-medium transition-colors">Running Shoes</a></li>
-              <li><a href="#" class="hover:text-orange-500 font-medium transition-colors">Training Shoes</a></li>
-              <li><a href="#" class="hover:text-orange-500 font-medium transition-colors">Hiking Boots</a></li>
-            </ul>
-          </div>
-
-          <!-- Baby Bags and Accessories Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1 mt-4">
-            <div class="flex items-center space-x-4">
-              <div class="bg-purple-500 text-white p-3 rounded-full flex justify-center items-center">
-                <span class="text-2xl">🎒</span>
-              </div>
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-purple-600 transition-colors">Baby Bags and Accessories</h3>
-            </div>
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Backpacks</a></li>
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Gym Bags</a></li>
-              <li><a href="#" class="hover:text-purple-500 font-medium transition-colors">Sports Watches</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded text-gray-800 font-semibold transition-colors">Repair and Services</a>
-        <div class="absolute left-0 hidden group-hover:block mt-4 bg-white p-6 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-          <!-- Repair with Us Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center space-x-4">
-              <!-- Icon -->
-              <div class="bg-red-500 text-white p-3 rounded-full flex justify-center items-center"><span class="text-2xl">🛠️</span></div>
-              <!-- Heading -->
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-red-600 transition-colors">Repair with Us</h3>
-            </div>
-            <!-- Links -->
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Workshop Services</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded text-gray-800 font-semibold transition-colors">Brands</a>
-        <div class="absolute left-0 hidden group-hover:block mt-4 bg-white p-6 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-          <!-- Brands We Love Section -->
-          <div class="group bg-gray-50 p-4 rounded-xl shadow-md hover:bg-gray-100 transition-transform duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center space-x-4">
-              <!-- Icon -->
-              <div class="bg-indigo-500 text-white p-3 rounded-full flex justify-center items-center"><span class="text-2xl">🏷️</span></div>
-              <!-- Heading -->
-              <h3 class="font-semibold text-lg text-gray-800 group-hover:text-indigo-600 transition-colors">Brands We Love</h3>
-            </div>
-            <!-- Links -->
-            <ul class="mt-3 space-y-2 text-sm text-gray-600">
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">ADIDAS</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">SALOMON</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">KIPRUN</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">PUMA</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">ASICS</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">OLAIAN</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">ROXY</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">ROCKRIDER</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">KIPSTA</a></li>
-              <li><a href="#" class="hover:text-indigo-500 font-medium transition-colors">DOMYOS</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <script>
         const menuToggle = document.getElementById("menu-toggle");

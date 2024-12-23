@@ -38,13 +38,13 @@
           <!-- Sign In & Cart -->
           <div class="flex space-x-4">
                 <!-- Sign In Button -->
-                <a href="signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                   <i class="fas fa-user"></i>
                   <span>Sign Up</span>
                 </a>
 
                 <!-- Log In Button -->
-                <a href="login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                   <i class="fas fa-sign-in-alt"></i>
                   <span>Log In</span>
                 </a>
@@ -71,275 +71,124 @@
         </div>
       </div>
       </nav>
-      <!-- Left Links --><!-- sports drop down-->
+      <!-- Left Links -->
       <div class="relative group">
-  <!-- Trigger Button -->
-  <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-600 transition-all duration-300">
-    Sports
-  </button>
+        <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Sports</button>
+        <!-- Dropdown Menu -->
+        <div class="absolute hidden group-hover:block mt-1 bg-gray p-2 rounded-xl shadow-lg w-70 z-50 max-h-[80vh] overflow-y-auto">
+          <!-- Cycling Section -->
+          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Cycling</h3>
+          </div>
 
-  <!-- Dropdown Menu -->
-  <div class="absolute left-0 mt-1 hidden group-hover:block w-[400px] bg-white shadow-2xl rounded-xl z-50">
-    <!-- Content Grid -->
-    <div class="p-6 grid grid-cols-2 gap-4">
-      <!-- Dropdown items -->
-      <div class="group bg-gray-100 p-2 rounded-lg hover:bg-gray-200 transition-all duration-300">
-        <div class="flex items-center space-x-3">
-          <div class="bg-blue-500 text-white p-3 rounded-full">
-            <span class="text-xl">🚴‍♀️</span>
+          <!-- Hiking Section -->
+          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Hiking</h3>
           </div>
-          <div>
-            <h3 class="font-semibold text-gray-800 group-hover:text-blue-600">Cycling</h3>
-            <ul class="mt-2 text-sm text-gray-600 space-y-1">
-              <li><a href="#" class="hover:text-blue-500">Bikes</a></li>
-              <li><a href="#" class="hover:text-blue-500">Electric Bikes</a></li>
-              <li><a href="#" class="hover:text-blue-500">Clothing</a></li>
-              <li><a href="#" class="hover:text-blue-500">Helmets</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <!-- Hiking Section -->
-      <div class="group bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-all duration-300">
-        <div class="flex items-center space-x-3">
-          <div class="bg-green-500 text-white p-3 rounded-full">
-            <span class="text-xl">🥾</span>
+          <!-- Running Section -->
+          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Running</h3>
           </div>
-          <div>
-            <h3 class="font-semibold text-gray-800 group-hover:text-green-600">Hiking</h3>
-            <ul class="mt-2 text-sm text-gray-600 space-y-1">
-              <li><a href="#" class="hover:text-green-500">Shoes</a></li>
-              <li><a href="#" class="hover:text-green-500">Clothing</a></li>
-              <li><a href="#" class="hover:text-green-500">Backpacks</a></li>
-              <li><a href="#" class="hover:text-green-500">Gear</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <!-- Running Section -->
-      <div class="group bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-all duration-300">
-        <div class="flex items-center space-x-3">
-          <div class="bg-red-500 text-white p-3 rounded-full">
-            <span class="text-xl">🏃‍♂️</span>
+          <!-- Swimming Section -->
+          <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Swimming</h3>
           </div>
-          <div>
-            <h3 class="font-semibold text-gray-800 group-hover:text-red-600">Running</h3>
-            <ul class="mt-2 text-sm text-gray-600 space-y-1">
-              <li><a href="#" class="hover:text-red-500">Shoes</a></li>
-              <li><a href="#" class="hover:text-red-500">Clothing</a></li>
-              <li><a href="#" class="hover:text-red-500">Accessories</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <!-- Swimming Section -->
-      <div class="group bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-all duration-300">
-        <div class="flex items-center space-x-3">
-          <div class="bg-teal-500 text-white p-3 rounded-full">
-            <span class="text-xl">🏊‍♂️</span>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-800 group-hover:text-teal-600">Swimming</h3>
-            <ul class="mt-2 text-sm text-gray-600 space-y-1">
-              <li><a href="#" class="hover:text-teal-500">Swimwear</a></li>
-              <li><a href="#" class="hover:text-teal-500">Goggles</a></li>
-              <li><a href="#" class="hover:text-teal-500">Caps</a></li>
-              <li><a href="#" class="hover:text-teal-500">Accessories</a></li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</div>
+
         <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Women</a>
-        <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
-            <!-- Dropdown content here -->
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Clothing</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Tops</a></li>
-                <li><a href="#" class="hover:text-blue-600">Sports Bras</a></li>
-                <li><a href="#" class="hover:text-blue-600">Leggings</a></li>
-                <li><a href="#" class="hover:text-blue-600">Jackets</a></li>
-            </ul>
+          <button class="hover:bg-gray-700 px-2 py-2 rounded text-white-800 font-semibold transition-colors">Brands</button>
+          <!-- Dropdown Menu -->
+          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
+            <div class="grid grid-cols-3 gap-4">
+              <!-- Column 1: 5 Brands -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ADIDAS</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">SALOMON</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">KIPRUN</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">PUMA</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ASICS</h3>
+                </div>
+              </div>
+
+              <!-- Column 2: 3 Brands -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">OLAIAN</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ROXY</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ROCKRIDER</h3>
+                </div>
+              </div>
+
+              <!-- Column 3: 2 Brands -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">KIPSTA</h3>
+                </div>
+                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">DOMYOS</h3>
+                </div>
+              </div>
             </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Accessories</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Yoga Mats</a></li>
-                <li><a href="#" class="hover:text-blue-600">Headbands</a></li>
-                <li><a href="#" class="hover:text-blue-600">Gym Bags</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Bikes</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Hybrid and City Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Mountain Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Electric Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Road Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Cycling Helmets</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Activewear</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Gym Leggings</a></li>
-                <li><a href="#" class="hover:text-blue-600">Gym Tops and T-shirts</a></li>
-                <li><a href="#" class="hover:text-blue-600">Sports Bras</a></li>
-                <li><a href="#" class="hover:text-blue-600">Yoga Pants</a></li>
-                <li><a href="#" class="hover:text-blue-600">Tank Tops</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Shoes</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Running Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Training Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Hiking Boots</a></li>
-            </ul>
-            </div>
+          </div>
         </div>
-        </div>
+
         <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Men</a>
-        <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
-         <!-- Dropdown content here -->
-         <div>
-            <h3 class="font-semibold text-lg text-blue-900">Clothing</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Coats and Jackets</a></li>
-                <li><a href="#" class="hover:text-blue-600">Bottoms</a></li>
-                <li><a href="#" class="hover:text-blue-600">Tops</a></li>
-                <li><a href="#" class="hover:text-blue-600">Underwear</a></li>
-            </ul>
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Repair and Services</button>
+          <!-- Dropdown Menu -->
+          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Column 1 -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-4 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">Repair with Us</h3>
+                  <!-- Links -->
+                  <ul class="mt-3 space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Maintenance Packages</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Swimwear</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Wetsuits</a></li>
-                <li><a href="#" class="hover:text-blue-600">Rash Vests</a></li>
-                <li><a href="#" class="hover:text-blue-600">Swim shorts</a></li>
-                <li><a href="#" class="hover:text-blue-600">Swim Briefs</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Bikes</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Hybrid and City Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Men's Mountain Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Men's Electric Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Men's Road Bikes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Men's Cycling Helmets</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Activewear</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Gym Leggings</a></li>
-                <li><a href="#" class="hover:text-blue-600">Gym Tops and T-shirts</a></li>
-                <li><a href="#" class="hover:text-blue-600">Gym shorts</a></li>
-                <li><a href="#" class="hover:text-blue-600">Yoga Pants</a></li>
-                <li><a href="#" class="hover:text-blue-600">Tanks and vest Tops</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Shoes</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Running Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Training Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Hiking Boots</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Bags and Accessories</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Back packs</a></li>
-                <li><a href="#" class="hover:text-blue-600">Gym bags</a></li>
-                <li><a href="#" class="hover:text-blue-600">Sports Watches</a></li>
-            </ul>
-            </div>
+          </div>
         </div>
-        </div>  
+
         <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Kids</a>
-        <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
-         <!-- Dropdown content here -->
-         <div>
-            <h3 class="font-semibold text-lg text-blue-900">Baby Clothing</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Coats and Jackets</a></li>
-                <li><a href="#" class="hover:text-blue-600">Bottoms</a></li>
-                <li><a href="#" class="hover:text-blue-600">Tops</a></li>
-                <li><a href="#" class="hover:text-blue-600">Underwear</a></li>
-            </ul>
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Others</button>
+          <!-- Dropdown Menu -->
+          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Column 1 -->
+              <div class="col-span-1 space-y-2">
+                <div class="group bg-black p-4 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
+                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">Repair with Us</h3>
+                  <!-- Links -->
+                  <ul class="mt-3 space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Maintenance Packages</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Baby Swimwear</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Wetsuits</a></li>
-                <li><a href="#" class="hover:text-blue-600">Rash Vests</a></li>
-                <li><a href="#" class="hover:text-blue-600">Swim shorts</a></li>
-                <li><a href="#" class="hover:text-blue-600">Swim Briefs</a></li>
-            </ul>
-             </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Shoes</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Running Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Training Shoes</a></li>
-                <li><a href="#" class="hover:text-blue-600">Hiking Boots</a></li>
-            </ul>
-            </div>
-            <div>
-            <h3 class="font-semibold text-lg text-blue-900">Baby Bags and Accessories</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Back packs</a></li>
-                <li><a href="#" class="hover:text-blue-600">Gym bags</a></li>
-                <li><a href="#" class="hover:text-blue-600">Sports Watches</a></li>
-            </ul>
-            </div>
+          </div>
         </div>
-        </div>
-        <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Repair and Services</a>
-        <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
-         <!-- Dropdown content here -->
-         <div>
-            <h3 class="font-semibold text-lg text-blue-900">Repair with us</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">Workshop Services</a></li>
-            </ul>
-            </div>
-        </div>
-        </div>
-        <div class="relative group">
-        <a href="#" class="hover:bg-gray-700 px-4 py-2 rounded">Brands</a>
-        <div class="box-border absolute left-0 hidden mt-2 space-y-4 bg-white shadow-lg rounded-lg group-hover:block p-6 w-64 z-50 overflow-y-auto max-h-96">
-         <!-- Dropdown content here -->
-         <div>
-            <h3 class="font-semibold text-lg text-blue-900">Brands We Love</h3>
-            <ul class="text-gray-700">
-                <li><a href="#" class="hover:text-blue-600">ADIDAS</a></li>
-                <li><a href="#" class="hover:text-blue-600">SALOMON</a></li>
-                <li><a href="#" class="hover:text-blue-600">KIPRUN</a></li>
-                <li><a href="#" class="hover:text-blue-600">PUMA</a></li>
-                <li><a href="#" class="hover:text-blue-600">ASICS</a></li>
-                <li><a href="#" class="hover:text-blue-600">OLAIAN</a></li>
-                <li><a href="#" class="hover:text-blue-600">ROXY</a></li>
-                <li><a href="#" class="hover:text-blue-600">ROCKRIDER</a></li>
-                <li><a href="#" class="hover:text-blue-600">KIPSTA</a></li>
-                <li><a href="#" class="hover:text-blue-600">DOMYOS</a></li>
-            </ul>
-            </div>
-        </div>
-        </div>
-      </div>
+
+
+     
       <!-- Social Media Icons -->
       <div class="flex space-x-3">
         <a href="#" class="hover:opacity-75"><i class="fab fa-facebook-f"></i></a>
@@ -420,7 +269,7 @@
     </script>
 
   <!-- About Us -->
-  <section id="about" class="py-16 bg-gray-50">
+  <section id="about" class="py-16 bg-blue-200">
     <div class="container mx-auto text-center">
       <h2 class="text-3xl font-bold mb-6">About Us</h2>
       <p class="text-lg leading-relaxed">
@@ -429,51 +278,412 @@
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="py-16 bg-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Our Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div class="bg-gray-100 p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4">Product Sales</h3>
+ <!-- Services -->
+<section id="services" class="py-16 bg-white">
+  <div class="container mx-auto text-center py-16">
+    <h2 class="text-3xl font-bold mb-6">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      
+      <!-- Product Sales Section -->
+      <div class="relative overflow-hidden rounded-lg shadow-lg">
+        <img src="../images/product.jpg" alt="Product Sales" 
+          class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
+        <div class="absolute inset-0 flex flex-col justify-between p-4">
+          <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Product Sales</h3>
+          <!-- Plus Button -->
+          <button class="toggleBtn absolute bottom-4 right-4 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold transition-transform duration-300 hover:scale-110">
+            +
+          </button>
+        </div>
+        <!-- Hidden Paragraph -->
+        <div class="hiddenParagraph absolute inset-0 bg-black bg-opacity-60 text-white flex items-center justify-center text-lg font-medium p-4 hidden opacity-0 transition-opacity duration-300">
           <p>Discover a wide range of high-quality sports equipment tailored to your needs.</p>
         </div>
-        <div class="bg-gray-100 p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4">Repair Services</h3>
+      </div>
+
+      <!-- Repair Services Section -->
+      <div class="relative overflow-hidden rounded-lg shadow-lg">
+        <img src="../images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
+        <div class="absolute inset-0 flex flex-col justify-between p-4">
+          <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Repair Services</h3>
+          <!-- Plus Button -->
+          <button class="toggleBtn absolute bottom-4 right-4 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold transition-transform duration-300 hover:scale-110">
+            +
+          </button>
+        </div>
+        <!-- Hidden Paragraph -->
+        <div class="hiddenParagraph absolute inset-0 bg-black bg-opacity-60 text-white flex items-center justify-center text-lg font-medium p-4 hidden opacity-0 transition-opacity duration-300">
           <p>Request maintenance services for items purchased from SportHive with ease.</p>
         </div>
-        <div class="bg-gray-100 p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4">Delivery System</h3>
+      </div>
+
+      <!-- Delivery System Section -->
+      <div class="relative overflow-hidden rounded-lg shadow-lg">
+        <img src="../images/delivery.jpeg" alt="Delivery System" 
+          class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
+        <div class="absolute inset-0 flex flex-col justify-between p-4">
+          <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300"> Delivery System</h3>
+          <!-- Plus Button -->
+          <button class="toggleBtn absolute bottom-4 right-4 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold transition-transform duration-300 hover:scale-110">
+            +
+          </button>
+        </div>
+        <!-- Hidden Paragraph -->
+        <div class="hiddenParagraph absolute inset-0 bg-black bg-opacity-60 text-white flex items-center justify-center text-lg font-medium p-4 hidden opacity-0 transition-opacity duration-300">
           <p>Enjoy fast and reliable delivery services for all your orders.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Product Section -->
-  <section id="products" class="py-16 bg-gray-50">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Our Products</h2>
-      <p class="text-lg mb-6">Explore our catalog of premium sports equipment.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <img src="https://source.unsplash.com/300x200/?basketball" alt="Basketball" class="w-full h-48 object-cover rounded">
-          <h3 class="text-xl font-semibold mt-4">Basketball</h3>
-          <p class="mt-2">$30.00</p>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+  // Get all the toggle buttons
+  const toggleBtns = document.querySelectorAll('.toggleBtn');
+
+  toggleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevents bubbling up to the body
+      const paragraph = this.closest('.relative').querySelector('.hiddenParagraph');
+      // Toggle the 'hidden' and 'opacity' classes
+      paragraph.classList.toggle('hidden');
+      paragraph.classList.toggle('opacity-0');
+      paragraph.classList.toggle('opacity-100');
+    });
+  });
+
+  // Optional: Reset the paragraph if clicking outside
+  document.body.addEventListener('click', function () {
+    const paragraphs = document.querySelectorAll('.hiddenParagraph');
+    paragraphs.forEach(function (paragraph) {
+      if (!paragraph.classList.contains('hidden')) {
+        paragraph.classList.add('hidden');
+        paragraph.classList.remove('opacity-100');
+        paragraph.classList.add('opacity-0');
+      }
+    });
+  });
+</script>
+
+<!-- Product Section -->
+<section id="products" class="py-16 bg-blue-200">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">Our Products</h2>
+    <p class="text-lg mb-6">Explore our catalog of premium sports equipment.</p>
+    
+    <!-- Scrollable wrapper -->
+    <div class="relative overflow-hidden">
+      <div class="flex space-x-10 animate-scroll">
+        <!-- Product 1 - Basketball -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Basketball</p>
+          </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <img src="https://source.unsplash.com/300x200/?tennis" alt="Tennis Racket" class="w-full h-48 object-cover rounded">
-          <h3 class="text-xl font-semibold mt-4">Tennis Racket</h3>
-          <p class="mt-2">$45.00</p>
+
+        <!--cycling-->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Cycling</p>
+          </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <img src="https://source.unsplash.com/300x200/?soccer" alt="Soccer Ball" class="w-full h-48 object-cover rounded">
-          <h3 class="text-xl font-semibold mt-4">Soccer Ball</h3>
-          <p class="mt-2">$25.00</p>
+
+         <!--cycling-->
+         <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Boxing</p>
+          </div>
+        </div>
+
+        <!-- Product 2 - Netball -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Netball</p>
+          </div>
+        </div>
+
+        <!-- Product 3 - Hiking -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Hiking</p>
+          </div>
+        </div>
+
+        <!-- Product 4 - Athletic -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Athletic</p>
+          </div>
+        </div>
+
+        <!-- Product 5 - Swimming -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Swimming</p>
+          </div>
+        </div>
+
+        <!-- Product 6 - Tennis Racket -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Tennis Racket</p>
+          </div>
+        </div>
+
+        <!-- Product 7 - Soccer Ball -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>Soccer Ball</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<br><br>
+<!-- Product Section -->
+<section id="products" class="py-16 bg-white-200">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">Our popular Brands</h2>
+    <p class="text-lg mb-6">Explore our catalog of premium sports equipment.</p>
+    
+    <!-- Scrollable wrapper -->
+    <div class="relative overflow-hidden">
+      <div class="flex space-x-10 animate-scroll">
+        <!-- Product 1 - Basketball -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>ADIDAS</p>
+          </div>
+        </div>
+
+        <!-- Product 2 - Netball -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>NIKE</p>
+          </div>
+        </div>
+
+        <!-- Product 3 - Hiking -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>TEXSTRETCH</p>
+          </div>
+        </div>
+
+        <!-- Product 3 - Hiking -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>PUMA</p>
+          </div>
+        </div>
+
+        <!-- Product 3 - Hiking -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>ARMOUS</p>
+          </div>
+        </div>
+
+        <!-- Product 3 - Hiking -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>REEBOK</p>
+          </div>
+        </div>
+
+        <!-- Product 4 - Athletic -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>STANDFORD-SF</p>
+          </div>
+        </div>
+
+        <!-- Product 5 - Swimming -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <a href="https://example.com/basketball">
+              <img src="../images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            </a>
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>CLETO REYES</p>
+          </div>
+        </div>
+
+        <!-- Product 6 - Tennis Racket -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>SALOMON</p>
+          </div>
+        </div>
+
+        <!-- Product 6 - Tennis Racket -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>DOMYOS</p>
+          </div>
+        </div>
+
+        <!-- Product 6 - Tennis Racket -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>FINIS</p>
+          </div>
+        </div>
+
+        <!-- Product 6 - Tennis Racket -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>BAUER</p>
+          </div>
+        </div>
+
+        <!-- Product 7 - Soccer Ball -->
+        <div class="relative group">
+          <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
+            <img src="../images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <!-- Name Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p>LI-NING</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  /* Keyframes for horizontal scrolling */
+  @keyframes scrollLeftToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Apply the animation */
+  .animate-scroll {
+    animation: scrollLeftToRight 30s linear infinite;
+  }
+</style>
+
+
 
   <footer class="bg-black text-white">
   <!-- Top Section -->
