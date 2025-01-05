@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Athletic</title>
+  <title>Cricket</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -214,13 +214,12 @@
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Athletic<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Cricket<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Push your limits and redefine greatness. Our athletic gear is designed to fuel your passion, power your performance,
-             and keep you moving in style. Unleash your inner champion.</p></div>
+            <p class="text-gray-600 mb-6">Cricket is more than a game; it's a battle of endurance, strategy, and skill. Every ball is an opportunity to shine, every wicket is a chance to rise.</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
-            <img src="../images/athletic1.png" alt="Jumping athlete" class="w-full h-full object-cover">
+            <img src="../images/cricket2.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
             </div>
         </div>
   </div>
@@ -230,17 +229,17 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR SPIKES SHOES</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET SHOES</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshose1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Nike Maxfly 2 Track & Field Sprinting Spikes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Running Shoes | Lightweight | EVA | Ideal for Trail Running</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -249,10 +248,10 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike2.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshose2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">NIVIA Stride 3.0 Athletic Spikes Track & Field Shoes for Men </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">NDSC Belter Cricket Shoes | Eva Sock Liner | Lightweight Outsole | Durable</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -261,10 +260,10 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike3.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshose3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">NIVIA Men Zion-1 Running Spikes Shoes for Track & Field</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">GM Kryos Rubber Soled Adult Cricket Shoe</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -273,9 +272,9 @@
             </div>
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 4.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshose4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Vector X Bolted Running/Track and Field Spike Shoes for Men Women</h3>
+                <h3 class="text-lg tracking-wide font-bold">DSC Rigor X Junior Rubber Cricket Shoes - White / Red </h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -285,10 +284,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 5.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshose5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Aivin Furious Spike Running Shoes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">ASS SMACKER Cricket Shoe</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13500.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -304,45 +303,31 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 6.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Striter Optimus Unisex Athletic Spike Shoes Running Spike Shoes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <img src="../images/cshose6.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">DSC Belter Cricket Shoes | Material: Mesh</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 7.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">ATE Sprint Gold Running Shoe- Elevate Your Run with Precisi</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto py-12 px-4 ">
             <!-- Header Section -->
             <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR ATHLETIC EQUIPMENT</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET CLOTHINGS</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hur men.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cbottom1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Hurdles</h3>
+                <h3 class="text-lg font-semibold">T20 Matrix Playing Trouser|Black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -352,9 +337,9 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hru1.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cbottom2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Steeplechase hurdles</h3>
+                <h3 class="text-lg font-semibold">Pro Performance Trousers, Ivory</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -364,10 +349,10 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hur2.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cbottom3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Agility hurdles</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg font-semibold">AMatrix V2 T20 Playing Trouser, Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -376,9 +361,9 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/for women.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cbottom4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Hurdles for Women</h3>
+                <h3 class="text-lg font-semibold">Storm Jacket, Green</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -387,9 +372,9 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/javlin.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshirt1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Javelin</h3>
+                <h3 class="text-lg font-semibold">Pro Performance Short Sleeve Men's T-Shirt, Navy</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -406,10 +391,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/dicus.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshirt2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1Kg Discus</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg font-semibold">Unisex Adult Pro Player Cricket Shirt (White)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1700.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -418,10 +403,10 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hammer.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshirt3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1Kg Hammer</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
+                <h3 class="text-lg font-semibold">Storm Hooded Top,Green</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -429,9 +414,9 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/pat.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cshirt4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1Kg Shot Put</h3>
+                <h3 class="text-lg font-semibold">Matrix T-Shirt|Red</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -439,45 +424,22 @@
                 </div>
                 </a>
             </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/highjump.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">High Jump Metres</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/rely.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Rely Button</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto py-12 px-4 ">
             <!-- Header Section -->
             <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR ATHLETIC CLOTHINGS</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET EQUIPMENT</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bat1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Walking Bottom</h3>
+                <h3 class="text-lg font-semibold">CRICKET PRACTICE MIDDLING BAT</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -487,9 +449,75 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bat2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's Cross country Skiing Trousers</h3>
+                <h3 class="text-lg font-semibold">KIDS CRICKET BAT- MY FIRST BAT TURQ</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bat3.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">DSC Lava Kashmir Willow Cricket Bat Short Handle</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8900.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bat4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Stealth 5.1 English Willow 2024 Cricket Bat (Beige)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9900.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bat5.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Vapour Academy Bat, Natural</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+            
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/ball1.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Mens Supaball Indoor Cricket Ball (Red)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 7 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/ball2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">DSC Grade Leather Cricket Ball (White)| Water Proofed Leather | Top Quality Cork</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -497,24 +525,11 @@
                 </div>
                 </a>
             </div>
-            <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/ball3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's thermal leggings and tights</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 900.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Men’s warm adjustable ski trousers</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <h3 class="text-lg font-semibold">Windball Cricket Ball (Pink)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -522,62 +537,9 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/ball4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> Shorts with Zip Pockets</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom5.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Athletic Bottoms Jogger Track Pant</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt1.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> Sports T-Shirt | Men's Sportswear</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> Long Sleeve T-Shirt</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> schnell trocknende T-Shirts mit Logo im 2er-Pack</h3>
+                <h3 class="text-lg font-semibold">Mens Club Leather Cricket Ball (Red)</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -586,10 +548,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt4.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/ball5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's dri top fit tee shirts</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
+                <h3 class="text-lg font-semibold">DSC Swing Bolt Tennis Cricket Ball</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1300.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -605,10 +567,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt5.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/bag1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's Sports Drifit T-Shirts Short Sleeve Athletic Dry Fit Shirt For Women Running</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg font-semibold">GM 909 Grey / Black Wheelie Cricket Bag</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -617,9 +579,9 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt6.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bag2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Print Women's Athletic T-Shirt</h3>
+                <h3 class="text-lg font-semibold">DSC Intense Rage Kit Bag | Anti-Scuff Corner Protection | Durable & Classy</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -628,10 +590,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scock1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bag3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Mid Socks - Comfortable Running Socks |</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 290.00</h4>
+                <h3 class="text-lg font-semibold">SS Super Select Cricket Kit Bag</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6290.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -639,10 +601,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scock2.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/bag4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Athletic Socks Stance</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2100.00</h4>
+                <h3 class="text-lg font-semibold">SS 0010 Cricket Kit Bag</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 22100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -650,10 +612,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scock3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bag5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">5-Toe Vibram Coolmax Athletic Socks</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 270.00</h4>
+                <h3 class="text-lg font-semibold">GN350 Team Wheelie Bag, Black / Silver</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 22570.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -661,6 +623,182 @@
                 </a>
             </div>
             
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET PROTECTION</h1>
+            </div>
+
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/helmet1.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Pro 600 Cricket Batting Helmet Junior Small</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/helmet2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">GM Purist Geo II Cricket Helmet Junior</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/helmet3.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">SS Prince Cricket Helmet | Navy Blue | Mild Steel Grill | Eva Padding</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6500.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/helmet4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Elite Helmet, Navy</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/helmet5.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Ultimate 360 Helmet, Maroon</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 12000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+            
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/pad1.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Kookaburra Rapid 4.1 Cricket Batting Pads Adult</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 7 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/pad2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">GM Kryos 505 Cricket Batting Pads</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/pad3.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Pro Performance Abdo Guard, White</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/pad4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">All In One Academy Thigh Pads, White, LH</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/gl1.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Kookaburra Kahuna 6.1 Cricket batting gloves</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+        
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/gl2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">DSC Intense Attitude Wicket keeping Gloves | Rubber Grip in Palm Facing | Cotton</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 7 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/gl3.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">DSC 1501813 Speed Cricket Wicket Keeping Inner Gloves</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/gl4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">SG League Cricket Batting Gloves | Lightweight |Professional Grade Padded Gloves</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6290.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
             </div>
         </div>
         

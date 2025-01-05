@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Athletic</title>
+  <title>Swimming</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -214,13 +214,12 @@
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Athletic<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Swimming<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Push your limits and redefine greatness. Our athletic gear is designed to fuel your passion, power your performance,
-             and keep you moving in style. Unleash your inner champion.</p></div>
+            <p class="text-gray-600 mb-6">Make a splash and break boundaries. With our top-tier swimming gear, you'll cut through the water with ease and speed. Swim with precision, power, and passion!</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
-            <img src="../images/athletic1.png" alt="Jumping athlete" class="w-full h-full object-cover">
+            <img src="../images/swimming.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
             </div>
         </div>
   </div>
@@ -230,17 +229,17 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR SPIKES SHOES</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR SWIMMING EQUIPMENT</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle1.jpg" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Nike Maxfly 2 Track & Field Sprinting Spikes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Swim Goggles|Swimming Goggles for Adults</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -249,10 +248,10 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike2.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">NIVIA Stride 3.0 Athletic Spikes Track & Field Shoes for Men </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Swim Mask Goggles Rift - Light Blue</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -261,10 +260,10 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike3.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">NIVIA Men Zion-1 Running Spikes Shoes for Track & Field</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Swimming goggles One Size Fits All - Bfast black mirror orange fire</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -273,10 +272,10 @@
             </div>
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 4.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Vector X Bolted Running/Track and Field Spike Shoes for Men Women</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold"> swimming goggles|Tinted lenses|Single size|Turquoise</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -285,10 +284,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 5.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Aivin Furious Spike Running Shoes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">corrective swimming goggles|Smoked lenses |Single size| Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -304,10 +303,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 6.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Striter Optimus Unisex Athletic Spike Shoes Running Spike Shoes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Anti-fog re-activator for swimming goggles and swimming pool masks</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -316,10 +315,43 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/spike 7.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/goggle7.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">ATE Sprint Gold Running Shoe- Elevate Your Run with Precisi</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Elastic band for goggles</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/goggle8.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Pool mask SWIMDOW|Clear lens|One size-White green</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/scap1.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Reg silicone swim cap - One size - Petrol blue</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/scap2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">ADULT LONG HAIR SWIMMING CAP</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1370.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -331,19 +363,15 @@
         </div>
 
         <div class="max-w-7xl mx-auto py-12 px-4 ">
-            <!-- Header Section -->
-            <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR ATHLETIC EQUIPMENT</h1>
-            </div>
-
+            
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hur men.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/scap3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Hurdles</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <h3 class="text-lg font-semibold">Silicone mesh swim cap size l | print geo black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1280.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -352,10 +380,10 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hru1.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/scap4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Steeplechase hurdles</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <h3 class="text-lg font-semibold">Bubble Active+ Cap</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -364,9 +392,9 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hur2.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/scap5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Agility hurdles</h3>
+                <h3 class="text-lg font-semibold">Orange Neoprene Swim Cap Adult Orange</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -376,10 +404,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/for women.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/scap6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Hurdles for Women</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <h3 class="text-lg font-semibold">Baby Bathing Cap Tiger Mesh Print Blue</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1360.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -387,9 +415,9 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/javlin.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/sfine1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Javelin</h3>
+                <h3 class="text-lg font-semibold">Swimming Fins Trainfins 500 Blue Pink</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -406,9 +434,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/dicus.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/sfine2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1Kg Discus</h3>
+                <h3 class="text-lg font-semibold">Short Swim Fins Speedo Biofuse Fitness Fins - Grey Blue</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -418,9 +446,31 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/hammer.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/sfine3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1Kg Hammer</h3>
+                <h3 class="text-lg font-semibold">Maru Hand Paddles</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/sfine4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Swimming Pool Kickboard | BLUE</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1960.00</h4>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/sfine5.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Arena Swimming Kickboard</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -429,32 +479,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/pat.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/sfine6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1Kg Shot Put</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/highjump.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">High Jump Metres</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/rely.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Rely Button</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
+                <h3 class="text-lg font-semibold">Swimming Pull Buoy & Kickboard - BLACK</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2500.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -466,19 +494,15 @@
         </div>
 
         <div class="max-w-7xl mx-auto py-12 px-4 ">
-            <!-- Header Section -->
-            <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR ATHLETIC CLOTHINGS</h1>
-            </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/seyer1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Walking Bottom</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <h3 class="text-lg font-semibold">Set Of Swimming Earplugs Silicone Cone Shape - 3 SIZES</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -487,10 +511,10 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/snose.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's Cross country Skiing Trousers</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg font-semibold">SWIMMING FLOATING NOSE CLIP GREY BLUE</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -499,9 +523,9 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/snose1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's thermal leggings and tights</h3>
+                <h3 class="text-lg font-semibold">Speedo Biofuse 2.0 Aquatic Ear Plug</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 900.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -511,10 +535,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/snose2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Men’s warm adjustable ski trousers</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <h3 class="text-lg font-semibold">Zoggs Adult Aqua Plugz Ear Plugs</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 870.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -522,10 +546,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/snokerle.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> Shorts with Zip Pockets</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg font-semibold">Swimming Front-Mounted Snorkel 500 Size L - Blue Yellow</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1350.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -541,9 +565,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bottom5.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/snokerle1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Athletic Bottoms Jogger Track Pant</h3>
+                <h3 class="text-lg font-semibold">Dry diving snorkel with drytop valve system</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -553,95 +577,9 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt1.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/snokerle2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> Sports T-Shirt | Men's Sportswear</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> Long Sleeve T-Shirt</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold"> schnell trocknende T-Shirts mit Logo im 2er-Pack</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt4.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's dri top fit tee shirts</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt5.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Women's Sports Drifit T-Shirts Short Sleeve Athletic Dry Fit Shirt For Women Running</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/shirt6.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Print Women's Athletic T-Shirt</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scock1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Mid Socks - Comfortable Running Socks |</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 290.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scock2.jpg" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Athletic Socks Stance</h3>
+                <h3 class="text-lg font-semibold">Diving snorkel 100 black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
@@ -649,18 +587,6 @@
                 </div>
                 </a>
             </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scock3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">5-Toe Vibram Coolmax Athletic Socks</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 270.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            
             </div>
         </div>
         
