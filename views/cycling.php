@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swimming</title>
+  <title>Cycling</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -217,12 +217,12 @@
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Swimming<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Cycling<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Make a splash and break boundaries. With our top-tier swimming gear, you'll cut through the water with ease and speed. Swim with precision, power, and passion!</p></div>
+            <p class="text-gray-600 mb-6">Cricket is more than a game; it's a battle of endurance, strategy, and skill. Every ball is an opportunity to shine, every wicket is a chance to rise.</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
-            <img src="../images/swimming.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
+            <img src="https://i.pinimg.com/736x/e6/02/f7/e602f74bcf641dfacee27b2efb04c91d.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
             </div>
         </div>
   </div>
@@ -321,36 +321,17 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR SWIMMING EQUIPMENT</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR Cycle</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle1.jpg" class="w-full h-48 object-contain p-4">
+                <img src="../images/cycle1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Swim Goggles|Swimming Goggles for Adults</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Swim Mask Goggles Rift - Light Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Mountain Bike Expl 500 - Orange</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 52200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -364,12 +345,31 @@
                 </div>
                 </a>
             </div>
+            <!-- Item 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/cycle2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Electric Hardtail MTB Bike E-ST 900 - Grey</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 65000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cycle3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Swimming goggles One Size Fits All - Bfast black mirror orange fire</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Mountain Bike Expl 120 - White</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5100.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -385,10 +385,29 @@
             </div>
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cycle4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold"> swimming goggles|Tinted lenses|Single size|Turquoise</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Road Bike NCR CF Tiagra - Blue </h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/cycle5.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Tilt 120 folding bike - grey</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13500.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -402,12 +421,52 @@
                 </div>
                 </a>
             </div>
-            <!-- Item 5 -->
+            </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+        
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">corrective swimming goggles|Smoked lenses |Single size| Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
+                <img src="../images/cycle6.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">Single Speed City Bike 500 - Carbon Grey</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 52000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/cycle7.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">Electric Cargo Bike Rear loading longtail R500</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 72000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/cycle8.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">Riverside 120 Hybrid Bike - Grey</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 78000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -422,17 +481,96 @@
                 </a>
             </div>
             </div>
-            
         </div>
+
         <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CYCLING HELMETS</h1>
+            </div>
+
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
+            <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle6.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/chelmet1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Anti-fog re-activator for swimming goggles and swimming pool masks</h3>
+                <h3 class="text-lg font-semibold">TRoadR 500 Road Cycling Helmet - White</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/chelmet2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Mountain Bike Helmet EXPL 500 - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/chelmet3.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">City Cycling Bowl Helmet - Beige</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/chelmet4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">RoadR 500 Road Cycling Helmet - Neon Yellow</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/chelmet5.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">PAdult Mountain Bike Helmet Expl 500 - Green</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
@@ -447,66 +585,19 @@
                 </div>
                 </a>
             </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle7.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Elastic band for goggles</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
             </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+        
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/goggle8.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/chelmet6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Pool mask SWIMDOW|Clear lens|One size-White green</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scap1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Reg silicone swim cap - One size - Petrol blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scap2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">ADULT LONG HAIR SWIMMING CAP</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1370.00</h4>
+                <h3 class="text-lg font-semibold">500 Children's Helmet - Pink</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1700.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -525,15 +616,19 @@
         </div>
 
         <div class="max-w-7xl mx-auto py-12 px-4 ">
-            
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CYCLING SHOSES</h1>
+            </div>
+
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scap3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cyshose1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Silicone mesh swim cap size l | print geo black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1280.00</h4>
+                <h3 class="text-lg font-semibold">Mountain Bike Shoes Race 700 - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -549,10 +644,10 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scap4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/cyshose2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Bubble Active+ Cap</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg font-semibold">Mountain Bike/Gravel Shoes Race 900 - Ochre - Habu Fit System</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -568,10 +663,10 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scap5.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2694117/k$935cb62240cc19dd9d230e898d0cb700/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Orange Neoprene Swim Cap Adult Orange</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg font-semibold">Road Cycling Shoes NCR Air - Grey</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -587,10 +682,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/scap6.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/m16096050/k$0ff3d6a79fa7a4673d51ea6f611d5a1b/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Baby Bathing Cap Tiger Mesh Print Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1360.00</h4>
+                <h3 class="text-lg font-semibold">Womens Road Cycle Shoes</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9900.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -605,10 +700,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/sfine1.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/m18134648/k$0a36f8ce9d0e6faa81239fe2bdcfcc6a/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Swimming Fins Trainfins 500 Blue Pink</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg font-semibold">Giordana AV 200 Winter Shoe Cover</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -626,33 +721,14 @@
             
         </div>
         <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
+            
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/sfine2.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2686523/k$7be82ecdf1ae58b53e4a4a75c3d1cdfd/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Short Swim Fins Speedo Biofuse Fitness Fins - Grey Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/sfine3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Maru Hand Paddles</h3>
+                <h3 class="text-lg font-semibold">Road Cycling Shoes Van Rysel RCR R - White</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
@@ -667,11 +743,12 @@
                 </div>
                 </a>
             </div>
+            <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/sfine4.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/m10812315/k$ee52155f530b7befe853554cdf82b244/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Swimming Pool Kickboard | BLUE</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1960.00</h4>
+                <h3 class="text-lg font-semibold">Proviz REFLECT360 Waterproof Reflective Cycling Overshoes</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -686,28 +763,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/sfine5.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2762742/k$f996bd9ec2dce1f25c313ed523c2db68/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Arena Swimming Kickboard</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/sfine6.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Swimming Pull Buoy & Kickboard - BLACK</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2500.00</h4>
+                <h3 class="text-lg font-semibold">Cycling Waterproof Shoes GRVL 900</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -724,17 +783,22 @@
             
             </div>
         </div>
+        
 
         <div class="max-w-7xl mx-auto py-12 px-4 ">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CYCLING ACCESSORIES</h1>
+            </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/seyer1.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2448244/k$d1ebb69478b55f20c1871c76abbe014c/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Set Of Swimming Earplugs Silicone Cone Shape - 3 SIZES</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg font-semibold">Adult Category 3 Cycling Sunglasses Perf 500 Light - White</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -744,16 +808,16 @@
                 </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/snose.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p1226033/k$46fa977a51825e45019779bd4405dae0/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">SWIMMING FLOATING NOSE CLIP GREY BLUE</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg font-semibold">500 Cycling Gloves for Spring/Autumn - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -769,10 +833,10 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/snose1.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2579433/k$8793fafe2e0d19d797aac2095fea6597/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Speedo Biofuse 2.0 Aquatic Ear Plug</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 900.00</h4>
+                <h3 class="text-lg font-semibold">Smartphone-compatible thermal cycling gloves, black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6500.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -788,10 +852,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/snose2.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2465250/k$11a1824141edf1817ac83fbcda9e0a76/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Zoggs Adult Aqua Plugz Ear Plugs</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 870.00</h4>
+                <h3 class="text-lg font-semibold">100 Winter Cycling Fleece Neck Warmer - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -806,10 +870,10 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/snokerle.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2448254/k$13b1971025ddae05ce1ab3f75cf7b0a7/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Swimming Front-Mounted Snorkel 500 Size L - Blue Yellow</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1350.00</h4>
+                <h3 class="text-lg font-semibold">Adult Cycling Glasses Perf 500 Light Category 3 - Black/Blue</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -827,15 +891,15 @@
             
         </div>
         <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
+            
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/snokerle1.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2008590/k$9e32e2f42bb74ec68cb7857997d46190/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Dry diving snorkel with drytop valve system</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg font-semibold">Cold Weather Cycling Arm Warmers - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -851,10 +915,10 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/snokerle2.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2316061/k$25ef05184ec79ceb7c2d1393104b4630/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Diving snorkel 100 black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2100.00</h4>
+                <h3 class="text-lg font-semibold">Cycling Under-Helmet Headband 900 - Black/Grey</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -868,10 +932,30 @@
                 </div>
                 </a>
             </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p1034936/k$6628923686b98e223ff56804fa8d5a11/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Cycling Balaclava 500 - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13000.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            
             </div>
         </div>
       </div>
       </div>
+        
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

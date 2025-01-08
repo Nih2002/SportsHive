@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football</title>
+  <title>Rugby</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -217,12 +217,12 @@
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Football<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Rugby<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Make a splash and break boundaries. With our top-tier swimming gear, you'll cut through the water with ease and speed. Swim with precision, power, and passion!</p></div>
+            <p class="text-gray-600 mb-6">Cricket is more than a game; it's a battle of endurance, strategy, and skill. Every ball is an opportunity to shine, every wicket is a chance to rise.</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
-            <img src="../images/football.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
+            <img src="https://i.pinimg.com/736x/0f/36/0f/0f360f8480576842752fc43c1920a652.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
             </div>
         </div>
   </div>
@@ -321,17 +321,18 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR FOOTBALL BOOTS & SHOSE</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR Rugby Balls</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose1.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2672308/k$c95ce17aba911a0663ef4006736ca89b/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Boots Viralto</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Gilbert Scotland Rugby Ball - Size 5</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2800.00</h4>
+                <!-- Star Rating -->
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -341,16 +342,17 @@
                 </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose2.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/m6898813/k$4509d44f87960866c2705b57f88a157c/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Hard Ground Football Boots Agility 100 </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Solo Skills Ball</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 65000.00</h4>
+                <!-- Star Rating -->
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -366,10 +368,77 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose3.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2604345/k$1e94b0a6a9379c76c3cb71c950bf0070/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Predator League Multi-Ground Boots</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Rugby Ball Gtr4000 Size 5 - White/Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5100.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p2650902/k$8d68e9eb1fe4ed8e0fbf4624a22f68e7/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Size 5 Rugby Ball France Replica - White/Blue/Red </h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m5253256/k$2b7cb8ddef78aa7ecf1c97ae643cb06a/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Sponge Rugby Training Ball (Yellow/Black)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13500.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+        
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m7629488/k$b3182a360e01f04216731ae707be86b9/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <h3 class="text-lg tracking-wide font-bold">Gripper 2.0 Pro Trainer Rugby Ball</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 52000.00</h4>
+                <!-- Star Rating -->
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -383,12 +452,81 @@
                 </div>
                 </a>
             </div>
-            <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose4.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/m18467721/k$65a4a0e0aec99cfe6e627e1f8e3cfefb/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <h3 class="text-lg tracking-wide font-bold">Thrillseeker Play Rugby Ball (White/Blue)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 72000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">OUR RUGBY PROTECTION</h1>
+            </div>
+
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p2691139/k$e12b5ad87f264318de6afd05a41658cf/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Adult F50 League FG</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg font-semibold">Adult Rugby Scrum Cap R500 - Beige</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p2691174/k$ebb7e6862253d8df3489d95ac79e5cfe/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Adult Rugby Scrum Cap R500 - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m15950871/k$784db83367dc13b61da522a8bb56bfb7/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Rhino Pro Headguard Fluo Yellow SY</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
+                <!-- Star Rating -->
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -404,10 +542,30 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball1.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/m14806199/k$ed5e4a0190f384665f2ab0f3f0422b3e/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Mini Football Sunny 300 Size 1 - Pastel Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
+                <h3 class="text-lg font-semibold">Unisex Adult Toka Pro Mouthguard (Black)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m18282037/k$5ffcba9273214b1108c155f81e88379c/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">SafeJawz Sports Mouthguard Intro Series Adult/Junior</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <!-- Star Rating -->
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -430,10 +588,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball2.png" class="w-full h-48 object-contain p-4">
+                <img src="https://contents.mediadecathlon.com/p2705995/k$faac0933caf044a18f28fffa6b0a05e6/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' size 3 football, blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg font-semibold">Rugby Lineout Lift Support R500 Decathlon | Canterbury - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1700.00</h4>
+                <!-- Star Rating -->
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -447,68 +606,149 @@
                 </div>
                 </a>
             </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Light Learning Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Machine-Stitched Football Training Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">size 5 football, yellow</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            
             
             </div>
         </div>
-      </div>
-      </div>
 
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">OUR RAGBY SHOSES</h1>
+            </div>
+
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p2504171/k$03bfff9155de64701964f20ed6140b16/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Adult Hybrid Rugby Boots Advance R500 SG - Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p2383999/k$e1bfa7b99bd80d5c872e4b58e9504107/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Kids' Moulded Dry Pitch Rugby Boots R500 - Red</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m16973344/k$4b52d7b0a002b410e481d04b00433b04/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Mizuno Monarcida NEO III Select Adults Mixed Stud Boots White</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/p2725546/k$1d6551045e428edb157a64dd2f16414e/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Kids' Rugby Stud Boots SG - Blue</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m16296969/k$c9bc789e5de669293b7f757ce53a7234/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Canterbury Phoenix Genesis Team SG Kids Rugby Boot</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+            
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://contents.mediadecathlon.com/m17826497/k$142bd4286dd9b72e06b271d605c57180/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Adidas Kakari (SG) LEGINK/SIGCYA/SIGORG - 7.5 UK</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            </div>
+        </div>
+        </div>
+</div>
+        
         <footer class="bg-black text-white">
         <!-- Top Section -->
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">

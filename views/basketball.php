@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football</title>
+  <title>Basketball</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -217,9 +217,9 @@
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Football<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Basketball<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Make a splash and break boundaries. With our top-tier swimming gear, you'll cut through the water with ease and speed. Swim with precision, power, and passion!</p></div>
+            <p class="text-gray-600 mb-6">The game is won in your mind before it’s played on the court.</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
             <img src="../images/football.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
@@ -321,17 +321,17 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR FOOTBALL BOOTS & SHOSE</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR BASKETBALL BOOTS & BALLS</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Boots Viralto</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Kids' Basketball Shoes Fast 900 Low-1</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -347,10 +347,10 @@
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Hard Ground Football Boots Agility 100 </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Mid-Rise Beginner Basketball Shoes SE100</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -360,16 +360,16 @@
                 </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Predator League Multi-Ground Boots</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Men's/Women's Basketball Shoes SE900</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 4990.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -385,10 +385,10 @@
             </div>
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Adult F50 League FG</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Kids' Intermediate Basketball Shoes SS500H</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -404,10 +404,10 @@
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Mini Football Sunny 300 Size 1 - Pastel Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Men's/Women's Basketball Shoes 900</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 7790.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -417,7 +417,7 @@
                 </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
@@ -430,10 +430,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' size 3 football, blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Hoops 3.0 Mid Lifestyle Basketball Classic Vintage Shoes</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -449,10 +449,10 @@
             </div>
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose7.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Light Learning Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Sneakers Nike Precision 5, Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 81600.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -467,9 +467,9 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose8.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Machine-Stitched Football Training Ball </h3>
+                <h3 class="text-lg tracking-wide font-bold">2 Pairs Womens Walking Boot High Performance Polyester Running Socks</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
@@ -485,9 +485,128 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball5.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/bshose9.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">size 5 football, yellow</h3>
+                <h3 class="text-lg font-semibold">1 Pack Ladies Activ QTR Repreve Socks</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bshose10.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">3 Pairs Mens Cotton Thick Cushioned Terry Sport Socks</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            
+            
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto py-12 px-4 ">
+        
+            <!-- Catalog Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bball1.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Size 7 Basketball BT500 - Brown/FIBA</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <!-- Item 7 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bball2.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Size 7 Basketball NBA Team Tribute Lakers - Purple/Black</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 81600.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bball3.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg tracking-wide font-bold">Kids' Rubber Basketball Size 3 K500 - Blue/Red</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">Out of Stock</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bball4.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">Kids'/Adult Size 7 Basketball R100 - Orange.</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
+                <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md">ADD TO CART</button>
+                </div>
+                </a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="../images/bball5.png" class="w-full h-48 object-contain p-4">
+                <a href="#" class="p-4 text-center">
+                <h3 class="text-lg font-semibold">3Elite Championship 2.0 Logo Basketball</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>

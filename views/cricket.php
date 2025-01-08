@@ -9,12 +9,11 @@
 <header class="bg-blue-900 text-white">
 
     <!-- Main Header -->
-    <div class="bg-black text-white">
+    <div class="bg-cyan-500 text-black">
       <div class="container mx-auto flex justify-between items-center py-3 px-4">
         <!-- Logo -->
         <a href="#" class="flex items-center space-x-2">
-          <img src="../images/logo.png" alt="Logo" class="w-20 h-20">
-          <span class="text-lg font-bold">SportHive</span>
+          <img src="../images/logo12.png" alt="Logo" class="w-20 h-20">
         </a>
 
         <!-- Search Bar -->
@@ -38,13 +37,13 @@
           <!-- Sign In & Cart -->
           <div class="flex space-x-4">
                 <!-- Sign In Button -->
-                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                   <i class="fas fa-user"></i>
                   <span>Sign Up</span>
                 </a>
 
                 <!-- Log In Button -->
-                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                   <i class="fas fa-sign-in-alt"></i>
                   <span>Log In</span>
                 </a>
@@ -54,9 +53,9 @@
     </div>
 
     <!-- Top Bar -->
-    <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-blue-900 mx-96">
+    <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-cyan-100 mx-96">
       <!-- Navigation Bar -->
-      <nav class="relative bg-blue shadow-md">
+      <nav class="relative bg-black shadow-md">
       <div class="relative z-50">
         <button id="menu-toggle" class="text-black-900 focus:outline-none">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -64,16 +63,18 @@
           </svg>
         </button>
         <!-- Collapsible Menu -->
-        <div id="menu-links" class="hidden absolute bg-white border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-t-lg">Home</a>
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100">About Us</a>
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
+        <div id="menu-links" class="hidden absolute bg-black border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
+          <a href="../sportshive/views/index.php" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-t-lg">Home</a>
+          <a href="../sportshive/views/aboutus.php" class="block px-4 py-3 text-white-600 hover:bg-green-100">About Us</a>
+          <a href="#" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
+          <a href="../sportshive/views/services.php" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">Services</a>
+          <a href="#" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">F&Q</a>
         </div>
       </div>
       </nav>
       <!-- Left Links -->
       <div class="relative group">
-        <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Sports</button>
+        <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Sports</button>
         <!-- Dropdown Menu -->
         <div class="absolute hidden group-hover:block mt-1 bg-gray p-2 rounded-xl shadow-lg w-70 z-50 max-h-[80vh] overflow-y-auto">
           <!-- Cycling Section -->
@@ -100,7 +101,7 @@
     </div>
 
         <div class="relative group">
-          <button class="hover:bg-gray-700 px-2 py-2 rounded text-white-800 font-semibold transition-colors">Brands</button>
+          <button class="hover:bg-gray-700 px-2 py-2 rounded text-black font-semibold transition-colors">Brands</button>
           <!-- Dropdown Menu -->
           <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
             <div class="grid grid-cols-3 gap-4">
@@ -150,7 +151,7 @@
         </div>
 
         <div class="relative group">
-          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Repair and Services</button>
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Repair and Services</button>
           <!-- Dropdown Menu -->
           <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
             <div class="grid grid-cols-2 gap-4">
@@ -169,7 +170,7 @@
         </div>
 
         <div class="relative group">
-          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Others</button>
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Others</button>
           <!-- Dropdown Menu -->
           <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
             <div class="grid grid-cols-2 gap-4">
@@ -206,10 +207,12 @@
         menuToggle.addEventListener("click", () => {
           menuLinks.classList.toggle("hidden");
         });
+        
       </script>
+      
 
   </header>
-  <div style="background: url('../images/color.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div style="background: url('../images/sportsback1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <body class="bg-gray-100">
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
@@ -225,6 +228,95 @@
   </div>
 
   <!-- first product section-->
+  <div class="grid grid-cols-4 gap-6">
+  <div class="col-span-1 bg-cyan-400 border border-gray-300 p-4 shadow-md">
+  <div class=" bg-cyan-400 p-4 shadow-md">
+    
+  <!-- Product Categories Section -->
+      <div class="mb-6">
+        <h3 class="text-lg font-bold mb-4">Product Categories</h3>
+        <ul class="space-y-2">
+        <li>
+            <a href="../views/cricket.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Cricket <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/swimming.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Swimming <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/vollyball.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Volleyball <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/rugby.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Rugby <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/netball.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Netball <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/football1.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Football <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/cycling.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Cycling <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/basketball.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Basketball <span class="text-gray-500">+</span>
+            </a>
+          </li>
+          <li>
+            <a href="../views/athletic.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              Athletic <span class="text-gray-500">+</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+  <!-- Brands Section -->
+      <div>
+        <h3 class="text-lg font-bold mb-4">Brands</h3>
+        <ul class="space-y-2">
+          <li class="flex items-center">
+            <input type="checkbox" id="yonex" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="yonex" class="ml-2 text-sm text-gray-700">Yonex (75)</label>
+          </li>
+          <li class="flex items-center">
+            <input type="checkbox" id="stanfords" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="stanfords" class="ml-2 text-sm text-gray-700">Stanfords - SF (116)</label>
+          </li>
+          <li class="flex items-center">
+            <input type="checkbox" id="kaygee" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="kaygee" class="ml-2 text-sm text-gray-700">Kay Gee (23)</label>
+          </li>
+          <li class="flex items-center">
+            <input type="checkbox" id="texstretch" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="texstretch" class="ml-2 text-sm text-gray-700">Texstretch (36)</label>
+          </li>
+          <li class="flex items-center">
+            <input type="checkbox" id="lining" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="lining" class="ml-2 text-sm text-gray-700">Li-Ning (60)</label>
+          </li>
+          <li class="flex items-center">
+            <input type="checkbox" id="ss" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="ss" class="ml-2 text-sm text-gray-700">SS (1)</label>
+          </li>
+        </ul>
+      </div>
+</div>
+</div>
+<div class="col-span-3 max-w-7xl mx-auto py-12 px-4">
         <div class="max-w-7xl mx-auto py-12 px-4 ">
             <!-- Header Section -->
             <div class="text-center mb-12">
@@ -240,9 +332,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Running Shoes | Lightweight | EVA | Ideal for Trail Running</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5200.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -252,9 +352,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">NDSC Belter Cricket Shoes | Eva Sock Liner | Lightweight Outsole | Durable</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -264,6 +372,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">GM Kryos Rubber Soled Adult Cricket Shoe</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5100.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -276,6 +392,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">DSC Rigor X Junior Rubber Cricket Shoes - White / Red </h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -288,9 +412,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">ASS SMACKER Cricket Shoe</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13500.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -306,9 +438,17 @@
                 <img src="../images/cshose6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">DSC Belter Cricket Shoes | Material: Mesh</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -329,9 +469,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">T20 Matrix Playing Trouser|Black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -341,6 +489,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Pro Performance Trousers, Ivory</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -353,9 +509,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">AMatrix V2 T20 Playing Trouser, Black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -365,9 +529,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Storm Jacket, Green</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -376,9 +548,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Pro Performance Short Sleeve Men's T-Shirt, Navy</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -395,9 +575,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Unisex Adult Pro Player Cricket Shirt (White)</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1700.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -407,6 +595,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Storm Hooded Top,Green</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -418,6 +614,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Matrix T-Shirt|Red</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -441,9 +645,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">CRICKET PRACTICE MIDDLING BAT</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -453,9 +665,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">KIDS CRICKET BAT- MY FIRST BAT TURQ</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -465,9 +685,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">DSC Lava Kashmir Willow Cricket Bat Short Handle</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -477,6 +705,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Stealth 5.1 English Willow 2024 Cricket Bat (Beige)</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9900.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -488,9 +724,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Vapour Academy Bat, Natural</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -507,6 +751,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Mens Supaball Indoor Cricket Ball (Red)</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -519,9 +771,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">DSC Grade Leather Cricket Ball (White)| Water Proofed Leather | Top Quality Cork</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -530,9 +790,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Windball Cricket Ball (Pink)</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -541,9 +809,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Mens Club Leather Cricket Ball (Red)</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -552,9 +828,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">DSC Swing Bolt Tennis Cricket Ball</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1300.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -571,6 +855,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">GM 909 Grey / Black Wheelie Cricket Bag</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -583,9 +875,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">DSC Intense Rage Kit Bag | Anti-Scuff Corner Protection | Durable & Classy</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -594,6 +894,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">SS Super Select Cricket Kit Bag</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6290.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -605,9 +913,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">SS 0010 Cricket Kit Bag</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 22100.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -616,6 +932,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">GN350 Team Wheelie Bag, Black / Silver</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 22570.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -640,9 +964,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Pro 600 Cricket Batting Helmet Junior Small</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -652,6 +984,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">GM Purist Geo II Cricket Helmet Junior</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -664,6 +1004,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">SS Prince Cricket Helmet | Navy Blue | Mild Steel Grill | Eva Padding</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6500.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -676,9 +1024,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Elite Helmet, Navy</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -687,6 +1043,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Ultimate 360 Helmet, Maroon</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 12000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -706,9 +1070,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Kookaburra Rapid 4.1 Cricket Batting Pads Adult</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -718,9 +1090,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">GM Kryos 505 Cricket Batting Pads</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -729,6 +1109,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Pro Performance Abdo Guard, White</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -740,9 +1128,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">All In One Academy Thigh Pads, White, LH</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -751,9 +1147,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Kookaburra Kahuna 6.1 Cricket batting gloves</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -770,6 +1174,14 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">DSC Intense Attitude Wicket keeping Gloves | Rubber Grip in Palm Facing | Cotton</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -782,9 +1194,17 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">DSC 1501813 Speed Cricket Wicket Keeping Inner Gloves</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -793,14 +1213,24 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">SG League Cricket Batting Gloves | Lightweight |Professional Grade Padded Gloves</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6290.00</h4>
+                <!-- Star Rating -->
+                <div class="flex justify-center items-center mt-2 space-x-1">
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-yellow-500 text-xl">★</span>
+                  <span class="text-gray-300 text-xl">☆</span>
+                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                animate-bounce shadow-md">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             </div>
         </div>
+      </div>
+      </div>
         
 
         <footer class="bg-black text-white">

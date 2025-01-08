@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football</title>
+  <title>Volleyball</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -217,147 +217,45 @@
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Football<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">valleyball<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Make a splash and break boundaries. With our top-tier swimming gear, you'll cut through the water with ease and speed. Swim with precision, power, and passion!</p></div>
+            <p class="text-gray-600 mb-6">Empower your game, elevate your performance – Equip yourself with the best for the court.</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
-            <img src="../images/football.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
+            <img src="../images/vollyball.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
             </div>
         </div>
   </div>
 
   <!-- first product section-->
-  <div class="grid grid-cols-4 gap-6">
-  <div class="col-span-1 bg-cyan-400 border border-gray-300 p-4 shadow-md">
-  <div class=" bg-cyan-400 p-4 shadow-md">
-    
-  <!-- Product Categories Section -->
-      <div class="mb-6">
-        <h3 class="text-lg font-bold mb-4">Product Categories</h3>
-        <ul class="space-y-2">
-        <li>
-            <a href="../views/cricket.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Cricket <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/swimming.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Swimming <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/vollyball.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Volleyball <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/rugby.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Rugby <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/netball.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Netball <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/football1.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Football <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/cycling.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Cycling <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/basketball.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Basketball <span class="text-gray-500">+</span>
-            </a>
-          </li>
-          <li>
-            <a href="../views/athletic.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
-              Athletic <span class="text-gray-500">+</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-  <!-- Brands Section -->
-      <div>
-        <h3 class="text-lg font-bold mb-4">Brands</h3>
-        <ul class="space-y-2">
-          <li class="flex items-center">
-            <input type="checkbox" id="yonex" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="yonex" class="ml-2 text-sm text-gray-700">Yonex (75)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="stanfords" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="stanfords" class="ml-2 text-sm text-gray-700">Stanfords - SF (116)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="kaygee" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="kaygee" class="ml-2 text-sm text-gray-700">Kay Gee (23)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="texstretch" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="texstretch" class="ml-2 text-sm text-gray-700">Texstretch (36)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="lining" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="lining" class="ml-2 text-sm text-gray-700">Li-Ning (60)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="ss" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="ss" class="ml-2 text-sm text-gray-700">SS (1)</label>
-          </li>
-        </ul>
-      </div>
-</div>
-</div>
-<div class="col-span-3 max-w-7xl mx-auto py-12 px-4">
+   
         <div class="max-w-7xl mx-auto py-12 px-4 ">
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR FOOTBALL BOOTS & SHOSE</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR VOLLEYBALL EQUIPMENT</h1>
             </div>
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Boots Viralto</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
+                <h3 class="text-lg tracking-wide font-bold">Volleyball V500 | Grey/Blue/Red</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3500.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Hard Ground Football Boots Agility 100 </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
+                <h3 class="text-lg tracking-wide font-bold">230-250 g Volleyball|V100 Soft - Blue/Orange</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3000.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -366,58 +264,37 @@
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Predator League Multi-Ground Boots</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
+                <h3 class="text-lg tracking-wide font-bold">Outdoor Volleyball VBO100 - Yellow/Blue</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1990.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Adult F50 League FG</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
+                <h3 class="text-lg tracking-wide font-bold">Official Dimensions Beach Volleyball Set BV900 - Yellow</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3200.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Mini Football Sunny 300 Size 1 - Pastel Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
+                <h3 class="text-lg tracking-wide font-bold">V900 Volleyball Net</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2790.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
@@ -430,54 +307,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' size 3 football, blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Light Learning Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Machine-Stitched Football Training Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
+                <h3 class="text-lg tracking-wide font-bold">Volleyball Net with Official Dimensions BVN900</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
                 animate-bounce shadow-md">Out of Stock</button>
@@ -485,20 +318,13 @@
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball5.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/vball7.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">size 5 football, yellow</h3>
+                <h3 class="text-lg font-semibold">Starter Volleyball V100 - Turquoise Blue</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
                 <div class="flex justify-center mt-4">
                 <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                animate-bounce shadow-md">Out of Stock</button>
                 </div>
                 </a>
             </div>
@@ -506,8 +332,8 @@
             
             </div>
         </div>
-      </div>
-      </div>
+         
+        
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

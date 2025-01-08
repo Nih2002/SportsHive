@@ -9,12 +9,11 @@
 <header class="bg-blue-900 text-white">
 
     <!-- Main Header -->
-    <div class="bg-black text-white">
+    <div class="bg-cyan-500 text-black">
       <div class="container mx-auto flex justify-between items-center py-3 px-4">
         <!-- Logo -->
         <a href="#" class="flex items-center space-x-2">
-          <img src="../images/logo.png" alt="Logo" class="w-20 h-20">
-          <span class="text-lg font-bold">SportHive</span>
+          <img src="../sportshive/images/logo12.png" alt="Logo" class="w-20 h-20">
         </a>
 
         <!-- Search Bar -->
@@ -38,13 +37,13 @@
           <!-- Sign In & Cart -->
           <div class="flex space-x-4">
                 <!-- Sign In Button -->
-                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                   <i class="fas fa-user"></i>
                   <span>Sign Up</span>
                 </a>
 
                 <!-- Log In Button -->
-                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-300 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                   <i class="fas fa-sign-in-alt"></i>
                   <span>Log In</span>
                 </a>
@@ -54,9 +53,9 @@
     </div>
 
     <!-- Top Bar -->
-    <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-blue-900 mx-96">
+    <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-cyan-100 mx-96">
       <!-- Navigation Bar -->
-      <nav class="relative bg-blue shadow-md">
+      <nav class="relative bg-black shadow-md">
       <div class="relative z-50">
         <button id="menu-toggle" class="text-black-900 focus:outline-none">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -64,16 +63,18 @@
           </svg>
         </button>
         <!-- Collapsible Menu -->
-        <div id="menu-links" class="hidden absolute bg-white border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-t-lg">Home</a>
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100">About Us</a>
-          <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
+        <div id="menu-links" class="hidden absolute bg-black border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
+          <a href="../sportshive/views/index.php" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-t-lg">Home</a>
+          <a href="../sportshive/views/aboutus.php" class="block px-4 py-3 text-white-600 hover:bg-green-100">About Us</a>
+          <a href="#" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
+          <a href="../sportshive/views/services.php" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">Services</a>
+          <a href="#" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">F&Q</a>
         </div>
       </div>
       </nav>
       <!-- Left Links -->
       <div class="relative group">
-        <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Sports</button>
+        <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Sports</button>
         <!-- Dropdown Menu -->
         <div class="absolute hidden group-hover:block mt-1 bg-gray p-2 rounded-xl shadow-lg w-70 z-50 max-h-[80vh] overflow-y-auto">
           <!-- Cycling Section -->
@@ -100,7 +101,7 @@
     </div>
 
         <div class="relative group">
-          <button class="hover:bg-gray-700 px-2 py-2 rounded text-white-800 font-semibold transition-colors">Brands</button>
+          <button class="hover:bg-gray-700 px-2 py-2 rounded text-black font-semibold transition-colors">Brands</button>
           <!-- Dropdown Menu -->
           <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
             <div class="grid grid-cols-3 gap-4">
@@ -150,7 +151,7 @@
         </div>
 
         <div class="relative group">
-          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Repair and Services</button>
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Repair and Services</button>
           <!-- Dropdown Menu -->
           <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
             <div class="grid grid-cols-2 gap-4">
@@ -169,7 +170,7 @@
         </div>
 
         <div class="relative group">
-          <button class="hover:bg-gray-700 px-4 py-2 rounded text-white-800 font-semibold transition-colors">Others</button>
+          <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Others</button>
           <!-- Dropdown Menu -->
           <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
             <div class="grid grid-cols-2 gap-4">
@@ -222,17 +223,17 @@
         <!-- Slide 1 -->
         <div
           class="carousel-slide bg-cover bg-center h-screen"
-          style="background-image:url('../images/back1.jpg');">
+          style="background-image:url('https://sportengland-production-files.s3.eu-west-2.amazonaws.com/s3fs-public/styles/max_width_1266px/public/2021-01/PA-55875259%20-%201266.jpg?VersionId=zVJoknym9gT3cgenq.BVR56G5XGZCzYX&itok=IdcoF3Ng');">
         </div>
         <!-- Slide 2 -->
         <div
           class="carousel-slide bg-cover bg-center h-screen hidden"
-          style="background-image:url('../images/back2.jpg');">
+          style="background-image:url('https://content.presspage.com/uploads/2170/1920_girlvolleyball.jpg?10000');">
         </div>
         <!-- Slide 3 -->
         <div
           class="carousel-slide bg-cover bg-center h-screen hidden"
-          style="background-image:url('../images/back3.jpg');">
+          style="background-image:url('https://cdn.create.vista.com/api/media/small/232563488/stock-photo-football-match-children-training-football-soccer-school-tournament-group-boys');">
         </div>
       </div>
 
@@ -240,11 +241,24 @@
       <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
       <!-- Content -->
-      <div class="container mx-auto h-full flex flex-col justify-center items-center text-center relative z-10 text-white">
-        <h1 class="text-5xl font-bold">Welcome to SportHive</h1>
-        <p class="text-xl mt-4">Your one-stop shop for sports equipment and repair services</p>
-        <a href="#products" class="mt-6 bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg hover:bg-yellow-500">Shop Now</a>
-      </div>
+      <div class="container mx-auto h-full flex flex-col justify-center items-center text-center relative z-10 text-white space-y-6">
+    <!-- Main Heading -->
+    <h1 class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-300 drop-shadow-lg">
+        Welcome to SportHive
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-xl mt-4 text-blue-200 max-w-2xl leading-relaxed tracking-wide">
+        Your one-stop shop for sports equipment and repair services
+    </p>
+
+    <!-- Call to Action Button -->
+    <a href="../sportshive/views/cricket.php" 
+       class="mt-6 bg-gradient-to-r from-blue-500 to-lightBlue-400 text-white px-8 py-4 rounded-full shadow-lg transform hover:scale-105 hover:from-lightBlue-300 hover:to-blue-600 transition-all duration-300 ease-in-out">
+        Shop Now
+    </a>
+</div>
+
     </div>
 
 
@@ -268,15 +282,6 @@
       setInterval(nextSlide, 5000);
     </script>
 
-  <!-- About Us -->
-  <section id="about" class="py-16 bg-blue-200">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">About Us</h2>
-      <p class="text-lg leading-relaxed">
-        At SportHive, we specialize in e-commerce solutions, offering an extensive range of sports equipment and exclusive repair services. With a commitment to excellence, we ensure a seamless online shopping experience.
-      </p>
-    </div>
-  </section>
 
  <!-- Services -->
 <section id="services" class="py-16 bg-white">
@@ -286,7 +291,7 @@
       
       <!-- Product Sales Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../images/product.jpg" alt="Product Sales" 
+        <img src="../sportshive/images/product.jpg" alt="Product Sales" 
           class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Product Sales</h3>
@@ -303,7 +308,7 @@
 
       <!-- Repair Services Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
+        <img src="../sportshive/images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Repair Services</h3>
           <!-- Plus Button -->
@@ -319,7 +324,7 @@
 
       <!-- Delivery System Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../images/delivery.jpeg" alt="Delivery System" 
+        <img src="../sportshive/images/delivery.jpeg" alt="Delivery System" 
           class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300"> Delivery System</h3>
@@ -380,7 +385,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -393,7 +398,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -406,7 +411,7 @@
          <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -419,7 +424,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -432,7 +437,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -445,7 +450,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -458,7 +463,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -470,7 +475,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -481,7 +486,7 @@
         <!-- Product 7 - Soccer Ball -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -506,7 +511,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -519,7 +524,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -532,7 +537,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -545,7 +550,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -558,7 +563,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -571,7 +576,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -584,7 +589,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -597,7 +602,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -609,7 +614,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -620,7 +625,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -631,7 +636,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -642,7 +647,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -653,7 +658,7 @@
         <!-- Product 7 - Soccer Ball -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -731,7 +736,7 @@
   </div>
 
   <!-- Navigation Links -->
-  <div class="container mx-auto py-6 px-4 text-center text-gray-400 text-sm">
+  <div class="container mx-auto py-6 px-4 text-center text-black-400 text-sm">
     <a href="#" class="hover:underline">Home Office Desks</a> |
     <a href="#" class="hover:underline">Pet Supplies</a> |
     <a href="#" class="hover:underline">Sporting Goods</a> |

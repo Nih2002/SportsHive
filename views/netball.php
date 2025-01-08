@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football</title>
+  <title>Netball</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header class="bg-blue-900 text-white">
@@ -34,19 +34,51 @@
             <span class="text-xs">Need Help?</span>
             <span class="font-bold">CALL 0115 964 964</span>
           </div>
-          <!-- Sign In & Cart -->
-          <div class="flex space-x-4">
-                <!-- Sign In Button -->
-                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                  <i class="fas fa-user"></i>
-                  <span>Sign Up</span>
-                </a>
+          <!-- User Dropdown & Cart -->
+          <div class="relative flex items-center space-x-4">
+                    <!-- Cart Icon -->
+                    <button id="view-cart" class="relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
+                        </svg>
+                        <!-- Cart Count Badge -->
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                            0
+                        </span>
+                    </button>
 
-                <!-- Log In Button -->
-                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <span>Log In</span>
-                </a>
+                    <!-- Cart Modal -->
+                    <div id="cart-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+                      <div class="bg-white rounded-lg w-3/4 max-w-lg">
+                          <div class="p-5 border-b">
+                              <h2 class="text-xl font-bold">Your Cart</h2>
+                          </div>
+                          <div id="cart-items" class="p-5">
+                              <!-- Cart items will be dynamically injected here -->
+                          </div>
+                          <div class="p-5 border-t flex justify-between items-center">
+                              <button id="close-cart" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600">
+                                  Close
+                              </button>
+                              <span id="cart-total" class="text-lg font-bold">Total: Rs. 0.00</span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+          <!-- Sign In & Cart -->
+            <div class="flex space-x-4">
+                  <!-- Sign In Button -->
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                    <i class="fas fa-user"></i>
+                    <span>Sign Up</span>
+                  </a>
+
+                  <!-- Log In Button -->
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Log In</span>
+                  </a>
             </div>
         </div>
       </div>
@@ -212,17 +244,17 @@
       
 
   </header>
-  <div style="background: url('../images/sportsback1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="bg-cover bg-center bg-no-repeat" style="background-image: url('../images/sportsback1.jpg'); height: 100vh;">
     <body class="bg-gray-100">
         <div class="flex flex-col md:flex-row items-center justify-center h-screen">
             <!-- Text Section -->
             <div class=" p-8 bg-white shadow-lg">
-            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Football<br></h1>
+            <h1 class="text-4xl font-bold text-gray-800 leading-tight">Netball<br></h1>
             <div class="w-16 h-1 bg-lime-400 my-4"></div>
-            <p class="text-gray-600 mb-6">Make a splash and break boundaries. With our top-tier swimming gear, you'll cut through the water with ease and speed. Swim with precision, power, and passion!</p></div>
+            <p class="text-gray-600 mb-6">Empower your game, elevate your performance – Equip yourself with the best for the court.</p></div>
             <!-- Image Section -->
             <div class="md:w-1/2 relative">
-            <img src="../images/football.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
+            <img src="../images/netball11.jpg" alt="Jumping athlete" class="w-full h-full object-cover">
             </div>
         </div>
   </div>
@@ -321,17 +353,17 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR FOOTBALL BOOTS & SHOSE</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR BASKETBALL BOOTS & BALLS</h1>
             </div>
 
             <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div id="equipment-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Item 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Boots Viralto</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Shooter Netball</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -340,17 +372,17 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="1" data-name="Shooter Netball" data-price="990">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Hard Ground Football Boots Agility 100 </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Flare Match Ball, White / Red / Red</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3000.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -359,17 +391,17 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="2" data-name="Flare Match Ball, White / Red / Red" data-price="3000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose3.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Predator League Multi-Ground Boots</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Hurricane Netball (White/Blue/Black)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 4990.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -378,17 +410,17 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="" data-name="Hurricane Netball (White/Blue/Black)" data-price="">Out of Stock</button>
                 </div>
                 </a>
             </div>
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fshose4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Adult F50 League FG</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Sure Shot Transportable Netball Hoop</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -397,17 +429,17 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="3" data-name="Sure Shot Transportable Netball Hoop" data-price="9200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             <!-- Item 5 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball1.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball7.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Mini Football Sunny 300 Size 1 - Pastel Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Oasis Netball (Blue)</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 7790.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -416,8 +448,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="4" data-name="Oasis Netball (Blue)" data-price="7790">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -430,10 +462,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Item 6 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball2.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' size 3 football, blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <h3 class="text-lg tracking-wide font-bold">Netball 7 Bib Pack - Royal Blue, size Medium</h3>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -442,52 +474,15 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Football Light Learning Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="5" data-name="Netball 7 Bib Pack - Royal Blue, size Medium" data-price="9100">ADD TO CART</button>
                 </div>
                 </a>
             </div>
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball4.png" class="w-full h-48 object-contain p-4">
+                <img src="../images/netball6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Machine-Stitched Football Training Ball </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/fball5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">size 5 football, yellow</h3>
+                <h3 class="text-lg font-semibold">UK Gilbert Academy Post 23 V2</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
@@ -497,8 +492,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="6" data-name="UK Gilbert Academy Post 23 V2" data-price="1400">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -508,6 +503,70 @@
         </div>
       </div>
       </div>
+      <script>
+        // Initialize cart from session storage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        const updateCartCount = () => {
+            cartCount.textContent = cart.length;
+        };
+
+        const renderCart = () => {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between mb-4';
+                div.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>Rs. ${item.price}</span>
+                `;
+                cartItems.appendChild(div);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: Rs. ${total}`;
+        };
+
+        // Handle adding items to the cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const item = { id, name, price };
+
+                // Add to cart and update session storage
+                if (!cart.find(e => e.id === id)) {
+                    cart.push(item);
+                    sessionStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${name} added to cart!`);
+                } else {
+                    alert(`${name} is already in the cart.`);
+                }
+            });
+        });
+
+        // Open the cart modal
+        document.getElementById('view-cart').addEventListener('click', () => {
+            renderCart();
+            cartModal.classList.remove('hidden');
+        });
+
+        // Close the cart modal
+        document.getElementById('close-cart').addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Initial update of cart count
+        updateCartCount();
+    </script>
+         
+        
 
         <footer class="bg-black text-white">
         <!-- Top Section -->
