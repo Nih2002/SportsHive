@@ -49,180 +49,150 @@
             <span class="text-xs">Need Help?</span>
             <span class="font-bold">CALL 0115 964 964</span>
           </div>
+          <!-- User Dropdown & Cart -->
+          <div class="relative flex items-center space-x-4">
+              <!-- Cart Icon -->
+              <a href="../views/cart.php" id="view-cart" class="relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
+                  </svg>
+                  <!-- Cart Count Badge -->
+                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      0
+                  </span>
+              </a>
+          </div>
+
+          <script>
+          // Example JavaScript to handle cart count
+          document.addEventListener("DOMContentLoaded", function () {
+              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
+              document.getElementById("cart-count").textContent = cartCount; // Update count
+          });
+          </script>
+
           <!-- Sign In & Cart -->
-          <div class="flex space-x-4">
-                <!-- Sign In Button -->
-                <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                  <i class="fas fa-user"></i>
-                  <span>Sign Up</span>
-                </a>
+            <div class="flex space-x-4">
+                  <!-- Sign In Button -->
+                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                    <i class="fas fa-user"></i>
+                    <span>Sign Up</span>
+                  </a>
 
-                <!-- Log In Button -->
-                <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <span>Log In</span>
-                </a>
+                  <!-- Log In Button -->
+                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Log In</span>
+                  </a>
             </div>
         </div>
       </div>
     </div>
 
-    <!-- Top Bar -->
-    <div class="container mx-auto max-w-[1600px] flex justify-between items-center py-2 px-6 text-sm bg-cyan-100 mx-96">
-      <!-- Navigation Bar -->
-      <nav class="relative bg-black shadow-md">
-      <div class="relative z-50">
-        <button id="menu-toggle" class="text-black-900 focus:outline-none">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-        <!-- Collapsible Menu -->
-        <div id="menu-links" class="hidden absolute bg-black border border-gray-200 rounded-lg shadow-lg w-48 mt-2 z-50">
-          <a href="../views/index.php" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-t-lg">Home</a>
-          <a href="../views/aboutus.php" class="block px-4 py-3 text-white-600 hover:bg-green-100">About Us</a>
-          <a href="#" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">Contact Us</a>
-          <a href="../views/services.php" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">Services</a>
-          <a href="#" class="block px-4 py-3 text-white-600 hover:bg-green-100 rounded-b-lg">F&Q</a>
+  <!-- Top Bar -->
+  <div class="bg-cyan-100 relative">
+    <!-- Navigation Bar -->
+    <nav class="relative z-10 flex items-center justify-between px-4 py-2">
+      <!-- Hamburger Menu -->
+      <button id="menu-toggle" class="text-black focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <div class="flex justify-center space-x-6 py-4">
+      <a href="../sportshive/index.php" class="text-black">Home</a>
+      <a href="../sportshive/views/services.php" class="text-black">Services</a>
+      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
+      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
+  </div>
+  </nav>
+
+  <!-- Collapsible Menu -->
+  <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
+    <!-- Sports Section -->
+    <div class="relative">
+      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+        Sports
+      </button>
+      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div class="space-y-2">
+          <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
+          <a href="../views/cycling.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cycling</a>
+          <a href="../views/cricket.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cricket</a>
+          <a href="../views/basketball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Basketball</a>
+          <a href="../views/football1.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Football</a>
+          <a href="../views/netball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Netball</a>
+          <a href="../views/rugby.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Rugby</a>
+          <a href="../views/swimming.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Swimming</a>
+          <a href="../views/vollyball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Volleyball</a>
         </div>
-      </div>
-      </nav>
-      <!-- Left Links -->
-      <div class="relative group">
-        <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Sports</button>
-        <!-- Dropdown Menu -->
-        <div class="absolute hidden group-hover:block mt-1 bg-gray p-2 rounded-xl shadow-lg w-70 z-50 max-h-[80vh] overflow-y-auto">
-          <!-- Cycling Section -->
-          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Cycling</h3>
-          </div>
-
-          <!-- Hiking Section -->
-          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Hiking</h3>
-          </div>
-
-          <!-- Running Section -->
-          <div class="mb-4 group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Running</h3>
-          </div>
-
-          <!-- Swimming Section -->
-          <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-            <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors ">Swimming</h3>
-          </div>
-
       </div>
     </div>
 
-        <div class="relative group">
-          <button class="hover:bg-gray-700 px-2 py-2 rounded text-black font-semibold transition-colors">Brands</button>
-          <!-- Dropdown Menu -->
-          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-            <div class="grid grid-cols-3 gap-4">
-              <!-- Column 1: 5 Brands -->
-              <div class="col-span-1 space-y-2">
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ADIDAS</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">SALOMON</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">KIPRUN</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">PUMA</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ASICS</h3>
-                </div>
-              </div>
-
-              <!-- Column 2: 3 Brands -->
-              <div class="col-span-1 space-y-2">
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">OLAIAN</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ROXY</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">ROCKRIDER</h3>
-                </div>
-              </div>
-
-              <!-- Column 3: 2 Brands -->
-              <div class="col-span-1 space-y-2">
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">KIPSTA</h3>
-                </div>
-                <div class="group bg-black p-2 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">DOMYOS</h3>
-                </div>
-              </div>
-            </div>
+    <!-- Brands Section -->
+    <div class="relative">
+      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+        Brands
+      </button>
+      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="flex flex-wrap gap-4">
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ADIDAS</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">SALOMON</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPRUN</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">PUMA</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">OLAIAN</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROKY</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROCKRIDER</a>
+            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPSTA</a>
           </div>
         </div>
-
-        <div class="relative group">
-          <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Repair and Services</button>
-          <!-- Dropdown Menu -->
-          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-            <div class="grid grid-cols-2 gap-4">
-              <!-- Column 1 -->
-              <div class="col-span-1 space-y-2">
-                <div class="group bg-black p-4 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">Repair with Us</h3>
-                  <!-- Links -->
-                  <ul class="mt-3 space-y-2 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Maintenance Packages</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group">
-          <button class="hover:bg-gray-700 px-4 py-2 rounded text-black font-semibold transition-colors">Others</button>
-          <!-- Dropdown Menu -->
-          <div class="absolute hidden group-hover:block mt-1 bg-gray p-4 rounded-xl shadow-lg w-80 z-50 max-h-[80vh] overflow-y-auto">
-            <div class="grid grid-cols-2 gap-4">
-              <!-- Column 1 -->
-              <div class="col-span-1 space-y-2">
-                <div class="group bg-black p-4 rounded-xl shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:-translate-y-1">
-                  <h3 class="font-semibold text-lg text-white group-hover:text-black-400 transition-colors">Repair with Us</h3>
-                  <!-- Links -->
-                  <ul class="mt-3 space-y-2 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-red-500 font-medium transition-colors">Maintenance Packages</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-     
-      <!-- Social Media Icons -->
-      <div class="flex space-x-3">
-        <a href="#" class="hover:opacity-75"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:opacity-75"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:opacity-75"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="hover:opacity-75"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
-      
 
-      <script>
-        const menuToggle = document.getElementById("menu-toggle");
-        const menuLinks = document.getElementById("menu-links");
+    <!-- Repair and Services Section -->
+    <div class="relative">
+      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+        Repair and Services
+      </button>
+      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div class="space-y-2">
+          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+        </div>
+      </div>
+    </div>
 
-        menuToggle.addEventListener("click", () => {
-          menuLinks.classList.toggle("hidden");
-        });
-      </script>
+    <!-- Others Section -->
+    <div class="relative">
+      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+        Others
+      </button>
+      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div class="space-y-2">
+          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Toggle main menu and expand all submenus
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuLinks = document.getElementById('menu-links');
+  const submenus = document.querySelectorAll('.submenu');
+
+  menuToggle.addEventListener('click', () => {
+    // Toggle the main menu visibility
+    menuLinks.classList.toggle('hidden');
+
+    // Expand or collapse all submenus
+    submenus.forEach(submenu => {
+      submenu.classList.toggle('hidden');
+    });
+  });
+</script>
 
   </header>
 

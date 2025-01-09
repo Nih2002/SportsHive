@@ -3,24 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
+  <title>Netball</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes fadeInUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .animate-fade-in-up {
-      animation: fadeInUp 1s ease-out;
-    }
-  </style>
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -101,10 +85,10 @@
         </svg>
       </button>
       <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
+      <a href="../views/index.php" class="text-black">Home</a>
+      <a href="../views/services.php" class="text-black">Services</a>
+      <a href="../views/contactus.php" class="text-black">Contact Us</a>
+      <a href="../views/aboutus.php" class="text-black">About Us</a>
   </div>
   </nav>
 
@@ -198,175 +182,172 @@
   </header>
 <body class="bg-gray-100">
 
-  <!-- Contact Us Section -->
-  <div class="max-w-5xl mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold text-center text-blue-900 mb-12 animate-fadeInUp">
-      Contact Support
-    </h1>
+  <!-- Centered Cart Content -->
+  <div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="bg-white rounded-lg w-full max-w-lg shadow-lg overflow-hidden">
 
-    <!-- Contact Options -->
-    <div class="grid md:grid-cols-2 gap-8 lg:grid-cols-3">
-      <!-- Chat -->
-      <div class="bg-white shadow-lg rounded-lg p-6 border-t-4 border-blue-500 hover:shadow-2xl transition-transform duration-300 transform hover:scale-105 animate-fadeInUp">
-        <div class="flex items-center gap-4">
-          <div class="text-blue-500 text-4xl">
-            <img src="../images/email.png" class="w-full h-full object-contain p-4">
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold">Chat</h3>
-          </div>
-        </div>
-        <p class="mt-4 text-gray-700">
-          Chat with a specialist from SportsHive's support team for quick answers.
-        </p>
-        <button
-        class="mt-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-400 text-black rounded-lg hover:from-blue-600 hover:to-blue-800 active:scale-95 transition-all duration-300 w-full hover:animate-bounce">
-        Start Chat
-        </button>
-
+      <!-- Cart Header -->
+      <div class="p-5 bg-cyan-500 text-white border-b">
+        <h2 class="text-xl font-semibold">Your Cart Details</h2>
       </div>
 
-      <!-- Phone -->
-      <div class="bg-white shadow-lg rounded-lg p-6 border-t-4 border-blue-500 hover:shadow-2xl transition-transform duration-300 transform hover:scale-105 animate-fadeInUp">
-        <div class="flex items-center gap-4">
-          <div class="text-blue-500 text-4xl">
-          <img src="../images/phone.png" class="w-full h-full object-contain p-4">
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold">Phone</h3>
-          </div>
+      <!-- Cart Items -->
+      <div id="cart-items" class="p-5 space-y-4">
+        <!-- Cart items will be dynamically injected here -->
+        <!-- Example Item -->
+        <div class="flex justify-between items-center">
+          <span>Item Name</span>
+          <span>2 x Rs. 500</span>
         </div>
-        <p class="mt-4 text-gray-700">
-          In the Sri Lanka? Call 011 224 12
-        </p>
-        <button class="mt-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-400 text-black rounded-lg hover:from-blue-600 hover:to-blue-800 active:scale-95 transition-all duration-300 w-full hover:animate-bounce">
-          Call Now
+      </div>
+
+      <!-- Cart Total and Buttons -->
+      <div class="p-5 border-t flex justify-between items-center bg-gray-50">
+        <button id="go-back" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 focus:outline-none">
+          Go Back
+        </button>
+        <div>
+          <span id="cart-total" class="text-lg font-bold">Total: Rs. 0.00</span>
+        </div>
+        <button id="checkout" class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-400 focus:outline-none">
+          Checkout
         </button>
       </div>
 
-      <!-- Text Message -->
-      <div class="bg-white shadow-lg rounded-lg p-6 border-t-4 border-blue-500 hover:shadow-2xl transition-transform duration-300 transform hover:scale-105 animate-fadeInUp">
-        <div class="flex items-center gap-4">
-          <div class="text-blue-500 text-4xl">
-          <img src="../images/msg.png" class="w-full h-full object-contain p-4">
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold">Text Message</h3>
-          </div>
+    </div>
+  </div>
+
+  <script>
+    // Load cart data from sessionStorage
+    const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const cartContainer = document.getElementById("cart-items");
+    const cartTotalElement = document.getElementById("cart-total");
+
+    // Populate cart items
+    if (cartItems.length === 0) {
+      cartContainer.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
+    } else {
+      let total = 0;
+      cartContainer.innerHTML = cartItems
+        .map(item => {
+          total += item.price * item.quantity;
+          return `
+            <div class="flex justify-between items-center mb-4">
+              <span class="font-medium">${item.name}</span>
+              <span class="text-gray-600">${item.quantity} x Rs. ${item.price}</span>
+            </div>
+          `;
+        })
+        .join("");
+      cartTotalElement.textContent = `Total: Rs. ${total.toFixed(2)}`;
+    }
+
+    // Go back button
+    document.getElementById("go-back").addEventListener("click", () => {
+      window.history.back();
+    });
+    
+    // Checkout button
+    document.getElementById("checkout").addEventListener("click", () => {
+      alert("Proceeding to checkout...");
+    });
+  </script>
+   <footer class="bg-black text-white">
+        <!-- Top Section -->
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
+            <!-- Feature 1 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-truck text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">Free Delivery</h5>
+                <p>Dispatched within 24-48 hours</p>
+            </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-info-circle text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">24/7 Support Available</h5>
+                <p>Secure Shopping</p>
+            </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-tags text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">Best Prices & Offers</h5>
+                <p>Value for Money</p>
+            </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-undo text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">Easy Return</h5>
+                <p>30 Days Return Available</p>
+            </div>
+            </div>
         </div>
-        <p class="mt-4 text-gray-700">
-          Send a text from your mobile device.<br><strong>Note:</strong> Text-messaging rates apply.
-        </p>
-        <button class="mt-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-400 text-black rounded-lg hover:from-blue-600 hover:to-blue-800 active:scale-95 transition-all duration-300 w-full hover:animate-bounce">
-          Send Text
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- Embedded Map Section -->
-  <section class="mt-10 max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6 animate-fade-in-up">Find Us Here</h2>
-    <div class="relative overflow-hidden rounded-lg shadow-md animate-fade-in-up">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12812.276726140686!2d79.961047!3d6.927078!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591b65c5b22f%3A0x5c55de24ab71220b!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1674635123456!5m2!1sen!2slk"
-         width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </section>
-  <footer class="bg-black text-white">
-  <!-- Top Section -->
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
-    <!-- Feature 1 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-truck text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">Free Delivery</h5>
-        <p>Dispatched within 24-48 hours</p>
-      </div>
-    </div>
-    <!-- Feature 2 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-info-circle text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">24/7 Support Available</h5>
-        <p>Secure Shopping</p>
-      </div>
-    </div>
-    <!-- Feature 3 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-tags text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">Best Prices & Offers</h5>
-        <p>Value for Money</p>
-      </div>
-    </div>
-    <!-- Feature 4 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-undo text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">Easy Return</h5>
-        <p>30 Days Return Available</p>
-      </div>
-    </div>
-  </div>
 
-  <!-- Navigation Links -->
-  <div class="container mx-auto py-6 px-4 text-center text-black-400 text-sm">
-    <a href="#" class="hover:underline">Home Office Desks</a> |
-    <a href="#" class="hover:underline">Pet Supplies</a> |
-    <a href="#" class="hover:underline">Sporting Goods</a> |
-    <a href="#" class="hover:underline">Toys & Hobbies</a> |
-    <a href="#" class="hover:underline">Home & Garden</a> |
-    <a href="#" class="hover:underline">Phones & Accessories</a> |
-    <a href="#" class="hover:underline">Home Appliances</a> |
-    <a href="#" class="hover:underline">Business</a>
-  </div>
+        <!-- Navigation Links -->
+        <div class="container mx-auto py-6 px-4 text-center text-gray-400 text-sm">
+            <a href="#" class="hover:underline">Home Office Desks</a> |
+            <a href="#" class="hover:underline">Pet Supplies</a> |
+            <a href="#" class="hover:underline">Sporting Goods</a> |
+            <a href="#" class="hover:underline">Toys & Hobbies</a> |
+            <a href="#" class="hover:underline">Home & Garden</a> |
+            <a href="#" class="hover:underline">Phones & Accessories</a> |
+            <a href="#" class="hover:underline">Home Appliances</a> |
+            <a href="#" class="hover:underline">Business</a>
+        </div>
 
-  <!-- Bottom Section -->
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm">
-    <!-- About Us -->
-    <div>
-      <h5 class="font-semibold mb-4">About Us</h5>
-      <p>SportHive is your go-to destination for all things sports. We offer premium equipment for athletes and sports enthusiasts at competitive prices.</p>
-    </div>
-    <!-- Information Links -->
-    <div>
-      <h5 class="font-semibold mb-4">Information</h5>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:underline">Home</a></li>
-        <li><a href="#" class="hover:underline">Products</a></li>
-        <li><a href="#" class="hover:underline">About Us</a></li>
-        <li><a href="#" class="hover:underline">Contact Us</a></li>
-        <li><a href="#" class="hover:underline">Cart</a></li>
-      </ul>
-    </div>
-    <!-- Policies -->
-    <div>
-      <h5 class="font-semibold mb-4">Policy</h5>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-        <li><a href="#" class="hover:underline">Terms of Service</a></li>
-        <li><a href="#" class="hover:underline">Shipping Policy</a></li>
-        <li><a href="#" class="hover:underline">Refund Policy</a></li>
-        <li><a href="#" class="hover:underline">Warranty</a></li>
-      </ul>
-    </div>
-    <!-- Contact Us -->
-    <div>
-      <h5 class="font-semibold mb-4">Contact Us</h5>
-      <p>For any inquiries or support, feel free to reach out:</p>
-      <p class="mt-2">Phone: +1 800 123 456</p>
-      <p>Email: info@sportshive.com</p>
-      <p>Address: 123 SportHive Lane, Fitness City</p>
-    </div>
-  </div>
-</footer>
+        <!-- Bottom Section -->
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm">
+            <!-- About Us -->
+            <div>
+            <h5 class="font-semibold mb-4">About Us</h5>
+            <p>SportHive is your go-to destination for all things sports. We offer premium equipment for athletes and sports enthusiasts at competitive prices.</p>
+            </div>
+            <!-- Information Links -->
+            <div>
+            <h5 class="font-semibold mb-4">Information</h5>
+            <ul class="space-y-2">
+                <li><a href="#" class="hover:underline">Home</a></li>
+                <li><a href="#" class="hover:underline">Products</a></li>
+                <li><a href="#" class="hover:underline">About Us</a></li>
+                <li><a href="#" class="hover:underline">Contact Us</a></li>
+                <li><a href="#" class="hover:underline">Cart</a></li>
+            </ul>
+            </div>
+            <!-- Policies -->
+            <div>
+            <h5 class="font-semibold mb-4">Policy</h5>
+            <ul class="space-y-2">
+                <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                <li><a href="#" class="hover:underline">Shipping Policy</a></li>
+                <li><a href="#" class="hover:underline">Refund Policy</a></li>
+                <li><a href="#" class="hover:underline">Warranty</a></li>
+            </ul>
+            </div>
+            <!-- Contact Us -->
+            <div>
+            <h5 class="font-semibold mb-4">Contact Us</h5>
+            <p>For any inquiries or support, feel free to reach out:</p>
+            <p class="mt-2">Phone: +1 800 123 456</p>
+            <p>Email: info@sportshive.com</p>
+            <p>Address: 123 SportHive Lane, Fitness City</p>
+            </div>
+        </div>
+        </footer>
 
 </body>
 </html>
