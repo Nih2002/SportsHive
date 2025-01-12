@@ -188,35 +188,32 @@
 
 </header>
 <body class="bg-gray-800">
-        <!-- Main Content -->
-        <main class="flex-1 container mx-auto py-8">
-            <!-- Overview Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <!-- Card: Total Products -->
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h2 class="text-xl font-semibold">Total Products</h2>
-                    <p class="text-4xl font-bold text-blue-600">150</p>
-                </div>
-
-                <!-- Card: Total Orders -->
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h2 class="text-xl font-semibold">Total Orders</h2>
-                    <p class="text-4xl font-bold text-green-600">85</p>
-                </div>
-
-                <!-- Card: Total Users -->
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h2 class="text-xl font-semibold">Total Users</h2>
-                    <p class="text-4xl font-bold text-yellow-600">42</p>
-                </div>
-
-                <!-- Card: Revenue -->
-                <div class="p-6 bg-white shadow-lg rounded-lg">
-                    <h2 class="text-xl font-semibold">Revenue</h2>
-                    <p class="text-4xl font-bold text-red-600">$12,345</p>
-                </div>
+    <div class="flex">
+        <!-- Sidebar Section (Left) -->
+        <div class="w-1/4 bg-gray-900 p-6 space-y-6">
+            <!-- Card: Total Products -->
+            <div onclick="showModal('total-products')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
+                <h2 class="text-xl font-semibold">Total Products</h2>
             </div>
 
+            <!-- Card: Total Orders -->
+            <div onclick="showModal('total-orders')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
+                <h2 class="text-xl font-semibold">Total Orders Per Day</h2>
+            </div>
+
+            <!-- Card: Total Users -->
+            <div onclick="showModal('total-users')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
+                <h2 class="text-xl font-semibold">Total Users</h2>
+            </div>
+
+            <!-- Card: Revenue -->
+            <div onclick="showModal('revenue')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
+                <h2 class="text-xl font-semibold">Revenue</h2>
+            </div>
+        </div>
+
+        <!-- Main Content Section (Right) -->
+        <main class="flex-1 container mx-auto py-8">
             <!-- Charts and Tables Section -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Sales Chart -->
@@ -235,54 +232,170 @@
                         <div id="alert-container"></div>
                     </div>
 
-                        <script>
-                            // Sample low stock products data
-                            const lowStockProducts = [
-                                { name: "Football", stock: 5, low_stock_threshold: 10 },
-                                { name: "Tennis Racket", stock: 2, low_stock_threshold: 5 },
-                                { name: "Basketball", stock: 8, low_stock_threshold: 10 }
-                            ];
+                    <script>
+                        // Sample low stock products data
+                        const lowStockProducts = [
+                            { name: "Football", stock: 5, low_stock_threshold: 10 },
+                            { name: "Tennis Racket", stock: 2, low_stock_threshold: 5 },
+                            { name: "Basketball", stock: 8, low_stock_threshold: 10 }
+                        ];
 
-                            // Reference to the alert container
-                            const alertContainer = document.getElementById('alert-container');
+                        // Reference to the alert container
+                        const alertContainer = document.getElementById('alert-container');
 
-                            // Function to display alerts
-                            function displayLowStockAlerts(products) {
-                                if (products.length > 0) {
-                                    const alertHTML = `
-                                        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4">
-                                            <p><strong>Attention:</strong> The following products are low in stock:</p>
-                                            <ul class="mt-2">
-                                                ${products.map(product => `
-                                                    <li>
-                                                        <strong>${product.name}</strong> 
-                                                        (Stock: ${product.stock}, Threshold: ${product.low_stock_threshold})
-                                                    </li>
-                                                `).join('')}
-                                            </ul>
-                                        </div>
-                                    `;
-                                    alertContainer.innerHTML = alertHTML;
-                                } else {
-                                    alertContainer.innerHTML = `
-                                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4">
-                                            <p>All products are sufficiently stocked!</p>
-                                        </div>
-                                    `;
-                                }
+                        // Function to display alerts
+                        function displayLowStockAlerts(products) {
+                            if (products.length > 0) {
+                                const alertHTML = 
+                                    `<div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4">
+                                        <p><strong>Attention:</strong> The following products are low in stock:</p>
+                                        <ul class="mt-2">
+                                            ${products.map(product => 
+                                                `<li>
+                                                    <strong>${product.name}</strong> 
+                                                    (Stock: ${product.stock}, Threshold: ${product.low_stock_threshold})
+                                                </li>`
+                                            ).join('')}
+                                        </ul>
+                                    </div>`;
+                                alertContainer.innerHTML = alertHTML;
+                            } else {
+                                alertContainer.innerHTML = 
+                                    `<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4">
+                                        <p>All products are sufficiently stocked!</p>
+                                    </div>`;
                             }
+                        }
 
-                            // Display alerts
-                            displayLowStockAlerts(lowStockProducts);
-                        </script>
+                        // Display alerts
+                        displayLowStockAlerts(lowStockProducts);
+                    </script>
                 </div>
             </div>
-            </div>
         </main>
-        
-        <script>
-            
-        // Sales Chart
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+                ✖
+            </button>
+            <!-- Modal Content -->
+            <h2 id="modal-title" class="text-2xl font-bold mb-4">Title</h2>
+            <p id="modal-body">Content goes here...</p>
+        </div>
+    </div>
+
+    <!-- Updated Modal Content with Delete and Update for Items -->
+    <script>
+        // Content for each section with dynamic sports
+        const contentData = {
+            "total-products": {
+                title: "Total Products in each Sport",
+                body: "Details about all the products listed in your inventory by sport.",
+                sports: [
+                    { name: "Athletic", items: [] },
+                    { name: "Cricket", items: [] },
+                    { name: "Swimming", items: [] },
+                    { name: "Basketball", items: [] },
+                    { name: "Volleyball", items: [] },
+                    { name: "Netball", items: [] }
+                ]
+            },
+            "total-orders": {
+                title: "Total Orders",
+                body: "Here are the details about the orders placed by customers."
+            },
+            "total-users": {
+                title: "Total Users",
+                body: "Here are the details about registered users on your platform."
+            },
+            "revenue": {
+                title: "Revenue",
+                body: "Here is the information about the revenue generated from sales."
+            }
+        };
+
+        // Function to show the modal with content
+        function showModal(section) {
+            const modal = document.getElementById("modal");
+            const title = contentData[section].title;
+            const body = contentData[section].body;
+            const sports = contentData[section].sports || [];
+
+            // Update modal content
+            document.getElementById("modal-title").textContent = title;
+            document.getElementById("modal-body").textContent = body;
+
+            // Create dynamic content for sports
+            if (sports.length > 0) {
+                let sportsContent = `<h3 class="text-lg font-semibold">Sports Products</h3><ul class="space-y-4">`;
+                sports.forEach((sport, index) => {
+                    sportsContent += `
+                        <li>
+                            <h4 class="text-md font-medium">${sport.name}</h4>
+                            <ul class="list-disc pl-5">
+                                ${sport.items.length > 0 ? sport.items.map((item, itemIndex) => `
+                                    <li>
+                                        ${item}
+                                        <button class="text-blue-800 ml-2" onclick="updateItem(${index}, ${itemIndex})">Update</button>
+                                        <button class="text-red-800 ml-2" onclick="deleteItem(${index}, ${itemIndex})">Delete</button>
+                                    </li>
+                                `).join('') : `<li>No items added yet</li>`}
+                            </ul>
+                            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" onclick="addItemToSport(${index})">Add Item</button>
+                        </li>
+                    `;
+                });
+                sportsContent += `</ul>`;
+
+                // Inject sports content into the modal
+                document.getElementById("modal-body").innerHTML = sportsContent;
+            }
+
+            // Display the modal
+            modal.classList.remove("hidden");
+        }
+
+        // Function to add an item to a specific sport
+        function addItemToSport(sportIndex) {
+            const itemName = prompt("Enter the item name to add:");
+            if (itemName) {
+                contentData["total-products"].sports[sportIndex].items.push(itemName);
+                showModal("total-products"); // Re-render the modal with updated list
+            }
+        }
+
+        // Function to delete an item from a specific sport
+        function deleteItem(sportIndex, itemIndex) {
+            if (confirm("Are you sure you want to delete this item?")) {
+                contentData["total-products"].sports[sportIndex].items.splice(itemIndex, 1); // Remove the item from the array
+                showModal("total-products"); // Re-render the modal with updated list
+            }
+        }
+
+        // Function to update an item in a specific sport
+        function updateItem(sportIndex, itemIndex) {
+            const newItemName = prompt("Enter the new item name:", contentData["total-products"].sports[sportIndex].items[itemIndex]);
+            if (newItemName) {
+                contentData["total-products"].sports[sportIndex].items[itemIndex] = newItemName; // Update the item
+                showModal("total-products"); // Re-render the modal with updated list
+            }
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.classList.add("hidden");
+        }
+    </script>
+
+
+
+    <!-- Sales Chart -->
+    <script>
         const salesCtx = document.getElementById('salesChart').getContext('2d');
         new Chart(salesCtx, {
             type: 'line',
@@ -305,51 +418,103 @@
                 }
             }
         });
-        </script>
-        <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-xl my-8">
-        <h2 class="text-3xl font-bold mb-6 text-center text-indigo-600">Add New Item</h2>
-        
-        <!-- Add Item Form -->
-        <div class="space-y-6">
-            <div>
-                <label for="item_name" class="block text-lg font-medium text-gray-700">Item Name:</label>
-                <input type="text" id="item_name" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter item name">
-            </div>
-
-            <div>
-                <label for="item_price" class="block text-lg font-medium text-gray-700">Price:</label>
-                <input type="number" id="item_price" step="0.01" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter item price">
-            </div>
-
-            <div>
-                <label for="item_description" class="block text-lg font-medium text-gray-700">Description:</label>
-                <input type="text" id="item_description" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter item description">
-            </div>
-
-            <div>
-                <label for="item_stock" class="block text-lg font-medium text-gray-700">Stock Quantity:</label>
-                <input type="number" id="item_stock" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter stock quantity">
-            </div>
-
-            <button onclick="addItem()" class="w-full p-4 bg-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Add Item</button>
-        </div>
-    </div>
-
-    <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-xl">
-        <h2 class="text-3xl font-bold mb-6 text-center text-indigo-600">Item List</h2>
-        <table class="min-w-full table-auto border-collapse shadow-lg rounded-lg overflow-hidden">
-            <thead>
-                <tr class="bg-indigo-600 text-white">
-                    <th class="py-4 px-6 text-lg font-semibold text-left">Item Name</th>
-                    <th class="py-4 px-6 text-lg font-semibold text-left">Price</th>
-                    <th class="py-4 px-6 text-lg font-semibold text-left">Description</th>
-                    <th class="py-4 px-6 text-lg font-semibold text-left">Stock Quantity</th>
-                </tr>
-            </thead>
-            <tbody id="items_table">
-                <!-- Items will be dynamically added here -->
-            </tbody>
-        </table>
-    </div>
+    </script>
 </body>
+
+<footer class="bg-black text-white">
+  <!-- Top Section -->
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
+    <!-- Feature 1 -->
+    <div class="flex items-start space-x-3">
+      <div class="bg-gray-800 p-2 rounded-lg">
+        <i class="fas fa-truck text-2xl text-white"></i>
+      </div>
+      <div>
+        <h5 class="font-semibold">Free Delivery</h5>
+        <p>Dispatched within 24-48 hours</p>
+      </div>
+    </div>
+    <!-- Feature 2 -->
+    <div class="flex items-start space-x-3">
+      <div class="bg-gray-800 p-2 rounded-lg">
+        <i class="fas fa-info-circle text-2xl text-white"></i>
+      </div>
+      <div>
+        <h5 class="font-semibold">24/7 Support Available</h5>
+        <p>Secure Shopping</p>
+      </div>
+    </div>
+    <!-- Feature 3 -->
+    <div class="flex items-start space-x-3">
+      <div class="bg-gray-800 p-2 rounded-lg">
+        <i class="fas fa-tags text-2xl text-white"></i>
+      </div>
+      <div>
+        <h5 class="font-semibold">Best Prices & Offers</h5>
+        <p>Value for Money</p>
+      </div>
+    </div>
+    <!-- Feature 4 -->
+    <div class="flex items-start space-x-3">
+      <div class="bg-gray-800 p-2 rounded-lg">
+        <i class="fas fa-undo text-2xl text-white"></i>
+      </div>
+      <div>
+        <h5 class="font-semibold">Easy Return</h5>
+        <p>30 Days Return Available</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Links -->
+  <div class="container mx-auto py-6 px-4 text-center text-black-400 text-sm">
+    <a href="#" class="hover:underline">Home Office Desks</a> |
+    <a href="#" class="hover:underline">Pet Supplies</a> |
+    <a href="#" class="hover:underline">Sporting Goods</a> |
+    <a href="#" class="hover:underline">Toys & Hobbies</a> |
+    <a href="#" class="hover:underline">Home & Garden</a> |
+    <a href="#" class="hover:underline">Phones & Accessories</a> |
+    <a href="#" class="hover:underline">Home Appliances</a> |
+    <a href="#" class="hover:underline">Business</a>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm">
+    <!-- About Us -->
+    <div>
+      <h5 class="font-semibold mb-4">About Us</h5>
+      <p>SportHive is your go-to destination for all things sports. We offer premium equipment for athletes and sports enthusiasts at competitive prices.</p>
+    </div>
+    <!-- Information Links -->
+    <div>
+      <h5 class="font-semibold mb-4">Information</h5>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:underline">Home</a></li>
+        <li><a href="#" class="hover:underline">Products</a></li>
+        <li><a href="#" class="hover:underline">About Us</a></li>
+        <li><a href="#" class="hover:underline">Contact Us</a></li>
+        <li><a href="#" class="hover:underline">Cart</a></li>
+      </ul>
+    </div>
+    <!-- Policies -->
+    <div>
+      <h5 class="font-semibold mb-4">Policy</h5>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        <li><a href="#" class="hover:underline">Terms of Service</a></li>
+        <li><a href="#" class="hover:underline">Shipping Policy</a></li>
+        <li><a href="#" class="hover:underline">Refund Policy</a></li>
+        <li><a href="#" class="hover:underline">Warranty</a></li>
+      </ul>
+    </div>
+    <!-- Contact Us -->
+    <div>
+      <h5 class="font-semibold mb-4">Contact Us</h5>
+      <p>For any inquiries or support, feel free to reach out:</p>
+      <p class="mt-2">Phone: +1 800 123 456</p>
+      <p>Email: info@sportshive.com</p>
+      <p>Address: 123 SportHive Lane, Fitness City</p>
+    </div>
+  </div>
+</footer>
 </html>
