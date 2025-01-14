@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create an Account</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 bg-cover h-[25vh]" style="background-image: url('../images/sign1.jpg');">
 <header class="bg-blue-900 text-white">
 
     <!-- Main Header -->
@@ -37,17 +37,18 @@
           </div>
           <!-- User Dropdown & Cart -->
           <div class="relative flex items-center space-x-4">
-              <!-- Cart Icon -->
-              <a href="../views/cart.php" id="view-cart" class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                  </svg>
-                  <!-- Cart Count Badge -->
-                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      0
-                  </span>
-              </a>
-          </div>
+                <!-- Cart Icon -->
+                <a href="../views/cart.php" id="view-cart" class="relative pointer-events-none opacity-70">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
+                    </svg>
+                    <!-- Cart Count Badge -->
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                        0
+                    </span>
+                </a>
+            </div>
+
 
           <script>
           // Example JavaScript to handle cart count
@@ -58,34 +59,39 @@
           </script>
 
           <!-- Sign In & Cart -->
-            <div class="flex space-x-4">
-                  <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-user"></i>
-                    <span>Sign Up</span>
-                  </a>
+          <div class="flex space-x-4">
+            <!-- Sign In Button -->
+            <a 
+                href="../views/signin.php" 
+                class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
+                <i class="fas fa-user"></i>
+                <span>Sign Up</span>
+            </a>
 
-                  <!-- Log In Button -->
-                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span>Log In</span>
-                  </a>
-            </div>
+            <!-- Log In Button -->
+            <a 
+                href="../views/login.php" 
+                class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Log In</span>
+            </a>
+        </div>
+
         </div>
       </div>
     </div>
 
   <!-- Top Bar -->
-  <div class="bg-cyan-100 relative">
-    <!-- Navigation Bar -->
-    <nav class="relative z-10 flex items-center justify-between px-4 py-2">
-      <!-- Hamburger Menu -->
-      <button id="menu-toggle" class="text-black focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <div class="hidden md:flex space-x-6">
+<div class="bg-cyan-100 relative">
+  <!-- Navigation Bar -->
+  <nav class="relative z-10 flex items-center justify-between px-4 py-2">
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" class="text-black focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <div class="hidden md:flex space-x-6">
         <a href="../index.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
         <a href="../views/services.php" 
@@ -184,41 +190,122 @@
   });
 </script>
 
-  </header>
-
-  <!-- Main Section -->
-  <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
-    <div class="w-full max-w-lg bg-gray-800 text-gray-100 rounded-lg shadow-xl p-8 space-y-6">
-      <h2 class="text-3xl font-semibold text-center text-teal-400 mb-4">Registration Form</h2>
-      <form>
-        <div class="space-y-4 mb-6">
-          <input type="text" placeholder="Name" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="text" placeholder="Address" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="text" placeholder="Username" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="text" placeholder="email" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="password" placeholder="Password" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="password" placeholder="Confirm Password" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <select 
-                name="role" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required>
-                <option value="" disabled selected>Select Role</option>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="delivery">Delivery</option>
-                <option value="repairman">Repair Man</option>
-            </select>
+</header>
+<body class="bg-blue-90">
+<!-- Maintenance Request Form -->
+<div class="max-w-4xl mx-auto p-8 from-blue-500 via-indigo-500 to-purple-600 shadow-lg rounded-lg">
+    <h2 class="text-3xl font-semibold text-center text-blue-500 mb-8">Request Maintenance</h2>
+    <form action="submit_maintenance_request.php" method="POST" class="space-y-6">
+        <div class="mb-6">
+            <label for="request_title" class="block text-sm font-medium text-black">Request Title:</label>
+            <input type="text" id="request_title" name="request_title" required 
+                class="mt-2 p-4 w-full bg-blue-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:bg-white hover:text-gray-800 transition-all duration-300">
         </div>
-        <button type="submit" class="w-full bg-teal-500 p-3 rounded-lg text-gray-100 font-semibold hover:bg-teal-600">
-          Sign Up
-        </button>
-      </form>
-      <p class="text-center text-gray-400">Already have an account? <a href="login.php" class="text-teal-400">Log in</a></p>
-    </div>
-  </div>
 
-  <!-- Footer Section -->
-  <footer class="bg-black text-white">
+        <div class="mb-6">
+            <label for="issue_description" class="block text-sm font-medium text-black">Issue Description:</label>
+            <textarea id="issue_description" name="issue_description" rows="4" required 
+                class="mt-2 p-4 w-full bg-blue-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:bg-white hover:text-gray-800 transition-all duration-300"></textarea>
+        </div>
+
+        <div class="mb-6">
+            <label for="preferred_time" class="block text-sm font-medium text-black">Preferred Time:</label>
+            <input type="datetime-local" id="preferred_time" name="preferred_time" required 
+                class="mt-2 p-4 w-full bg-blue-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:bg-white hover:text-gray-800 transition-all duration-300">
+        </div>
+
+        <div class="mb-6">
+            <label for="user_contact" class="block text-sm font-medium text-black">Contact Information:</label>
+            <input type="text" id="user_contact" name="user_contact" required 
+                class="mt-2 p-4 w-full bg-blue-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:bg-white hover:text-gray-800 transition-all duration-300">
+        </div>
+
+        <div class="mt-8">
+            <button type="submit" 
+                class="w-full py-3 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75 transition-all duration-300">
+                Submit Request
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="max-w-6xl mx-auto p-8">
+        <!-- Page Title -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-blue-500 bg-clip-text bg-white via-purple-500 to-pink-500">
+                User Feedback
+            </h1>
+            <p class="text-blue-800 text-lg mt-4">
+                Here's what our customers say about the maintenance services at our sports shop!
+            </p>
+        </div>
+
+        <!-- Feedback Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Feedback Card 1 -->
+            <div class="relative p-6 bg-pink-200 rounded-lg shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-105 transition duration-300">
+                <!-- Quote Icon -->
+                <div class="absolute top-0 -mt-5 left-1/2 transform -translate-x-1/2">
+                    <div class="bg-indigo-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                        <i class="text-2xl">D</i>
+                    </div>
+                </div>
+                <!-- Card Content -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 text-center">Damya</h3>
+                    <div class="flex justify-center text-yellow-400 text-lg mt-2">
+                        ★★★★☆
+                    </div>
+                    <p class="text-gray-600 mt-4">
+                        "The maintenance team was quick and efficient. Highly recommend their services!"
+                    </p>
+                    <p class="text-sm text-gray-400 mt-4 text-right">January 10, 2025</p>
+                </div>
+            </div>
+
+            <!-- Feedback Card 2 -->
+            <div class="relative p-6 bg-pink-200 rounded-lg shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-105 transition duration-300">
+                <div class="absolute top-0 -mt-5 left-1/2 transform -translate-x-1/2">
+                    <div class="bg-purple-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                        <i class="text-2xl">H</i>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 text-center">Harendra</h3>
+                    <div class="flex justify-center text-yellow-400 text-lg mt-2">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-600 mt-4">
+                        "Great service! They fixed everything perfectly and on time. Thank you!"
+                    </p>
+                    <p class="text-sm text-gray-400 mt-4 text-right">January 9, 2025</p>
+                </div>
+            </div>
+
+            <!-- Feedback Card 3 -->
+            <div class="relative p-6 bg-pink-200 rounded-lg shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-105 transition duration-300">
+                <div class="absolute top-0 -mt-5 left-1/2 transform -translate-x-1/2">
+                    <div class="bg-pink-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                        <i class="text-2xl">P</i>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 text-center">Pradeepa</h3>
+                    <div class="flex justify-center text-yellow-400 text-lg mt-2">
+                        ★★★☆☆
+                    </div>
+                    <p class="text-gray-600 mt-4">
+                        "The service was okay, but it took longer than expected."
+                    </p>
+                    <p class="text-sm text-gray-400 mt-4 text-right">January 8, 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<footer class="bg-black text-white">
   <!-- Top Section -->
   <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
     <!-- Feature 1 -->
@@ -264,7 +351,7 @@
   </div>
 
   <!-- Navigation Links -->
-  <div class="container mx-auto py-6 px-4 text-center text-gray-400 text-sm">
+  <div class="container mx-auto py-6 px-4 text-center text-black-400 text-sm">
     <a href="#" class="hover:underline">Home Office Desks</a> |
     <a href="#" class="hover:underline">Pet Supplies</a> |
     <a href="#" class="hover:underline">Sporting Goods</a> |
@@ -314,5 +401,4 @@
     </div>
   </div>
 </footer>
-</body>
 </html>

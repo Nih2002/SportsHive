@@ -1,12 +1,42 @@
+<?php
+session_start();
+
+// Example login logic
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Example user credentials (you should replace this with DB validation)
+    $users = [
+        'user@example.com' => ['password' => 'password123', 'role' => 'user'],
+        'admin@example.com' => ['password' => 'admin123', 'role' => 'admin']
+    ];
+
+    if (isset($users[$email]) && $users[$email]['password'] === $password) {
+        $_SESSION['user_email'] = $email;
+        $_SESSION['user_role'] = $users[$email]['role'];
+
+        // Redirect to the user's respective dashboard or cart
+        if ($_SESSION['user_role'] == 'user') {
+            header("Location: cart.php"); // Redirect to the cart page
+        } else {
+            header("Location: admin_dashboard.php"); // Redirect to the admin dashboard
+        }
+        exit();
+    } else {
+        // Invalid login
+        echo "Invalid email or password!";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create an Account</title>
+  <title>Checkout</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 bg-cover h-[25vh]" style="background-image: url('../images/sign1.jpg');">
 <header class="bg-blue-900 text-white">
 
     <!-- Main Header -->
@@ -185,134 +215,173 @@
 </script>
 
   </header>
+<body class="bg-gray-100">
+  <div class="container mx-auto mt-10 p-6 bg-red-100 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center">Checkout</h2>
 
-  <!-- Main Section -->
-  <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
-    <div class="w-full max-w-lg bg-gray-800 text-gray-100 rounded-lg shadow-xl p-8 space-y-6">
-      <h2 class="text-3xl font-semibold text-center text-teal-400 mb-4">Registration Form</h2>
-      <form>
-        <div class="space-y-4 mb-6">
-          <input type="text" placeholder="Name" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="text" placeholder="Address" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="text" placeholder="Username" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="text" placeholder="email" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="password" placeholder="Password" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <input type="password" placeholder="Confirm Password" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" />
-          <select 
-                name="role" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required>
-                <option value="" disabled selected>Select Role</option>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="delivery">Delivery</option>
-                <option value="repairman">Repair Man</option>
-            </select>
-        </div>
-        <button type="submit" class="w-full bg-teal-500 p-3 rounded-lg text-gray-100 font-semibold hover:bg-teal-600">
-          Sign Up
-        </button>
-      </form>
-      <p class="text-center text-gray-400">Already have an account? <a href="login.php" class="text-teal-400">Log in</a></p>
+    <!-- Order Summary -->
+    <div class="border-b pb-6 mb-6">
+      <h3 class="text-xl font-semibold mb-4">Order Summary</h3>
+      <div id="order-summary" class="space-y-4">
+        <!-- Cart Items (will be dynamically populated) -->
+      </div>
+      <div class="flex justify-between items-center font-bold mt-4">
+        <span>Total:</span>
+        <span id="total-amount">Rs. 0.00</span>
+      </div>
     </div>
+
+    <!-- Billing Information -->
+    <form id="checkout-form" action="process_checkout.php" method="POST">
+      <h3 class="text-xl font-semibold mb-4">Billing Information</h3>
+      <div class="grid grid-cols-1 gap-4">
+        <input type="text" name="name" placeholder="Full Name" required class="p-3 border rounded-lg">
+        <input type="email" name="email" placeholder="Email" required class="p-3 border rounded-lg">
+        <input type="text" name="contact" placeholder="Contact Number" required class="p-3 border rounded-lg">
+        <input type="text" name="address" placeholder="Billing Address" required class="p-3 border rounded-lg">
+      </div>
+
+      <!-- Payment Information -->
+      <h3 class="text-xl font-semibold my-6">Payment Information</h3>
+      <div class="grid grid-cols-1 gap-4">
+        <select name="payment_method" required class="p-3 border rounded-lg">
+          <option value="" disabled selected>Select Payment Method</option>
+          <option value="credit_card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="cod">Cash on Delivery</option>
+        </select>
+      </div>
+
+      <!-- Place Order Button -->
+      <button type="submit" class="mt-6 w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600">
+        Place Order
+      </button>
+    </form>
   </div>
 
-  <!-- Footer Section -->
-  <footer class="bg-black text-white">
-  <!-- Top Section -->
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
-    <!-- Feature 1 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-truck text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">Free Delivery</h5>
-        <p>Dispatched within 24-48 hours</p>
-      </div>
-    </div>
-    <!-- Feature 2 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-info-circle text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">24/7 Support Available</h5>
-        <p>Secure Shopping</p>
-      </div>
-    </div>
-    <!-- Feature 3 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-tags text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">Best Prices & Offers</h5>
-        <p>Value for Money</p>
-      </div>
-    </div>
-    <!-- Feature 4 -->
-    <div class="flex items-start space-x-3">
-      <div class="bg-gray-800 p-2 rounded-lg">
-        <i class="fas fa-undo text-2xl text-white"></i>
-      </div>
-      <div>
-        <h5 class="font-semibold">Easy Return</h5>
-        <p>30 Days Return Available</p>
-      </div>
-    </div>
-  </div>
+  <script>
+  // Load cart items from sessionStorage
+  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const orderSummary = document.getElementById("order-summary");
+  const totalAmount = document.getElementById("total-amount");
 
-  <!-- Navigation Links -->
-  <div class="container mx-auto py-6 px-4 text-center text-gray-400 text-sm">
-    <a href="#" class="hover:underline">Home Office Desks</a> |
-    <a href="#" class="hover:underline">Pet Supplies</a> |
-    <a href="#" class="hover:underline">Sporting Goods</a> |
-    <a href="#" class="hover:underline">Toys & Hobbies</a> |
-    <a href="#" class="hover:underline">Home & Garden</a> |
-    <a href="#" class="hover:underline">Phones & Accessories</a> |
-    <a href="#" class="hover:underline">Home Appliances</a> |
-    <a href="#" class="hover:underline">Business</a>
-  </div>
+  let total = 0;
 
-  <!-- Bottom Section -->
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm">
-    <!-- About Us -->
-    <div>
-      <h5 class="font-semibold mb-4">About Us</h5>
-      <p>SportHive is your go-to destination for all things sports. We offer premium equipment for athletes and sports enthusiasts at competitive prices.</p>
-    </div>
-    <!-- Information Links -->
-    <div>
-      <h5 class="font-semibold mb-4">Information</h5>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:underline">Home</a></li>
-        <li><a href="#" class="hover:underline">Products</a></li>
-        <li><a href="#" class="hover:underline">About Us</a></li>
-        <li><a href="#" class="hover:underline">Contact Us</a></li>
-        <li><a href="#" class="hover:underline">Cart</a></li>
-      </ul>
-    </div>
-    <!-- Policies -->
-    <div>
-      <h5 class="font-semibold mb-4">Policy</h5>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-        <li><a href="#" class="hover:underline">Terms of Service</a></li>
-        <li><a href="#" class="hover:underline">Shipping Policy</a></li>
-        <li><a href="#" class="hover:underline">Refund Policy</a></li>
-        <li><a href="#" class="hover:underline">Warranty</a></li>
-      </ul>
-    </div>
-    <!-- Contact Us -->
-    <div>
-      <h5 class="font-semibold mb-4">Contact Us</h5>
-      <p>For any inquiries or support, feel free to reach out:</p>
-      <p class="mt-2">Phone: +1 800 123 456</p>
-      <p>Email: info@sportshive.com</p>
-      <p>Address: 123 SportHive Lane, Fitness City</p>
-    </div>
-  </div>
-</footer>
+  if (cartItems.length === 0) {
+    orderSummary.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
+  } else {
+    orderSummary.innerHTML = cartItems
+      .map(item => {
+        const subtotal = item.price; // Only use the price since we're removing the quantity
+        total += subtotal;
+        return `
+          <div class="flex justify-between items-center">
+            <span>${item.name}</span>
+            <span>Rs. ${subtotal.toFixed(2)}</span>
+          </div>
+        `;
+      })
+      .join("");
+    totalAmount.textContent = `Rs. ${total.toFixed(2)}`;
+  }
+</script>
+
 </body>
+<footer class="bg-black text-white">
+        <!-- Top Section -->
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
+            <!-- Feature 1 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-truck text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">Free Delivery</h5>
+                <p>Dispatched within 24-48 hours</p>
+            </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-info-circle text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">24/7 Support Available</h5>
+                <p>Secure Shopping</p>
+            </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-tags text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">Best Prices & Offers</h5>
+                <p>Value for Money</p>
+            </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="flex items-start space-x-3">
+            <div class="bg-gray-800 p-2 rounded-lg">
+                <i class="fas fa-undo text-2xl text-white"></i>
+            </div>
+            <div>
+                <h5 class="font-semibold">Easy Return</h5>
+                <p>30 Days Return Available</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="container mx-auto py-6 px-4 text-center text-gray-400 text-sm">
+            <a href="#" class="hover:underline">Home Office Desks</a> |
+            <a href="#" class="hover:underline">Pet Supplies</a> |
+            <a href="#" class="hover:underline">Sporting Goods</a> |
+            <a href="#" class="hover:underline">Toys & Hobbies</a> |
+            <a href="#" class="hover:underline">Home & Garden</a> |
+            <a href="#" class="hover:underline">Phones & Accessories</a> |
+            <a href="#" class="hover:underline">Home Appliances</a> |
+            <a href="#" class="hover:underline">Business</a>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm">
+            <!-- About Us -->
+            <div>
+            <h5 class="font-semibold mb-4">About Us</h5>
+            <p>SportHive is your go-to destination for all things sports. We offer premium equipment for athletes and sports enthusiasts at competitive prices.</p>
+            </div>
+            <!-- Information Links -->
+            <div>
+            <h5 class="font-semibold mb-4">Information</h5>
+            <ul class="space-y-2">
+                <li><a href="#" class="hover:underline">Home</a></li>
+                <li><a href="#" class="hover:underline">Products</a></li>
+                <li><a href="#" class="hover:underline">About Us</a></li>
+                <li><a href="#" class="hover:underline">Contact Us</a></li>
+                <li><a href="#" class="hover:underline">Cart</a></li>
+            </ul>
+            </div>
+            <!-- Policies -->
+            <div>
+            <h5 class="font-semibold mb-4">Policy</h5>
+            <ul class="space-y-2">
+                <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                <li><a href="#" class="hover:underline">Shipping Policy</a></li>
+                <li><a href="#" class="hover:underline">Refund Policy</a></li>
+                <li><a href="#" class="hover:underline">Warranty</a></li>
+            </ul>
+            </div>
+            <!-- Contact Us -->
+            <div>
+            <h5 class="font-semibold mb-4">Contact Us</h5>
+            <p>For any inquiries or support, feel free to reach out:</p>
+            <p class="mt-2">Phone: +1 800 123 456</p>
+            <p>Email: info@sportshive.com</p>
+            <p>Address: 123 SportHive Lane, Fitness City</p>
+            </div>
+        </div>
+        </footer>
+
 </html>

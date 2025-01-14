@@ -14,7 +14,7 @@
       <div class="container mx-auto flex justify-between items-center py-3 px-4">
         <!-- Logo -->
         <a href="#" class="flex items-center space-x-2">
-          <img src="../sportshive/images/logo12.png" alt="Logo" class="w-20 h-20">
+          <img src="../images/logo12.png" alt="Logo" class="w-20 h-20">
         </a>
 
         <!-- Search Bar -->
@@ -91,21 +91,25 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+    <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -123,9 +127,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -144,21 +148,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -210,6 +214,11 @@
             <div onclick="showModal('revenue')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
                 <h2 class="text-xl font-semibold">Revenue</h2>
             </div>
+
+            <a href="repair.php" class="p-8 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer block w-70 h-10">
+            <h2 class="text-xl font-semibold relative -top-4">Maintenance Requests</h2>
+            </a>
+
         </div>
 
         <!-- Main Content Section (Right) -->
@@ -419,6 +428,7 @@
             }
         });
     </script>
+    
 </body>
 
 <footer class="bg-black text-white">

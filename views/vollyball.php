@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -84,21 +84,25 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+    <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -116,9 +120,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -137,21 +141,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -214,8 +218,8 @@
                 <h3 class="text-lg tracking-wide font-bold">Volleyball V500 | Grey/Blue/Red</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3500.00</h4>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="138" data-name="Volleyball V500 | Grey/Blue/Red" data-price="3500">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -226,8 +230,8 @@
                 <h3 class="text-lg tracking-wide font-bold">230-250 g Volleyball|V100 Soft - Blue/Orange</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3000.00</h4>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="139" data-name="230-250 g Volleyball|V100 Soft" data-price="3000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -250,8 +254,8 @@
                 <h3 class="text-lg tracking-wide font-bold">Official Dimensions Beach Volleyball Set BV900 - Yellow</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3200.00</h4>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="140" data-name="Official Dimensions Beach Volleyball Set" data-price="3200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -262,8 +266,8 @@
                 <h3 class="text-lg tracking-wide font-bold">V900 Volleyball Net</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2790.00</h4>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="141" data-name="V900 Volleyball Net" data-price="2790">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -292,8 +296,8 @@
                 <h3 class="text-lg font-semibold">Starter Volleyball V100 - Turquoise Blue</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="142" data-name="Starter Volleyball V100" data-price="270">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -302,7 +306,68 @@
             </div>
         </div>
          
-        
+        <script>
+        // Initialize cart from session storage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        const updateCartCount = () => {
+            cartCount.textContent = cart.length;
+        };
+
+        const renderCart = () => {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between mb-4';
+                div.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>Rs. ${item.price}</span>
+                `;
+                cartItems.appendChild(div);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: Rs. ${total}`;
+        };
+
+        // Handle adding items to the cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const item = { id, name, price };
+
+                // Add to cart and update session storage
+                if (!cart.find(e => e.id === id)) {
+                    cart.push(item);
+                    sessionStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${name} added to cart!`);
+                } else {
+                    alert(`${name} is already in the cart.`);
+                }
+            });
+        });
+
+        // Open the cart modal
+        document.getElementById('view-cart').addEventListener('click', () => {
+            renderCart();
+            cartModal.classList.remove('hidden');
+        });
+
+        // Close the cart modal
+        document.getElementById('close-cart').addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Initial update of cart count
+        updateCartCount();
+    </script> 
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

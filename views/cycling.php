@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -84,21 +84,25 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+    <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -116,9 +120,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -137,21 +141,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -300,6 +304,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Mountain Bike Expl 500 - Orange</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 52200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-800 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -308,8 +336,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="54" data-name="Mountain Bike Expl 500 - Orange" data-price="52200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -319,6 +347,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Electric Hardtail MTB Bike E-ST 900 - Grey</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 65000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -327,8 +379,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="55" data-name="Electric Hardtail MTB Bike E-ST 900 - Grey" data-price="65000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -338,6 +390,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Mountain Bike Expl 120 - White</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5100.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -346,8 +422,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="56" data-name="Mountain Bike Expl 120 - White" data-price="5100">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -376,6 +452,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Tilt 120 folding bike - grey</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13500.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-600 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -384,8 +484,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="57" data-name="Tilt 120 folding bike - grey" data-price="13500">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -401,6 +501,30 @@
                 <img src="../images/cycle6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">Single Speed City Bike 500 - Carbon Grey</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 52000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-400 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -409,8 +533,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="58" data-name="Single Speed City Bike 500 - Carbon Grey" data-price="52000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -418,6 +542,30 @@
                 <img src="../images/cycle7.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">Electric Cargo Bike Rear loading longtail R500</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 72000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-200 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -426,8 +574,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="59" data-name="lectric Cargo Bike" data-price="72000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -465,6 +613,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">TRoadR 500 Road Cycling Helmet - White</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-400 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -473,8 +645,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="60" data-name="TRoadR 500 Road Cycling Helmet" data-price="10000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -484,6 +656,27 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Mountain Bike Helmet EXPL 500 - Black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -492,8 +685,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="61" data-name="Mountain Bike Helmet EXPL 500 - Black" data-price="11000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -522,6 +715,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">RoadR 500 Road Cycling Helmet - Neon Yellow</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1900.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -530,8 +747,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="62" data-name="RoadR 500 Road Cycling Helmet" data-price="1900">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -540,6 +757,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">PAdult Mountain Bike Helmet Expl 500 - Green</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -548,8 +789,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="63" data-name="Adult Mountain Bike Helmet" data-price="1100">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -565,7 +806,31 @@
                 <img src="../images/chelmet6.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">500 Children's Helmet - Pink</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1700.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 12700.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-pink-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -574,8 +839,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="64" data-name="500 Children's Helmet - Pink" data-price="12700">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -616,6 +881,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Mountain Bike/Gravel Shoes Race 900 - Ochre - Habu Fit System</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -624,8 +913,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="65" data-name="Mountain Bike/Gravel Shoes Race 900" data-price="11000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -635,6 +924,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Road Cycling Shoes NCR Air - Grey</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-200 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -643,8 +956,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="66" data-name="Road Cycling Shoes NCR Air - Grey" data-price="2900">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -654,6 +967,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Womens Road Cycle Shoes</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9900.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-green-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -662,8 +999,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="67" data-name="Womens Road Cycle Shoes" data-price="9900">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -697,7 +1034,34 @@
                 <img src="https://contents.mediadecathlon.com/p2686523/k$7be82ecdf1ae58b53e4a4a75c3d1cdfd/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Road Cycling Shoes Van Rysel RCR R - White</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11500.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="yellow"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-200 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -706,8 +1070,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="67" data-name="Road Cycling Shoes Van Rysel RCR R - White" data-price="11500">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -716,7 +1080,34 @@
                 <img src="https://contents.mediadecathlon.com/m10812315/k$ee52155f530b7befe853554cdf82b244/picture.jpg?format=auto&f=640x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Proviz REFLECT360 Waterproof Reflective Cycling Overshoes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-green-800 hover:ring-2 hover:ring-red-300" data-color="green"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -725,8 +1116,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="68" data-name="Proviz REFLECT360 Waterproof Reflective Cycling Overshoes" data-price="21200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -734,7 +1125,31 @@
                 <img src="https://contents.mediadecathlon.com/p2762742/k$f996bd9ec2dce1f25c313ed523c2db68/picture.jpg?format=auto&f=969x0" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Cycling Waterproof Shoes GRVL 900</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 12000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -743,8 +1158,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="69" data-name="Cycling Waterproof Shoes GRVL 900" data-price="12000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -767,6 +1182,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Adult Category 3 Cycling Sunglasses Perf 500 Light - White</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -775,8 +1214,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="70" data-name="Adult Category 3 Cycling Sunglasses" data-price="6000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -805,6 +1244,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Smartphone-compatible thermal cycling gloves, black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6500.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-600 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -813,8 +1276,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="71" data-name="Smartphone-compatible thermal cycling gloves" data-price="6500">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -824,6 +1287,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">100 Winter Cycling Fleece Neck Warmer - Black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -832,8 +1319,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="72" data-name="100 Winter Cycling Fleece Neck Warmer - Black" data-price="8000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -842,6 +1329,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Adult Cycling Glasses Perf 500 Light Category 3 - Black/Blue</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -850,8 +1361,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="73" data-name="Adult Cycling Glasses" data-price="8000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -887,6 +1398,18 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Cycling Under-Helmet Headband 900 - Black/Grey</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-200 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -895,8 +1418,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="74" data-name="Cycling Under-Helmet Headband 900" data-price="1200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -905,6 +1428,15 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Cycling Balaclava 500 - Black</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13000.00</h4>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -913,8 +1445,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="75" data-name="Cycling Balaclava 500 - Black" data-price="13000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -923,7 +1455,68 @@
         </div>
       </div>
       </div>
-        
+      <script>
+        // Initialize cart from session storage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        const updateCartCount = () => {
+            cartCount.textContent = cart.length;
+        };
+
+        const renderCart = () => {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between mb-4';
+                div.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>Rs. ${item.price}</span>
+                `;
+                cartItems.appendChild(div);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: Rs. ${total}`;
+        };
+
+        // Handle adding items to the cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const item = { id, name, price };
+
+                // Add to cart and update session storage
+                if (!cart.find(e => e.id === id)) {
+                    cart.push(item);
+                    sessionStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${name} added to cart!`);
+                } else {
+                    alert(`${name} is already in the cart.`);
+                }
+            });
+        });
+
+        // Open the cart modal
+        document.getElementById('view-cart').addEventListener('click', () => {
+            renderCart();
+            cartModal.classList.remove('hidden');
+        });
+
+        // Close the cart modal
+        document.getElementById('close-cart').addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Initial update of cart count
+        updateCartCount();
+    </script>
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -84,21 +84,25 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+    <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -116,9 +120,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -137,21 +141,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -300,6 +304,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Football Boots Viralto</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -308,8 +336,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="47" data-name="Football Boots Viralto" data-price="1200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -337,7 +365,31 @@
                 <img src="../images/fshose3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Predator League Multi-Ground Boots</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 990.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 28990.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-400 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -346,8 +398,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="48" data-name="Predator League Multi-Ground Boots" data-price="28990">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -356,7 +408,34 @@
                 <img src="../images/fshose4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Adult F50 League FG</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-pink-600 hover:ring-2 hover:ring-red-300" data-color="pink"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -365,8 +444,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="49" data-name="Adult F50 League FG" data-price="11200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -375,7 +454,31 @@
                 <img src="../images/fball1.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Mini Football Sunny 300 Size 1 - Pastel Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 790.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6790.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -384,8 +487,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="50" data-name="Mini Football Sunny 300 Size 1 - Pastel Blu" data-price="6790">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -402,6 +505,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Kids' size 3 football, blue</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1100.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -410,8 +537,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="51" data-name="Kids' size 3 football, blue" data-price="1100">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -421,6 +548,33 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Football Light Learning Ball </h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1600.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-800 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -429,8 +583,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="52" data-name="Football Light Learning Ball" data-price="1600">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -457,6 +611,30 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">size 5 football, yellow</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-600 hover:ring-2 hover:ring-red-300" data-color="yellow"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -465,8 +643,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="53" data-name="size 5 football, yellow" data-price="1400">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -476,7 +654,70 @@
         </div>
       </div>
       </div>
+         
+      <script>
+        // Initialize cart from session storage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
 
+        const updateCartCount = () => {
+            cartCount.textContent = cart.length;
+        };
+
+        const renderCart = () => {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between mb-4';
+                div.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>Rs. ${item.price}</span>
+                `;
+                cartItems.appendChild(div);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: Rs. ${total}`;
+        };
+
+        // Handle adding items to the cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const item = { id, name, price };
+
+                // Add to cart and update session storage
+                if (!cart.find(e => e.id === id)) {
+                    cart.push(item);
+                    sessionStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${name} added to cart!`);
+                } else {
+                    alert(`${name} is already in the cart.`);
+                }
+            });
+        });
+
+        // Open the cart modal
+        document.getElementById('view-cart').addEventListener('click', () => {
+            renderCart();
+            cartModal.classList.remove('hidden');
+        });
+
+        // Close the cart modal
+        document.getElementById('close-cart').addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Initial update of cart count
+        updateCartCount();
+    </script>
+         
         <footer class="bg-black text-white">
         <!-- Top Section -->
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">

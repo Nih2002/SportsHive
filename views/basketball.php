@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -84,21 +84,25 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+    <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -116,9 +120,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -137,21 +141,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+        </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -300,6 +304,33 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Kids' Basketball Shoes Fast 900 Low-1</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 2</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 3</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-purple-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-orange-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -308,17 +339,42 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="103" data-name="Kids' Basketball Shoes Fast 900 Low-1" data-price="9200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <!-- Item 2 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Mid-Rise Beginner Basketball Shoes SE100</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5000.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -327,17 +383,42 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="104" data-name="Mid-Rise Beginner Basketball Shoes SE100" data-price="5000">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <!-- Item 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Men's/Women's Basketball Shoes SE900</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 4990.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                    <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -346,17 +427,42 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="105" data-name="Men's/Women's Basketball Shoes SE900" data-price="4990">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <!-- Item 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Kids' Intermediate Basketball Shoes SS500H</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -365,8 +471,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="106" data-name="Kids' Intermediate Basketball Shoes" data-price="9200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -402,6 +508,42 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Hoops 3.0 Mid Lifestyle Basketball Classic Vintage Shoes</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex flex-wrap justify-center gap-2 mt-2">
+                      <li>
+                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                      </li>
+                      <li>
+                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                      </li>
+                      <li>
+                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="6">Size 6</button>
+                      </li>
+                      <li>
+                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="7">Size 7</button>
+                      </li>
+                      <li>
+                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="8">Size 8</button>
+                      </li>
+                  </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -410,17 +552,42 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="107" data-name="Basketball Classic Vintage Shoes" data-price="9100">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose7.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Sneakers Nike Precision 5, Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 81600.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8600.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -429,11 +596,12 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="108" data-name="Sneakers Nike Precision 5, Black" data-price="8600">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose8.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
@@ -452,11 +620,42 @@
                 </div>
                 </a>
             </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose9.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">1 Pack Ladies Activ QTR Repreve Socks</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-green-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -465,16 +664,44 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="109" data-name="1 Pack Ladies Activ QTR Repreve Socks" data-price="1200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bshose10.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">3 Pairs Mens Cotton Thick Cushioned Terry Sport Socks</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -483,8 +710,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="110" data-name="3 Pairs Mens Cotton Thick Cushioned Terry Sport Socks" data-price="1400">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -503,6 +730,33 @@
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Size 7 Basketball BT500 - Brown/FIBA</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-yellow-500 hover:ring-2 hover:ring-red-300" data-color="yellow"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -511,17 +765,46 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="111" data-name="Size 7 Basketball BT500 - Brown/FIBA" data-price="9100">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <!-- Item 7 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bball2.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg tracking-wide font-bold">Size 7 Basketball NBA Team Tribute Lakers - Purple/Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 81600.00</h4>
+                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8600.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                        
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-purple-500 hover:ring-2 hover:ring-red-300" data-color="purple"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -530,11 +813,12 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="112" data-name="Size 7 Basketball NBA Team Tribute Lakers" data-price="8600">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bball3.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
@@ -553,11 +837,36 @@
                 </div>
                 </a>
             </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bball4.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">Kids'/Adult Size 7 Basketball R100 - Orange.</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -566,16 +875,41 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="113" data-name="Kids'/Adult Size 7 Basketball R100 - Orange." data-price="1200">ADD TO CART</button>
                 </div>
                 </a>
             </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="../images/bball5.png" class="w-full h-48 object-contain p-4">
                 <a href="#" class="p-4 text-center">
                 <h3 class="text-lg font-semibold">3Elite Championship 2.0 Logo Basketball</h3>
                 <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
+                <!-- Sizes Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Sizes:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
+                        </li>
+                        <li>
+                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Colors Section -->
+                <div class="text-gray-700 text-sm mt-4">
+                    <p class="font-medium">Available Colors:</p>
+                    <ul class="flex justify-center space-x-2 mt-2">
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
+                        </li>
+                        <li>
+                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex justify-center items-center mt-2 space-x-1">
                   <span class="text-yellow-500 text-xl">★</span>
                   <span class="text-yellow-500 text-xl">★</span>
@@ -584,8 +918,8 @@
                   <span class="text-gray-300 text-xl">☆</span>
                 </div>
                 <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">ADD TO CART</button>
+                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
+                animate-bounce shadow-md" data-id="114" data-name="3Elite Championship 2.0 Logo Basketball" data-price="1400">ADD TO CART</button>
                 </div>
                 </a>
             </div>
@@ -595,6 +929,145 @@
         </div>
       </div>
       </div>
+
+      <script>
+        // Initialize cart from session storage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        const updateCartCount = () => {
+            cartCount.textContent = cart.length;
+        };
+
+        const renderCart = () => {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between mb-4';
+                div.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>Rs. ${item.price}</span>
+                `;
+                cartItems.appendChild(div);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: Rs. ${total}`;
+        };
+
+        // Handle adding items to the cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const item = { id, name, price };
+
+                // Add to cart and update session storage
+                if (!cart.find(e => e.id === id)) {
+                    cart.push(item);
+                    sessionStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${name} added to cart!`);
+                } else {
+                    alert(`${name} is already in the cart.`);
+                }
+            });
+        });
+
+        // Open the cart modal
+        document.getElementById('view-cart').addEventListener('click', () => {
+            renderCart();
+            cartModal.classList.remove('hidden');
+        });
+
+        // Close the cart modal
+        document.getElementById('close-cart').addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Initial update of cart count
+        updateCartCount();
+    </script>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    let selectedSize = null;
+    let selectedColor = null;
+
+    // Handle size selection
+    document.querySelectorAll('.size-option').forEach(sizeBtn => {
+        sizeBtn.addEventListener('click', (e) => {
+            // Remove highlight from previously selected size
+            document.querySelectorAll('.size-option').forEach(btn => btn.classList.remove('bg-gray-300'));
+
+            // Highlight the selected size
+            e.target.classList.add('bg-gray-300');
+
+            // Store the selected size
+            selectedSize = e.target.dataset.size;
+            console.log(`Selected Size: ${selectedSize}`);
+        });
+    });
+
+    // Handle color selection
+    document.querySelectorAll('.color-option').forEach(colorBtn => {
+        colorBtn.addEventListener('click', (e) => {
+            // Remove highlight from previously selected color
+            document.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('ring-2', 'ring-offset-2'));
+
+            // Highlight the selected color
+            e.target.classList.add('ring-2', 'ring-offset-2');
+
+            // Store the selected color
+            selectedColor = e.target.dataset.color;
+            console.log(`Selected Color: ${selectedColor}`);
+        });
+    });
+
+    // Handle Add to Cart button
+    document.querySelector('.add-to-cart').addEventListener('click', () => {
+        if (!selectedSize || !selectedColor) {
+            alert('Please select a size and a color before adding to cart.');
+            return;
+        }
+
+        const productId = document.querySelector('.add-to-cart').dataset.id;
+        const productName = document.querySelector('.add-to-cart').dataset.name;
+        const productPrice = document.querySelector('.add-to-cart').dataset.price;
+
+        console.log(`Product Added to Cart:
+            ID: ${productId},
+            Name: ${productName},
+            Price: ${productPrice},
+            Size: ${selectedSize},
+            Color: ${selectedColor}`);
+    });
+
+    document.querySelectorAll('.size-option').forEach(sizeBtn => {
+    sizeBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default button behavior
+        document.querySelectorAll('.size-option').forEach(btn => btn.classList.remove('bg-gray-300'));
+        e.target.classList.add('bg-gray-300');
+        selectedSize = e.target.dataset.size;
+    });
+});
+
+document.querySelectorAll('.color-option').forEach(colorBtn => {
+    colorBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default button behavior
+        document.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('ring-2', 'ring-offset-2'));
+        e.target.classList.add('ring-2', 'ring-offset-2');
+        selectedColor = e.target.dataset.color;
+    });
+});
+});
+
+      </script>
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

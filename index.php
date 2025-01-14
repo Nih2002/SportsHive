@@ -13,7 +13,7 @@
       <div class="container mx-auto flex justify-between items-center py-3 px-4">
         <!-- Logo -->
         <a href="#" class="flex items-center space-x-2">
-          <img src="../sportshive/images/logo12.png" alt="Logo" class="w-20 h-20">
+          <img src="../images/logo12.png" alt="Logo" class="w-20 h-20">
         </a>
 
         <!-- Search Bar -->
@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -84,21 +84,25 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+    <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -116,9 +120,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -137,21 +141,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -223,7 +227,7 @@
     </p>
 
     <!-- Call to Action Button -->
-    <a href="../sportshive/views/cricket.php" 
+    <a href="../views/cricket.php" 
        class="mt-6 bg-gradient-to-r from-blue-500 to-lightBlue-400 text-white px-8 py-4 rounded-full shadow-lg transform hover:scale-105 hover:from-lightBlue-300 hover:to-blue-600 transition-all duration-300 ease-in-out">
         Shop Now
     </a>
@@ -261,7 +265,7 @@
       
       <!-- Product Sales Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../sportshive/images/product.jpg" alt="Product Sales" 
+        <img src="../images/product.jpg" alt="Product Sales" 
           class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Product Sales</h3>
@@ -278,7 +282,7 @@
 
       <!-- Repair Services Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../sportshive/images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
+        <img src="../images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Repair Services</h3>
           <!-- Plus Button -->
@@ -294,7 +298,7 @@
 
       <!-- Delivery System Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../sportshive/images/delivery.jpeg" alt="Delivery System" 
+        <img src="../images/delivery.jpeg" alt="Delivery System" 
           class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300"> Delivery System</h3>
@@ -355,7 +359,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -368,7 +372,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -381,7 +385,7 @@
          <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -394,7 +398,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -407,7 +411,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -420,7 +424,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -433,7 +437,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -445,7 +449,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -456,7 +460,7 @@
         <!-- Product 7 - Soccer Ball -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -481,7 +485,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -494,7 +498,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -507,7 +511,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -520,7 +524,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -533,7 +537,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -546,7 +550,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -559,7 +563,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -572,7 +576,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../sportshive/images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -584,7 +588,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -595,7 +599,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -606,7 +610,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -617,7 +621,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -628,7 +632,7 @@
         <!-- Product 7 - Soccer Ball -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../sportshive/images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">

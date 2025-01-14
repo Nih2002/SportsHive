@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,13 +61,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -85,21 +86,25 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
-      <div class="flex justify-center space-x-6 py-4">
-      <a href="../sportshive/index.php" class="text-black">Home</a>
-      <a href="../sportshive/views/services.php" class="text-black">Services</a>
-      <a href="../sportshive/views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../sportshive/views/aboutus.php" class="text-black">About Us</a>
-  </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -117,9 +122,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -138,21 +143,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -183,55 +188,44 @@
   </header>
 
   <!-- Main Section -->
-    <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
+  <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
     <div class="w-96 bg-gray-800 text-gray-100 rounded-lg shadow-xl p-8 space-y-6 mx-32">
         <h2 class="text-3xl font-semibold text-center text-teal-400 mb-4">Login Form</h2>
         <form role="form" method="POST" action="login_handler.php">
-        <div class="space-y-4 mb-6">
-            <!-- Username Input -->
-            <input 
-                type="text" 
-                name="username" 
-                placeholder="Username" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required 
-            />
-            
-            <!-- Password Input -->
-            <input 
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required 
-            />
+            <div class="space-y-4 mb-6">
+                <!-- Email Input -->
+                <input 
+                    type="text" 
+                    name="email" 
+                    placeholder="Email" 
+                    class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
+                    required 
+                />
+                
+                <!-- Password Input -->
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
+                    required 
+                />
+            </div>
 
-            <!-- Role Selection -->
-            <select 
-                name="role" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required>
-                <option value="" disabled selected>Select Role</option>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="delivery">Delivery</option>
-                <option value="repairman">Repair Man</option>
-            </select>
-        </div>
-        
-          <!-- Submit Button -->
-          <button 
-              type="submit" 
-              class="w-full bg-teal-500 p-3 rounded-lg text-gray-100 font-semibold">
-              Login
-          </button>
-         </form>
+            <!-- Submit Button -->
+            <button 
+                type="submit" 
+                class="w-full bg-teal-500 p-3 rounded-lg text-gray-100 font-semibold">
+                Login
+            </button>
+        </form>
 
         <p class="text-center text-gray-400">Don't have an account? 
-        <a href="signin.php" class="text-teal-400">Sign up</a>
+            <a href="signin.php" class="text-teal-400">Sign up</a>
         </p>
     </div>
-    </div>
+</div>
+
 
 
   <!-- Footer Section -->

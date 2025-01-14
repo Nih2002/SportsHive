@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../sportshive/views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../sportshive/views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>
@@ -84,21 +84,25 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
-      <div class="flex justify-center space-x-6 py-4">
-      <a href="../views/index.php" class="text-black">Home</a>
-      <a href="../views/services.php" class="text-black">Services</a>
-      <a href="../views/contactus.php" class="text-black">Contact Us</a>
-      <a href="../views/aboutus.php" class="text-black">About Us</a>
-  </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="../index.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
+        <a href="../views/services.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
+        <a href="../views/contactus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+        <a href="../views/aboutus.php" 
+           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
+      </div>
   </nav>
 
   <!-- Collapsible Menu -->
   <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
     <!-- Sports Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Sports
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
@@ -116,9 +120,9 @@
 
     <!-- Brands Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Brands
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-wrap gap-4">
@@ -137,21 +141,21 @@
 
     <!-- Repair and Services Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Repair and Services
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
+          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
         </div>
       </div>
     </div>
 
     <!-- Others Section -->
     <div class="relative">
-      <button class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
+      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
         Others
-      </button>
+      </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
@@ -183,75 +187,71 @@
 <body class="bg-gray-100">
 
   <!-- Centered Cart Content -->
-  <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="bg-white rounded-lg w-full max-w-lg shadow-lg overflow-hidden">
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="bg-white rounded-lg w-full max-w-lg shadow-lg overflow-hidden">
 
-      <!-- Cart Header -->
-      <div class="p-5 bg-cyan-500 text-white border-b">
-        <h2 class="text-xl font-semibold">Your Cart Details</h2>
-      </div>
-
-      <!-- Cart Items -->
-      <div id="cart-items" class="p-5 space-y-4">
-        <!-- Cart items will be dynamically injected here -->
-        <!-- Example Item -->
-        <div class="flex justify-between items-center">
-          <span>Item Name</span>
-          <span>2 x Rs. 500</span>
-        </div>
-      </div>
-
-      <!-- Cart Total and Buttons -->
-      <div class="p-5 border-t flex justify-between items-center bg-gray-50">
-        <button id="go-back" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 focus:outline-none">
-          Go Back
-        </button>
-        <div>
-          <span id="cart-total" class="text-lg font-bold">Total: Rs. 0.00</span>
-        </div>
-        <button id="checkout" class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-400 focus:outline-none">
-          Checkout
-        </button>
-      </div>
-
+    <!-- Cart Header -->
+    <div class="p-5 bg-cyan-500 text-white border-b">
+      <h2 class="text-xl font-semibold">Your Cart Details</h2>
     </div>
+
+    <!-- Cart Items -->
+    <div id="cart-items" class="p-5 space-y-4">
+      <!-- Cart items will be dynamically injected here -->
+    </div>
+
+    <!-- Cart Total and Buttons -->
+    <div class="p-5 border-t flex justify-between items-center bg-gray-50">
+      <button id="go-back" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 focus:outline-none">
+        Go Back
+      </button>
+      <div>
+        <span id="cart-total" class="text-lg font-bold">Total: Rs. 0.00</span>
+      </div>
+      <a href="../views/checkout.php" id="checkout" class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-400 focus:outline-none">
+        Checkout
+      </button>
+    </div>
+
   </div>
+</div>
 
-  <script>
-    // Load cart data from sessionStorage
-    const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-    const cartContainer = document.getElementById("cart-items");
-    const cartTotalElement = document.getElementById("cart-total");
+<script>
+  // Load cart data from sessionStorage
+  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const cartContainer = document.getElementById("cart-items");
+  const cartTotalElement = document.getElementById("cart-total");
 
-    // Populate cart items
-    if (cartItems.length === 0) {
-      cartContainer.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
-    } else {
-      let total = 0;
-      cartContainer.innerHTML = cartItems
-        .map(item => {
-          total += item.price * item.quantity;
-          return `
-            <div class="flex justify-between items-center mb-4">
-              <span class="font-medium">${item.name}</span>
-              <span class="text-gray-600">${item.quantity} x Rs. ${item.price}</span>
-            </div>
-          `;
-        })
-        .join("");
-      cartTotalElement.textContent = `Total: Rs. ${total.toFixed(2)}`;
-    }
+  // Populate cart items
+  if (cartItems.length === 0) {
+    cartContainer.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
+  } else {
+    let total = 0;
+    cartContainer.innerHTML = cartItems
+      .map(item => {
+        total += item.price; // Sum up the individual item prices
+        return `
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-medium">${item.name}</span>
+            <span class="text-gray-600">Rs. ${item.price}</span>
+          </div>
+        `;
+      })
+      .join("");
+    cartTotalElement.textContent = `Total: Rs. ${total.toFixed(2)}`;
+  }
 
-    // Go back button
-    document.getElementById("go-back").addEventListener("click", () => {
-      window.history.back();
-    });
-    
-    // Checkout button
-    document.getElementById("checkout").addEventListener("click", () => {
-      alert("Proceeding to checkout...");
-    });
-  </script>
+  // Go back button
+  document.getElementById("go-back").addEventListener("click", () => {
+    window.history.back();
+  });
+
+  // Checkout button
+  document.getElementById("checkout").addEventListener("click", () => {
+    alert("Proceeding to checkout...");
+  });
+</script>
+
    <footer class="bg-black text-white">
         <!-- Top Section -->
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
