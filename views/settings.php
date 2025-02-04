@@ -1,41 +1,40 @@
 <?php
 session_start();
+include 'connection.php'; // Include database connection
 
-// Example login logic
-if (isset($_POST['email']) && isset($_POST['password'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if (!isset($_SESSION['user_id'])) {
+    die("Unauthorized access.");
+}
 
-    // Example user credentials (you should replace this with DB validation)
-    $users = [
-        'user@example.com' => ['password' => 'password123', 'role' => 'user'],
-        'admin@example.com' => ['password' => 'admin123', 'role' => 'admin']
-    ];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $username = $_POST['username'];
+    $user_id = $_SESSION['user_id']; // Assuming user is logged in and user_id is stored in session
 
-    if (isset($users[$email]) && $users[$email]['password'] === $password) {
-        $_SESSION['user_email'] = $email;
-        $_SESSION['user_role'] = $users[$email]['role'];
+    // Prepare the SQL query to update the specific fields
+    $sql = "UPDATE users SET name = ?, address = ?, username = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssi", $name, $address, $username, $user_id);
 
-        // Redirect to the user's respective dashboard or cart
-        if ($_SESSION['user_role'] == 'user') {
-            header("Location: cart.php"); // Redirect to the cart page
-        } else {
-            header("Location: admin_dashboard.php"); // Redirect to the admin dashboard
-        }
-        exit();
+    if ($stmt->execute()) {
+        echo "<script>alert('Details updated successfully!');</script>";
     } else {
-        // Invalid login
-        echo "Invalid email or password!";
+        echo "<script>alert('Error updating details.');</script>";
     }
 }
+
+$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout</title>
+  <title>Cricket</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -69,22 +68,30 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
           <div class="relative flex items-center space-x-4">
               <!-- Cart Icon -->
               <a href="../views/cart.php" id="view-cart" class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                  </svg>
+                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
                   <!-- Cart Count Badge -->
                   <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      0
+                  </span>
+              </a>
+              <!-- Wish List Icon -->
+              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
+                  <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
+                  <!-- Wishlist Count Badge -->
+                  <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       0
                   </span>
               </a>
           </div>
 
           <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
+              document.addEventListener("DOMContentLoaded", () => {
+                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+                const cartCount = cartItems.length;
+
+                // Store the cart count in sessionStorage
+                sessionStorage.setItem("cartCount", cartCount);
+              });
           </script>
 
           <!-- Sign In & Cart -->
@@ -115,36 +122,36 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
             </div>
             <script>
-              const accountBtn = document.getElementById('accountBtn');
-              const dropdownMenu = document.getElementById('dropdownMenu');
+        const accountBtn = document.getElementById('accountBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
 
-              accountBtn.addEventListener('click', (event) => {
-                  event.stopPropagation();
-                  dropdownMenu.classList.toggle('hidden');
-              });
+        accountBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
 
-              // Close dropdown when clicking outside
-              document.addEventListener('click', (event) => {
-                  if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                      dropdownMenu.classList.add('hidden');
-                  }
-                });
-            </script>
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
         </div>
       </div>
     </div>
 
   <!-- Top Bar -->
-  <div class="bg-cyan-100 relative">
-    <!-- Navigation Bar -->
-    <nav class="relative z-10 flex items-center justify-between px-4 py-2">
-      <!-- Hamburger Menu -->
-      <button id="menu-toggle" class="text-black focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <div class="hidden md:flex space-x-6">
+<div class="bg-cyan-100 relative">
+  <!-- Navigation Bar -->
+  <nav class="relative z-10 flex items-center justify-between px-4 py-2">
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" class="text-black focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <div class="hidden md:flex space-x-6">
         <a href="../index.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
         <a href="../views/services.php" 
@@ -244,78 +251,66 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 </script>
 
   </header>
-<body class="bg-gray-100">
-  <div class="container mx-auto mt-10 p-6 bg-red-100 rounded-lg shadow-lg">
-    <h2 class="text-2xl font-bold mb-6 text-center">Checkout</h2>
+  <body class="h-screen  justify-center items-center">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md ml-96">
+        <h2 class="text-2xl font-semibold text-gray-700 text-center mb-6">Edit Profile</h2>
 
-    <!-- Order Summary -->
-    <div class="border-b pb-6 mb-6">
-      <h3 class="text-xl font-semibold mb-4">Order Summary</h3>
-      <div id="order-summary" class="space-y-4">
-        <!-- Cart Items (will be dynamically populated) -->
-      </div>
-      <div class="flex justify-between items-center font-bold mt-4">
-        <span>Total:</span>
-        <span id="total-amount">Rs. 0.00</span>
-      </div>
+        <!-- Profile Picture -->
+        <div class="flex justify-center mb-6 relative">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture" class="w-24 h-24 rounded-full border-4 border-gray-300">
+            <label class="absolute bottom-2 right-16 bg-blue-600 text-white p-2 rounded-full cursor-pointer">
+                <input type="file" class="hidden" id="profilePic">
+                ✏️
+            </label>
+        </div>
+
+        <!-- Form Fields -->
+        <form class="space-y-4" action="settings.php" method="POST">
+            <div>
+                <label class="text-gray-600">Full Name</label>
+                <input type="text" name="name" placeholder="Enter your name" class="w-full border border-gray-300 px-4 py-2 rounded-md">
+            </div>
+
+            <div>
+                <label class="text-gray-600">Username</label>
+                <input type="text" name="username" placeholder="Choose a username" class="w-full border border-gray-300 px-4 py-2 rounded-md">
+            </div>
+
+            <div>
+                <label class="text-gray-600">Email</label>
+                <input type="email" placeholder="Enter your email" class="w-full border border-gray-300 px-4 py-2 rounded-md">
+            </div>
+
+            <div>
+                <label class="text-gray-600">Address</label>
+                <input type="text" name="address" placeholder="Enter your address" class="w-full border border-gray-300 px-4 py-2 rounded-md">
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label class="text-gray-600">Password</label>
+                <div class="relative">
+                    <input type="password" placeholder="Enter your password" class="w-full border border-gray-300 px-4 py-2 rounded-md pr-10" id="passwordField">
+                    <button type="button" class="absolute right-3 top-3 text-gray-600" onclick="togglePassword()">
+                        👁
+                    </button>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="text-center">
+                <button value="Update" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Save</button>
+            </div>
+        </form>
     </div>
 
-    <!-- Billing Information -->
-    <form id="checkout-form" action="process_checkout.php" method="POST">
-      <h3 class="text-xl font-semibold mb-4">Billing Information</h3>
-      <div class="grid grid-cols-1 gap-4">
-        <input type="text" name="name" placeholder="Full Name" required class="p-3 border rounded-lg">
-        <input type="email" name="email" placeholder="Email" required class="p-3 border rounded-lg">
-        <input type="text" name="contact" placeholder="Contact Number" required class="p-3 border rounded-lg">
-        <input type="text" name="address" placeholder="Billing Address" required class="p-3 border rounded-lg">
-      </div>
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("passwordField");
+            passwordField.type = passwordField.type === "password" ? "text" : "password";
+        }
+    </script>
 
-      <!-- Payment Information -->
-      <h3 class="text-xl font-semibold my-6">Payment Information</h3>
-      <div class="grid grid-cols-1 gap-4">
-        <select name="payment_method" required class="p-3 border rounded-lg">
-          <option value="" disabled selected>Select Payment Method</option>
-          <option value="credit_card">Credit Card</option>
-          <option value="paypal">PayPal</option>
-          <option value="cod">Cash on Delivery</option>
-        </select>
-      </div>
-
-      <!-- Place Order Button -->
-      <button type="submit" class="mt-6 w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600">
-        Place Order
-      </button>
-    </form>
-  </div>
-
-  <script>
-  // Load cart items from sessionStorage
-  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-  const orderSummary = document.getElementById("order-summary");
-  const totalAmount = document.getElementById("total-amount");
-
-  let total = 0;
-
-  if (cartItems.length === 0) {
-    orderSummary.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
-  } else {
-    orderSummary.innerHTML = cartItems
-      .map(item => {
-        const subtotal = item.price; // Only use the price since we're removing the quantity
-        total += subtotal;
-        return `
-          <div class="flex justify-between items-center">
-            <span>${item.name}</span>
-            <span>Rs. ${subtotal.toFixed(2)}</span>
-          </div>
-        `;
-      })
-      .join("");
-    totalAmount.textContent = `Rs. ${total.toFixed(2)}`;
-  }
-</script>
-
-</body>
 <footer class="bg-black text-white">
         <!-- Top Section -->
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
@@ -412,5 +407,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             </div>
         </div>
         </footer>
-
+    
+</body>
 </html>

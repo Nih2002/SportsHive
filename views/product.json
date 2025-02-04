@@ -1,0 +1,23 @@
+
+{
+  "products": [
+    {
+      "name": "Sports Shoes",
+      "image": "https://example.com/shoe.jpg",
+      "description": "High-performance running shoes for athletes.",
+      "price": 4999,
+      "rating": 4.5,
+      "sizes": ["7", "8", "9", "10"],
+      "colors": ["Red", "Blue", "Black"]
+    },
+    {
+      "name": "Basketball",
+      "image": "https://example.com/basketball.jpg",
+      "description": "Official size and weight basketball.",
+      "price": 1500,
+      "rating": 4.7,
+      "sizes": ["Standard"],
+      "colors": ["Orange"]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
+CREATE TABLE netball (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    sizes VARCHAR(255) NOT NULL,
+    colors VARCHAR(255) NOT NULL,
+    item_type VARCHAR(100) NOT NULL
+);
+CREATE TABLE product_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+CREATE TABLE cricket (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock',
+    description TEXT
+);
+
+
+INSERT INTO cricket (name, price, image_url, item_type, sizes, colors, stock_status, description)
+VALUES 
+('NDSC Belter Cricket Shoes | Eva Sock Liner | Lightweight Outsole | Durable', 5000.00, '../images/cshose2.png', 'cricket_shoes', '4,5', 'red,blue,black', 'In Stock', 'High-performance cricket shoes with Eva sock liner, designed for lightweight comfort and durability.'),
+('GM Kryos Rubber Soled Adult Cricket Shoe', 5100.00, '../images/cshose3.png', 'cricket_shoes', '6,7,8', 'black,red', 'Out of Stock', 'Rubber-soled cricket shoes designed for stability and comfort in all conditions.'),
+('DSC Rigor X Junior Rubber Cricket Shoes - White / Red', 11000.00, '../images/cshose4.png', 'cricket_shoes', '5,6', 'white,red', 'Out of Stock', 'Durable junior cricket shoes with rubber sole, ideal for all-day wear.'),
+('ASS SMACKER Cricket Shoe', 13500.00, '../images/cshose5.png', 'cricket_shoes', '4,5', 'black,red', 'In Stock', 'Advanced design cricket shoes offering maximum comfort and traction on the field.');
+
+INSERT INTO cricket (name, price, image_url, item_type, sizes, colors, stock_status, description)
+VALUES 
+('CRICKET PRACTICE MIDDLING BAT', 10000.00, '../images/bat1.png', 'equipment', '4, 5, 6', 'red ,blue ,yellow', 'In Stock', 'High-performance cricket bats.'),
+('KIDS CRICKET BAT- MY FIRST BAT TURQ', 11000.00, '../images/bat2.png', 'equipment', '6, 7', 'black ,red', 'In Stock', 'cricket bats for kids.'),
+('DSC Lava Kashmir Willow Cricket Bat Short Handle', 8900.00, '../images/bat3.png', 'equipment', '4, 5 ', 'white , red', 'In Stock', ' Cricket Bat Short Handle Cricket Bat Short Handle'),
+('Cricket Bat (Beige)', 9900.00, '../images/bat5.png', 'equipment', '4, 5', 'black, red', 'In Stock', 'Stealth 5.1 English Willow 2024 Cricket Bat (Beige)'),
+('Mens Supaball Indoor Cricket Ball ', 1500.00, '../images/ball1.png', 'equipment', '4, 5 ', 'yellow, blue , red', 'Out of Stock', ' Cricket Ball Mens Supaball Indoor'),
+('DSC Grade Leather Cricket Ball', 5200.00, '../images/ball2.png', 'equipment', '3, 5 ', 'white , red', 'In Stock', ' Cricket Ball Water Proofed Leather | Top Quality Cork'),
+('Windball Cricket Ball', 32000.00, '../images/ball2.png', 'equipment', '4, 6 ', 'yellow , red', 'In Stock', ' Cricket Ball Windball Cricket Ball (Pink)'),
+('Leather Cricket Ball', 21000.00, '../images/ball4.png', 'equipment', '4, 6 ', 'yellow , blue', 'In Stock', ' Cricket Ball Mens Club Leather Cricket Ball (Red)'),
+('Tennis Cricket Ball', 31300.00, '../images/ball5.png', 'equipment', '4, 6 ', 'green, yellow , blue', 'In Stock', ' DSC Swing Bolt Tennis Cricket Ball'),
+('Wheelie Cricket Bag', 10000.00, '../images/bag1.png', 'equipment', 'small ', 'gray , blue', 'Out of Stock', 'GM 909 Grey / Black Wheelie Cricket Bag'),
+('Kit Bag ', 52200.00, '../images/bag2.png', 'equipment', 'small ', 'gray , black', 'In Stock', 'DSC Intense Rage Kit Bag | Anti-Scuff Corner Protection | Durable & Classy'),
+('SS Super Select Cricket Kit Bag', 6290.00, '../images/bag3.png', 'equipment', 'small ', 'gray , black', 'Out of Stock', 'DSC Intense Rage Kit Bag SS Super');
+
+
+INSERT INTO cricket (name, price, image_url, item_type, sizes, colors, stock_status, description)
+VALUES 
+('Cricket Batting Helmet', 6000.00, '../images/helmet1.png', 'protection', 'small, large', 'red ,blue ', 'In Stock', 'Pro 600 Cricket Batting Helmet Junior Small'),
+('Cricket Helmet Junior', 11000.00, '../images/helmet2.png', 'protection', 'small, medium','', 'Out of Stock', 'GM Purist Geo II Cricket Helmet Junior.'),
+('SS Prince Cricket Helmet', 6500.00, '../images/helmet3.png', 'protection', 'small, large ', 'blue , red', 'In Stock', ' SS Prince Cricket Helmet | Navy Blue | Mild Steel Grill | Eva Padding'),
+('Elite Helmet, Navy', 8000.00, '../images/helmet4.png', 'protection', 'small, large', 'black, red', 'In Stock', 'Elite Helmet, Navy'),
+('Ultimate 360 Helmet', 12000.00, './images/helmet5.png', 'protection', '4, 5 ', 'yellow, blue , red', 'Out of Stock', ' Cricket hetmet Mens Supaball Indoor'),
+('Cricket Batting Pads', 2500.00, '../images/pad1.png', 'protection', '3, 5 ', 'blue , red', 'In Stock', 'Kookaburra Rapid 4.1 Cricket Batting Pads Adult'),
+('Cricket Batting Pads', 32000.00, '../images/pad2.png', 'protection', 'small, large', 'yellow , red', 'In Stock', 'GM Kryos 505 Cricket Batting Pads'),
+('Abdo Guard', 2000.00, '../images/pad3.png', 'protection', '4, 6 ', 'yellow , blue', 'In Stock', 'Pro Performance Abdo Guard, White'),
+('Thigh Pads', 21000.00, '../images/pad4.png', 'protection', 'small, large ', 'yellow , blue', 'In Stock', 'All In One Academy Thigh Pads, White, LH'),
+('Cricket batting gloves', 3000.00, '../images/gl1.png', 'protection', 'small, large ', 'gray , black', 'In Stock', 'Kookaburra Kahuna 6.1 Cricket batting gloves'),
+('Wicket keeping Gloves ', 10000.00, '../images/gl2.png', 'protection', 'small ', 'yellow , black', 'In Stock', 'DSC Intense Attitude Wicket keeping Gloves | Rubber Grip in Palm Facing | Cotton'),
+('Wicket Keeping Inner Gloves', 2200.00, '../images/gl3.png', 'protection', 'small ', 'blue , black', 'In Stock', 'DSC 1501813 Speed Cricket Wicket Keeping Inner Gloves'),
+('Padded Gloves', 6290.00, '../images/gl4.png', 'protection', 'small, medium ', 'blue , black', 'In Stock', 'SG League Cricket Batting Gloves | Lightweight |Professional Grade Padded Gloves');
+
+
+CREATE TABLE swimming (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock' ,
+    description TEXT
+);
+
+CREATE TABLE rugby (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock',
+    description TEXT
+);
+
+CREATE TABLE football (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock',
+    description TEXT
+);
+
+CREATE TABLE cycling (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock',
+    description TEXT
+);
+
+CREATE TABLE basketball (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock',
+    description TEXT
+);
+
+CREATE TABLE athletic (
+    id INT AUTO_INCREMENT PRIMARY KEY,   
+    name VARCHAR(255) NOT NULL,         
+    price DECIMAL(10, 2) NOT NULL,       
+    image_url VARCHAR(255) NOT NULL,        
+    item_type VARCHAR(100) NOT NULL,       
+    sizes VARCHAR(255),                    
+    colors VARCHAR(255),                 
+    stock_status ENUM('In Stock', 'Out of Stock') DEFAULT 'In Stock',
+    description TEXT
+);
+
+INSERT INTO volleyball (name, price, image_url, item_type, sizes, colors, stock_status, description)
+VALUES 
+('Volleyball V500', 3500.00, '../images/vball1.png', 'equipemt', '4 , 5', 'red ,blue ', 'In Stock', 'Volleyball V500'),
+('Volleyball|V100 Soft ', 3000.00, '../images/vball2.png', 'equipemt', '4 , 3','', 'Out of Stock', '230-250 g Volleyball|V100 Soft.'),
+('Outdoor Volleyball', 1990.00, '../images/vball3.png', 'equipemt', '3 , 4 ', 'blue , red', 'Out of Stock', 'Outdoor Volleyball VBO100 '),
+('Beach Volleyball ', 8000.00, '../images/vball4.png', 'equipemt', '3 , 4', 'black, red', 'In Stock', 'Official Dimensions Beach Volleyball Set BV900'),
+('V900 Volleyball Net', 2790.00, '../images/vball5.png', 'equipemt', '4, 5 ', 'yellow, red', 'In Stock', 'V900 Volleyball Net'),
+('Volleyball Net', 9100.00, '../images/vball6.png', 'equipemt', '3, 5 ', 'blue , red', 'In Stock', 'Volleyball Net with Official Dimensions BVN900'),
+('Starter Volleyball V100', 1400.00, '../images/vball7.png', 'equipemt', '3 , 4', 'yellow , red', 'In Stock', 'Starter Volleyball V100 - Turquoise Blue');
+
+
+
+
+
+
+

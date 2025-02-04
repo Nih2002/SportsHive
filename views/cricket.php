@@ -1,3 +1,24 @@
+<?php
+// Start the session at the top of the file
+session_start();
+
+// Initialize or retrieve the cart items array
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = []; // Default to an empty array if no cart exists
+}
+
+// Simulate adding an item to the cart (for example, when the user clicks "Add to Cart")
+if (isset($_POST['addToCart'])) {
+    $itemId = $_POST['itemId']; // You can pass the item ID dynamically
+    if (!isset($_SESSION['cart'][$itemId])) {
+        $_SESSION['cart'][$itemId] = 0; // Initialize count if not already set
+    }
+    $_SESSION['cart'][$itemId] += 1; // Increment the cart count for this item
+}
+
+// Get the total cart count (sum of all item counts)
+$cartCount = array_sum($_SESSION['cart']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cricket</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -38,38 +60,75 @@
           <div class="relative flex items-center space-x-4">
               <!-- Cart Icon -->
               <a href="../views/cart.php" id="view-cart" class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                  </svg>
+                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
                   <!-- Cart Count Badge -->
                   <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      0
+                  </span>
+              </a>
+              <!-- Wish List Icon -->
+              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
+                  <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
+                  <!-- Wishlist Count Badge -->
+                  <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       0
                   </span>
               </a>
           </div>
 
           <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
+              document.addEventListener("DOMContentLoaded", () => {
+                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+                const cartCount = cartItems.length;
+
+                // Store the cart count in sessionStorage
+                sessionStorage.setItem("cartCount", cartCount);
+              });
           </script>
 
           <!-- Sign In & Cart -->
-            <div class="flex space-x-4">
+          <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-user"></i>
-                    <span>Sign Up</span>
-                  </a>
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
+                      <i class="fas fa-user"></i>
+                      <span>Sign Up</span>
+                  </button>
+
 
                   <!-- Log In Button -->
-                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
-                  </a>
+            </button>
             </div>
+            <!-- Account Button -->
+            <button id="accountBtn" class="flex items-center px-4 py-2 bg-white rounded-lg shadow">
+                <i class="fas fa-user mr-2"></i> Account 
+                <i class="fas fa-caret-down ml-2"></i>
+            </button>
+
+            <!-- Dropdown Menu (with higher z-index) -->
+            <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg z-50">
+                <a href="../views/myaccount.php" class="block px-4 py-2 hover:bg-gray-700">My Account</a>
+                <a href="../views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
+                <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
+            </div>
+            <script>
+        const accountBtn = document.getElementById('accountBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        accountBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
         </div>
       </div>
     </div>
@@ -298,1625 +357,757 @@
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshose1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Running Shoes | Lightweight | EVA | Ideal for Trail Running</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5200.00</h4>
-                <!-- Star Rating -->
-                 <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 6</button>
-                        </li>
-                    </ul>
+            <!-- Wishlist Modal -->
+            <div id="wishlist-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                    <h2 class="text-xl font-bold mb-4">Your Wishlist</h2>
+                    <div id="wishlist-items"></div>
+                    <button id="close-wishlist" class="mt-4 bg-gray-500 text-white p-2 rounded-full">Close</button>
                 </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-400 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="76" data-name="Running Shoes" data-price="5200">ADD TO CART</button>
-                </div>
-                </a>
             </div>
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshose2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">NDSC Belter Cricket Shoes | Eva Sock Liner | Lightweight Outsole | Durable</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="77" data-name="NDSC Belter Cricket Shoes" data-price="5000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshose3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">GM Kryos Rubber Soled Adult Cricket Shoe</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5100.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshose4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">DSC Rigor X Junior Rubber Cricket Shoes - White / Red </h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshose5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">ASS SMACKER Cricket Shoe</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 13500.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="78" data-name="ASS SMACKER Cricket Shoe" data-price="13500">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshose6.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">DSC Belter Cricket Shoes | Material: Mesh</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 12000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-cyan-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="79" data-name="DSC Belter Cricket Shoes" data-price="12000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            </div>
-        </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                let wishlist = JSON.parse(sessionStorage.getItem("wishlist")) || [];
 
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-            <!-- Header Section -->
-            <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET CLOTHINGS</h1>
-            </div>
+                updateWishlistUI();
+                updateWishlistCount();
 
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cbottom1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">T20 Matrix Playing Trouser|Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="80" data-name="T20 Matrix Playing Trouser|Black" data-price="10000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cbottom2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Pro Performance Trousers, Ivory</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cbottom3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">AMatrix V2 T20 Playing Trouser, Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2300.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="81" data-name="Matrix V2 T20 Playing Trouser, Black" data-price="2300">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cbottom4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Storm Jacket, Green</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11900.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="82" data-name="Storm Jacket, Green" data-price="11900">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshirt1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Pro Performance Short Sleeve Men's T-Shirt, Navy</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21100.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="83" data-name="Pro Performance Short Sleeve Men's T-Shirt, Navy" data-price="21100">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshirt2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Unisex Adult Pro Player Cricket Shirt (White)</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1700.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-green-500 hover:ring-2 hover:ring-red-300" data-color="green"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="84" data-name="Unisex Adult Pro Player Cricket Shirt" data-price="1700">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshirt3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Storm Hooded Top,Green</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/cshirt4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Matrix T-Shirt|Red</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2900.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            </div>
-        </div>
+                // Add to Wishlist
+                document.querySelectorAll(".add-to-wishlist").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const item = {
+                            id: this.getAttribute("data-id"),
+                            name: this.getAttribute("data-name"),
+                            price: this.getAttribute("data-price"),
+                            image: this.getAttribute("data-image")
+                        };
 
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-            <!-- Header Section -->
-            <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET EQUIPMENT</h1>
-            </div>
+                        if (!wishlist.find(i => i.id === item.id)) {
+                            wishlist.push(item);
+                            sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                            updateWishlistUI();
+                            updateWishlistCount();
 
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bat1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">CRICKET PRACTICE MIDDLING BAT</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-400 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="85" data-name="CRICKET PRACTICE MIDDLING BAT" data-price="10000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bat2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">KIDS CRICKET BAT- MY FIRST BAT TURQ</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="86" data-name="KIDS CRICKET BAT- MY FIRST BAT TURQ" data-price="11000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bat3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">DSC Lava Kashmir Willow Cricket Bat Short Handle</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8900.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="87" data-name="DSC Lava Kashmir Willow Cricket Bat Short Handle" data-price="8900">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bat4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Stealth 5.1 English Willow 2024 Cricket Bat (Beige)</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9900.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bat5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Vapour Academy Bat, Natural</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="88" data-name="Vapour Academy Bat, Natural" data-price="11000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-            
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/ball1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Mens Supaball Indoor Cricket Ball (Red)</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1500.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-green-400 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/ball2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">DSC Grade Leather Cricket Ball (White)| Water Proofed Leather | Top Quality Cork</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="89" data-name="DSC Grade Leather Cricket Ball" data-price="5200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/ball3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Windball Cricket Ball (Pink)</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 32000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="90" data-name="Windball Cricket Ball (Pink)" data-price="32000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/ball4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Mens Club Leather Cricket Ball (Red)</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="91" data-name="Mens Club Leather Cricket Ball (Red)" data-price="21000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/ball5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">DSC Swing Bolt Tennis Cricket Ball</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 31300.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-green-500 hover:ring-2 hover:ring-red-300" data-color="green"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="92" data-name="DSC Swing Bolt Tennis Cricket Ball" data-price="31300">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bag1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">GM 909 Grey / Black Wheelie Cricket Bag</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bag2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">DSC Intense Rage Kit Bag | Anti-Scuff Corner Protection | Durable & Classy</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 52200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="93" data-name="DSC Intense Rage Kit Bag" data-price="52200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bag3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">SS Super Select Cricket Kit Bag</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6290.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bag4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">SS 0010 Cricket Kit Bag</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 22100.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="94" data-name="SS 0010 Cricket Kit Bag" data-price="22100">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bag5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">GN350 Team Wheelie Bag, Black / Silver</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 22570.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            
-            </div>
-        </div>
+                            // ✅ Show alert message
+                            showAlert(`${item.name} added to wishlist!`, "success");
+                        } else {
+                            showAlert(`${item.name} is already in the wishlist!`, "info");
+                        }
+                    });
+                });
+                function showAlert(message, type) {
+                    const alertBox = document.createElement("div");
+                    alertBox.classList.add("fixed", "top-5", "right-5", "p-4", "rounded-lg", "shadow-lg", "text-white", "transition-all", "duration-500");
 
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-            <!-- Header Section -->
-            <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET PROTECTION</h1>
-            </div>
+                    // Set background color based on alert type
+                    if (type === "success") {
+                        alertBox.classList.add("bg-green-500");
+                    } else if (type === "info") {
+                        alertBox.classList.add("bg-blue-500");
+                    } else {
+                        alertBox.classList.add("bg-red-500");
+                    }
 
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/helmet1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Pro 600 Cricket Batting Helmet Junior Small</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-800 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="95" data-name="Pro 600 Cricket Batting Helmet Junior Small" data-price="6000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/helmet2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">GM Purist Geo II Cricket Helmet Junior</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 11000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/helmet3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">SS Prince Cricket Helmet | Navy Blue | Mild Steel Grill | Eva Padding</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6500.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/helmet4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Elite Helmet, Navy</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-600 hover:ring-2 hover:ring-red-300" data-color="blue"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="96" data-name="Elite Helmet, Navy" data-price="8000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/helmet5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Ultimate 360 Helmet, Maroon</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 12000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-            
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/pad1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Kookaburra Rapid 4.1 Cricket Batting Pads Adult</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2500.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="97" data-name="Kookaburra Rapid 4.1 Cricket Batting Pads Adult" data-price="21500">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/pad2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">GM Kryos 505 Cricket Batting Pads</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="98" data-name="GM Kryos 505 Cricket Batting Pads" data-price="3200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/pad3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Pro Performance Abdo Guard, White</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/pad4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">All In One Academy Thigh Pads, White, LH</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 21000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="99" data-name="All In One Academy Thigh Pads, White, LH" data-price="21000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/gl1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Kookaburra Kahuna 6.1 Cricket batting gloves</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="100" data-name="Kookaburra Kahuna 6.1 Cricket batting gloves" data-price="3000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/gl2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">DSC Intense Attitude Wicket keeping Gloves | Rubber Grip in Palm Facing | Cotton</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 10000.00</h4>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/gl3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">DSC 1501813 Speed Cricket Wicket Keeping Inner Gloves</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="101" data-name="DSC 1501813 Speed Cricket Wicket Keeping Inner Gloves" data-price="2200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/gl4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">SG League Cricket Batting Gloves | Lightweight |Professional Grade Padded Gloves</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 6290.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-yellow-200 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Star Rating -->
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="102" data-name="SG League Cricket Batting Gloves" data-price="6290">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            </div>
-        </div>
-      </div>
-      </div>
-        
-      <script>
-        // Initialize cart from session storage
-        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cart-count');
-        const cartModal = document.getElementById('cart-modal');
-        const cartItems = document.getElementById('cart-items');
-        const cartTotal = document.getElementById('cart-total');
+                    alertBox.textContent = message;
+                    document.body.appendChild(alertBox);
 
-        const updateCartCount = () => {
-            cartCount.textContent = cart.length;
-        };
-
-        const renderCart = () => {
-            cartItems.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'flex justify-between mb-4';
-                div.innerHTML = `
-                    <span>${item.name}</span>
-                    <span>Rs. ${item.price}</span>
-                `;
-                cartItems.appendChild(div);
-                total += item.price;
-            });
-            cartTotal.textContent = `Total: Rs. ${total}`;
-        };
-
-        // Handle adding items to the cart
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const id = button.getAttribute('data-id');
-                const name = button.getAttribute('data-name');
-                const price = parseInt(button.getAttribute('data-price'));
-                const item = { id, name, price };
-
-                // Add to cart and update session storage
-                if (!cart.find(e => e.id === id)) {
-                    cart.push(item);
-                    sessionStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartCount();
-                    alert(`${name} added to cart!`);
-                } else {
-                    alert(`${name} is already in the cart.`);
+                    // Remove alert after 3 seconds
+                    setTimeout(() => {
+                        alertBox.classList.add("opacity-0");
+                        setTimeout(() => alertBox.remove(), 500);
+                    }, 3000);
                 }
+
+
+                // Update Wishlist UI
+                function updateWishlistUI() {
+                const wishlistItemsContainer = document.getElementById("wishlist-items");
+                wishlistItemsContainer.innerHTML = ""; // Clears previous items
+
+                wishlist.forEach(item => {
+                    const itemElement = document.createElement("div");
+                    itemElement.classList.add("flex", "items-center", "justify-between", "border-b", "py-2");
+                    itemElement.innerHTML = `
+                        <div class="flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
+                            <div>
+                                <p class="font-semibold">${item.name}</p>
+                                <p class="text-gray-500">$${item.price}</p>
+                            </div>
+                        </div>
+                        <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
+                            <i class="fas fa-trash-alt text-lg"></i> <!-- Delete Icon -->
+                        </button>
+                    `;
+                    wishlistItemsContainer.appendChild(itemElement);
+                });
+
+                document.querySelectorAll(".remove-item").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const itemId = this.getAttribute("data-id");
+                        wishlist = wishlist.filter(item => item.id !== itemId);
+                        sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                        updateWishlistUI();
+                        updateWishlistCount();
+                    });
+                });
+            }
+
+                // Update Wishlist Count
+                function updateWishlistCount() {
+                    document.getElementById("wishlist-count").textContent = wishlist.length;
+                }
+
+                // Show Wishlist Modal
+                document.getElementById("view-wishlist").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.getElementById("wishlist-modal").classList.remove("hidden");
+                });
+
+                // Close Wishlist Modal
+                document.getElementById("close-wishlist").addEventListener("click", function () {
+                    document.getElementById("wishlist-modal").classList.add("hidden");
+                });
             });
-        });
 
-        // Open the cart modal
-        document.getElementById('view-cart').addEventListener('click', () => {
-            renderCart();
-            cartModal.classList.remove('hidden');
-        });
+              </script>
+              </div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <?php
+          require 'connection.php'; // Include the database connection
 
-        // Close the cart modal
-        document.getElementById('close-cart').addEventListener('click', () => {
-            cartModal.classList.add('hidden');
-        });
+          // Fetch products from cricket table
+          $sql = "SELECT id, name, image_url, item_type, sizes, colors, stock_status, description, price FROM cricket WHERE item_type = 'cricket_shoes'";
+          $result = $conn->query($sql);
 
-        // Initial update of cart count
-        updateCartCount();
-    </script>
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $id = $row['id'];
+                  $name = $row['name'];
+                  $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                  $sizes = explode(", ", $row['sizes']);
+                  $colors = explode(", ", $row['colors']);
+                  $stock_status = $row['stock_status'];
+                  $description = !empty($row['description']) ? $row['description'] : 'No description available';  // Default if description is empty
+                  $price = isset($row['price']) ? $row['price'] : 0;  // Ensure price is set (set to 0 if not available)
+
+                  // Fetch images for this product
+                  $sql_images = "SELECT image_url FROM product_images WHERE product_id = $id";
+                  $result_images = $conn->query($sql_images);
+                  $images = [];
+                  while ($image_row = $result_images->fetch_assoc()) {
+                      $images[] = $image_row['image_url'];
+                  }
+
+                  // Display product details
+                  echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                  echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                  echo '<div class="p-4 text-center">';
+                  echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                  echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<p class="text-gray-600">Stock: ';
+                  if (strtolower($stock_status) === 'out of stock') {
+                      echo '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>';
+                  } else {
+                      echo htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                  }
+                  echo '</p>';
+
+                  // **Star Rating Display**
+                  echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-gray-300 text-xl">☆</span>';
+                  echo '</div>';
+
+
+                  // Display available sizes
+                  echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($sizes as $size) {
+                      echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                  }
+                  echo '</ul>';
+
+                  // Colors Section
+                  echo '<div class="text-gray-700 text-sm mt-4">
+                  <p class="font-medium">Available Colors:</p>
+                  <ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($colors as $color) {
+                      // Special case for black color
+                      if (strtolower($color) === 'black') {
+                          $colorClass = "bg-black";  // Tailwind class for black
+                      } else {
+                          // Apply Tailwind class for other colors (e.g., bg-red-500, bg-blue-500)
+                          $colorClass = "bg-" . strtolower($color) . "-500"; 
+                      }
+                      echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                  }
+                  echo '</ul></div>';
+
+                  // Add to Cart & Wishlist buttons
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <button class="add-to-cart bg-red-500 text-red text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>
+
+                  <!-- Wishlist Button with Heart Icon and Name -->
+                  <button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">
+                      <!-- Heart Icon in Red -->
+                      <i class="fas fa-heart text-red-500 text-xl"></i>
+                      <!-- Name Text -->
+                      <span>Add to Wishlist</span>
+                  </button>
+                  </div>
+
+                  <!-- Right Arrow Icon to open the Modal -->
+                  <button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">
+                  <i class="fas fa-arrow-right"></i>
+                  </button>
+                  </div>
+                  </div>';
+
+                  // Modal Structure for Description and Images
+                  echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                  <div class="bg-white p-6 rounded-lg w-96">
+                      <h2 class="text-xl font-bold mb-4">Product Description</h2>
+                      <p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>
+                      <div id="modal-images-' . $id . '" class="mt-4">';
+
+                  // Display multiple images in the modal
+                  if (!empty($images)) {
+                      foreach ($images as $image) {
+                          echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain mb-2">';
+                      }
+                  } else {
+                      echo '<p class="text-gray-500 text-center">No additional images available.</p>';
+                  }
+
+                  echo '</div>
+                      <button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>
+                  </div>
+              </div>';
+              }
+          } else {
+              echo "<p class='text-center text-gray-500'>No products available.</p>";
+          }
+
+          $conn->close();
+        ?>
+    </div>
+
+
+    <!-- Header Section -->
+    <div class="text-center mb-12 mt-8">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET CLOTHINGS</h1>
+     </div>
+
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <?php
+          require 'connection.php'; // Include the database connection
+
+          // Fetch products from cricket table
+          $sql = "SELECT id, name, image_url, item_type, sizes, colors, stock_status, description, price FROM cricket WHERE item_type = 'Clothings'";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $id = $row['id'];
+                  $name = $row['name'];
+                  $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                  $sizes = explode(", ", $row['sizes']);
+                  $colors = explode(", ", $row['colors']);
+                  $stock_status = $row['stock_status'];
+                  $description = !empty($row['description']) ? $row['description'] : 'No description available';  // Default if description is empty
+                  $price = isset($row['price']) ? $row['price'] : 0;  // Ensure price is set (set to 0 if not available)
+
+                  // Fetch images for this product
+                  $sql_images = "SELECT image_url FROM product_images WHERE product_id = $id";
+                  $result_images = $conn->query($sql_images);
+                  $images = [];
+                  while ($image_row = $result_images->fetch_assoc()) {
+                      $images[] = $image_row['image_url'];
+                  }
+
+                  // Display product details
+                  echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                  echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                  echo '<div class="p-4 text-center">';
+                  echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                  echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<p class="text-gray-600">Stock: ';
+                  if (strtolower($stock_status) === 'out of stock') {
+                      echo '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>';
+                  } else {
+                      echo htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                  }
+                  echo '</p>';
+
+                  // **Star Rating Display**
+                  echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-gray-300 text-xl">☆</span>';
+                  echo '</div>';
+
+
+                  // Display available sizes
+                  echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($sizes as $size) {
+                      echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                  }
+                  echo '</ul>';
+
+                  // Colors Section
+                  echo '<div class="text-gray-700 text-sm mt-4">
+                  <p class="font-medium">Available Colors:</p>
+                  <ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($colors as $color) {
+                      // Special case for black color
+                      if (strtolower($color) === 'black') {
+                          $colorClass = "bg-black";  // Tailwind class for black
+                      } else {
+                          // Apply Tailwind class for other colors (e.g., bg-red-500, bg-blue-500)
+                          $colorClass = "bg-" . strtolower($color) . "-500"; 
+                      }
+                      echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                  }
+                  echo '</ul></div>';
+
+                  // Add to Cart & Wishlist buttons
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <button class="add-to-cart bg-red-500 text-red text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>
+
+                  <!-- Wishlist Button with Heart Icon and Name -->
+                  <button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">
+                      <!-- Heart Icon in Red -->
+                      <i class="fas fa-heart text-red-500 text-xl"></i>
+                      <!-- Name Text -->
+                      <span>Add to Wishlist</span>
+                  </button>
+                  </div>
+
+                  <!-- Right Arrow Icon to open the Modal -->
+                  <button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">
+                  <i class="fas fa-arrow-right"></i>
+                  </button>
+                  </div>
+                  </div>';
+
+
+
+                  // Modal Structure for Description and Images
+                  echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                  <div class="bg-white p-6 rounded-lg w-96">
+                      <h2 class="text-xl font-bold mb-4">Product Description</h2>
+                      <p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>
+                      <div id="modal-images-' . $id . '" class="mt-4">';
+
+                  // Display multiple images in the modal
+                  if (!empty($images)) {
+                      foreach ($images as $image) {
+                          echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain mb-2">';
+                      }
+                  } else {
+                      echo '<p class="text-gray-500 text-center">No additional images available.</p>';
+                  }
+
+                  echo '</div>
+                      <button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>
+                  </div>
+              </div>';
+              }
+          } else {
+              echo "<p class='text-center text-gray-500'>No products available.</p>";
+          }
+
+          $conn->close();
+        ?>
+    </div>
+
+          
+    <!-- Header Section -->
+    <div class="text-center mb-12 mt-8">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET EQUIPMENT</h1>
+     </div>
+
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <?php
+          require 'connection.php'; // Include the database connection
+
+          // Fetch products from cricket table
+          $sql = "SELECT id, name, image_url, item_type, sizes, colors, stock_status, description, price FROM cricket WHERE item_type = 'equipment'";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $id = $row['id'];
+                  $name = $row['name'];
+                  $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                  $sizes = explode(", ", $row['sizes']);
+                  $colors = explode(", ", $row['colors']);
+                  $stock_status = $row['stock_status'];
+                  $description = !empty($row['description']) ? $row['description'] : 'No description available';  // Default if description is empty
+                  $price = isset($row['price']) ? $row['price'] : 0;  // Ensure price is set (set to 0 if not available)
+
+                  // Fetch images for this product
+                  $sql_images = "SELECT image_url FROM product_images WHERE product_id = $id";
+                  $result_images = $conn->query($sql_images);
+                  $images = [];
+                  while ($image_row = $result_images->fetch_assoc()) {
+                      $images[] = $image_row['image_url'];
+                  }
+
+                  // Display product details
+                  echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                  echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                  echo '<div class="p-4 text-center">';
+                  echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                  echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<p class="text-gray-600">Stock: ';
+                  if (strtolower($stock_status) === 'out of stock') {
+                      echo '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>';
+                  } else {
+                      echo htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                  }
+                  echo '</p>';
+
+                  // **Star Rating Display**
+                  echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-gray-300 text-xl">☆</span>';
+                  echo '</div>';
+
+
+
+                  // Display available sizes
+                  echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($sizes as $size) {
+                      echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                  }
+                  echo '</ul>';
+
+                  // Colors Section
+                  echo '<div class="text-gray-700 text-sm mt-4">
+                  <p class="font-medium">Available Colors:</p>
+                  <ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($colors as $color) {
+                      // Special case for black color
+                      if (strtolower($color) === 'black') {
+                          $colorClass = "bg-black";  // Tailwind class for black
+                      } else {
+                          // Apply Tailwind class for other colors (e.g., bg-red-500, bg-blue-500)
+                          $colorClass = "bg-" . strtolower($color) . "-500"; 
+                      }
+                      echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                  }
+                  echo '</ul></div>';
+
+                  // Add to Cart & Wishlist buttons
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <button class="add-to-cart bg-red-500 text-red text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>
+
+                  <!-- Wishlist Button with Heart Icon and Name -->
+                  <button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">
+                      <!-- Heart Icon in Red -->
+                      <i class="fas fa-heart text-red-500 text-xl"></i>
+                      <!-- Name Text -->
+                      <span>Add to Wishlist</span>
+                  </button>
+                  </div>
+
+                  <!-- Right Arrow Icon to open the Modal -->
+                  <button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">
+                  <i class="fas fa-arrow-right"></i>
+                  </button>
+                  </div>
+                  </div>';
+
+
+
+                  // Modal Structure for Description and Images
+                  echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                  <div class="bg-white p-6 rounded-lg w-96">
+                      <h2 class="text-xl font-bold mb-4">Product Description</h2>
+                      <p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>
+                      <div id="modal-images-' . $id . '" class="mt-4">';
+
+                  // Display multiple images in the modal
+                  if (!empty($images)) {
+                      foreach ($images as $image) {
+                          echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain mb-2">';
+                      }
+                  } else {
+                      echo '<p class="text-gray-500 text-center">No additional images available.</p>';
+                  }
+
+                  echo '</div>
+                      <button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>
+                  </div>
+              </div>';
+              }
+          } else {
+              echo "<p class='text-center text-gray-500'>No products available.</p>";
+          }
+
+          $conn->close();
+        ?>
+    </div>
+
+
+
+    <!-- Header Section -->
+    <div class="text-center mb-12 mt-8">
+            <h1 class="text-4xl font-bold text-gray-800">OUR CRICKET PROTECTION</h1>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <?php
+          require 'connection.php'; // Include the database connection
+
+          // Fetch products from cricket table
+          $sql = "SELECT id, name, image_url, item_type, sizes, colors, stock_status, description, price FROM cricket WHERE item_type = 'protection'";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $id = $row['id'];
+                  $name = $row['name'];
+                  $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                  $sizes = explode(", ", $row['sizes']);
+                  $colors = explode(", ", $row['colors']);
+                  $stock_status = $row['stock_status'];
+                  $description = !empty($row['description']) ? $row['description'] : 'No description available';  // Default if description is empty
+                  $price = isset($row['price']) ? $row['price'] : 0;  // Ensure price is set (set to 0 if not available)
+
+                  // Fetch images for this product
+                  $sql_images = "SELECT image_url FROM product_images WHERE product_id = $id";
+                  $result_images = $conn->query($sql_images);
+                  $images = [];
+                  while ($image_row = $result_images->fetch_assoc()) {
+                      $images[] = $image_row['image_url'];
+                  }
+
+                  // Display product details
+                  echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                  echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                  echo '<div class="p-4 text-center">';
+                  echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                  echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<p class="text-gray-600">Stock: ';
+                  if (strtolower($stock_status) === 'out of stock') {
+                      echo '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>';
+                  } else {
+                      echo htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                  }
+                  echo '</p>';
+
+                  // **Star Rating Display**
+                  echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-gray-300 text-xl">☆</span>';
+                  echo '</div>';
+
+
+                  // Display available sizes
+                  echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($sizes as $size) {
+                      echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                  }
+                  echo '</ul>';
+
+                  // Colors Section
+                  echo '<div class="text-gray-700 text-sm mt-4">
+                  <p class="font-medium">Available Colors:</p>
+                  <ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($colors as $color) {
+                      // Special case for black color
+                      if (strtolower($color) === 'black') {
+                          $colorClass = "bg-black";  // Tailwind class for black
+                      } else {
+                          // Apply Tailwind class for other colors (e.g., bg-red-500, bg-blue-500)
+                          $colorClass = "bg-" . strtolower($color) . "-500"; 
+                      }
+                      echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                  }
+                  echo '</ul></div>';
+
+                  // Add to Cart & Wishlist buttons
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <button class="add-to-cart bg-red-500 text-red text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>
+
+                  <!-- Wishlist Button with Heart Icon and Name -->
+                  <button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300"
+                      data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">
+                      <!-- Heart Icon in Red -->
+                      <i class="fas fa-heart text-red-500 text-xl"></i>
+                      <!-- Name Text -->
+                      <span>Add to Wishlist</span>
+                  </button>
+                  </div>
+
+                  <!-- Right Arrow Icon to open the Modal -->
+                  <button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">
+                  <i class="fas fa-arrow-right"></i>
+                  </button>
+                  </div>
+                  </div>';
+
+
+
+                  // Modal Structure for Description and Images
+                  echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                  <div class="bg-white p-6 rounded-lg w-96">
+                      <h2 class="text-xl font-bold mb-4">Product Description</h2>
+                      <p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>
+                      <div id="modal-images-' . $id . '" class="mt-4">';
+
+                  // Display multiple images in the modal
+                  if (!empty($images)) {
+                      foreach ($images as $image) {
+                          echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain mb-2">';
+                      }
+                  } else {
+                      echo '<p class="text-gray-500 text-center">No additional images available.</p>';
+                  }
+
+                  echo '</div>
+                      <button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>
+                  </div>
+              </div>';
+              }
+          } else {
+              echo "<p class='text-center text-gray-500'>No products available.</p>";
+          }
+
+          $conn->close();
+        ?>
+    </div>
+
+          <script>
+            //multiple images model
+          document.addEventListener('DOMContentLoaded', function() {
+              // Open modal
+              const openButtons = document.querySelectorAll('.open-modal');
+              openButtons.forEach(button => {
+                  button.addEventListener('click', function() {
+                      const productId = button.getAttribute('data-id');
+                      const modal = document.getElementById('modal-' + productId);
+                      modal.classList.remove('hidden');
+                  });
+              });
+
+              // Close modal
+              const closeButtons = document.querySelectorAll('.close-modal');
+              closeButtons.forEach(button => {
+                  button.addEventListener('click', function() {
+                      const productId = button.getAttribute('data-id');
+                      const modal = document.getElementById('modal-' + productId);
+                      modal.classList.add('hidden');
+                  });
+              });
+          });
+          </script>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              // Initialize cart from session storage
+              const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+              const cartCount = document.getElementById('cart-count');
+              const cartModal = document.getElementById('cart-modal');
+              const cartItems = document.getElementById('cart-items');
+              const cartTotal = document.getElementById('cart-total');
+
+              // Function to update the cart count
+              const updateCartCount = () => {
+                  if (cartCount) {
+                      cartCount.textContent = cart.length;
+                  }
+              };
+
+              // Function to render cart items
+              const renderCart = () => {
+                  if (cartItems && cartTotal) {
+                      cartItems.innerHTML = '';
+                      let total = 0;
+
+                      cart.forEach(item => {
+                          const div = document.createElement('div');
+                          div.className = 'flex justify-between mb-4';
+                          div.innerHTML = `
+                              <span>${item.name}</span>
+                              <span>Rs. ${item.price}</span>
+                          `;
+                          cartItems.appendChild(div);
+                          total += item.price;
+                      });
+
+                      cartTotal.textContent = `Total: Rs. ${total}`;
+                  }
+              };
+
+              // Add to Cart Logic
+              document.querySelectorAll('.add-to-cart').forEach(button => {
+                  button.addEventListener('click', () => {
+                      const id = button.getAttribute('data-id');
+                      const name = button.getAttribute('data-name');
+                      const price = parseInt(button.getAttribute('data-price'));
+                      const item = { id, name, price };
+
+                      // Add item to cart only if it's not already present
+                      if (!cart.find(e => e.id === id)) {
+                          cart.push(item);
+                          sessionStorage.setItem('cart', JSON.stringify(cart));
+                          updateCartCount();
+                          alert(`${name} added to cart!`);
+                      } else {
+                          alert(`${name} is already in the cart.`);
+                      }
+                  });
+              });
+
+              // Open Cart Modal
+              const viewCart = document.getElementById('view-cart');
+              if (viewCart) {
+                  viewCart.addEventListener('click', () => {
+                      renderCart();
+                      cartModal?.classList.remove('hidden');
+                  });
+              }
+
+              // Close Cart Modal
+              const closeCart = document.getElementById('close-cart');
+              if (closeCart) {
+                  closeCart.addEventListener('click', () => {
+                      cartModal?.classList.add('hidden');
+                  });
+              }
+
+              // Initial Update of Cart Count
+              updateCartCount();
+          });
+
+        </script>
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

@@ -59,13 +59,13 @@
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
                     <i class="fas fa-user"></i>
                     <span>Sign Up</span>
                   </a>
 
                   <!-- Log In Button -->
-                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
                   </a>

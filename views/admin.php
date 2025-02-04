@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <title>Admin Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -35,43 +37,19 @@
             <span class="text-xs">Need Help?</span>
             <span class="font-bold">CALL 0115 964 964</span>
           </div>
-          <!-- User Dropdown & Cart -->
-          <div class="relative flex items-center space-x-4">
-                <!-- Cart Icon -->
-                <a href="../views/cart.php" id="view-cart" class="relative pointer-events-none opacity-70">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                    </svg>
-                    <!-- Cart Count Badge -->
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                        0
-                    </span>
-                </a>
-            </div>
-
-
-          <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
-          </script>
 
           <!-- Sign In & Cart -->
           <div class="flex space-x-4">
             <!-- Sign In Button -->
-            <a 
-                href="../sportshive/views/signin.php" 
-                class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
+            <a href="../sportshive/views/signin.php" 
+            class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
                 <i class="fas fa-user"></i>
                 <span>Sign Up</span>
             </a>
 
             <!-- Log In Button -->
-            <a 
-                href="../sportshive/views/login.php" 
-                class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none">
+            <a href="../sportshive/views/login.php" 
+            class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Log In</span>
             </a>
@@ -196,9 +174,10 @@
         <!-- Sidebar Section (Left) -->
         <div class="w-1/4 bg-gray-900 p-6 space-y-6">
             <!-- Card: Total Products -->
-            <div onclick="showModal('total-products')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
-                <h2 class="text-xl font-semibold">Total Products</h2>
-            </div>
+            <a href="../views/addproduct.php"  class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer block">
+                <h2 class="text-xl font-semibold">Add Products</h2>
+            </a>
+
 
             <!-- Card: Total Orders -->
             <div onclick="showModal('total-orders')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
@@ -283,126 +262,6 @@
             </div>
         </main>
     </div>
-
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
-                ✖
-            </button>
-            <!-- Modal Content -->
-            <h2 id="modal-title" class="text-2xl font-bold mb-4">Title</h2>
-            <p id="modal-body">Content goes here...</p>
-        </div>
-    </div>
-
-    <!-- Updated Modal Content with Delete and Update for Items -->
-    <script>
-        // Content for each section with dynamic sports
-        const contentData = {
-            "total-products": {
-                title: "Total Products in each Sport",
-                body: "Details about all the products listed in your inventory by sport.",
-                sports: [
-                    { name: "Athletic", items: [] },
-                    { name: "Cricket", items: [] },
-                    { name: "Swimming", items: [] },
-                    { name: "Basketball", items: [] },
-                    { name: "Volleyball", items: [] },
-                    { name: "Netball", items: [] }
-                ]
-            },
-            "total-orders": {
-                title: "Total Orders",
-                body: "Here are the details about the orders placed by customers."
-            },
-            "total-users": {
-                title: "Total Users",
-                body: "Here are the details about registered users on your platform."
-            },
-            "revenue": {
-                title: "Revenue",
-                body: "Here is the information about the revenue generated from sales."
-            }
-        };
-
-        // Function to show the modal with content
-        function showModal(section) {
-            const modal = document.getElementById("modal");
-            const title = contentData[section].title;
-            const body = contentData[section].body;
-            const sports = contentData[section].sports || [];
-
-            // Update modal content
-            document.getElementById("modal-title").textContent = title;
-            document.getElementById("modal-body").textContent = body;
-
-            // Create dynamic content for sports
-            if (sports.length > 0) {
-                let sportsContent = `<h3 class="text-lg font-semibold">Sports Products</h3><ul class="space-y-4">`;
-                sports.forEach((sport, index) => {
-                    sportsContent += `
-                        <li>
-                            <h4 class="text-md font-medium">${sport.name}</h4>
-                            <ul class="list-disc pl-5">
-                                ${sport.items.length > 0 ? sport.items.map((item, itemIndex) => `
-                                    <li>
-                                        ${item}
-                                        <button class="text-blue-800 ml-2" onclick="updateItem(${index}, ${itemIndex})">Update</button>
-                                        <button class="text-red-800 ml-2" onclick="deleteItem(${index}, ${itemIndex})">Delete</button>
-                                    </li>
-                                `).join('') : `<li>No items added yet</li>`}
-                            </ul>
-                            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" onclick="addItemToSport(${index})">Add Item</button>
-                        </li>
-                    `;
-                });
-                sportsContent += `</ul>`;
-
-                // Inject sports content into the modal
-                document.getElementById("modal-body").innerHTML = sportsContent;
-            }
-
-            // Display the modal
-            modal.classList.remove("hidden");
-        }
-
-        // Function to add an item to a specific sport
-        function addItemToSport(sportIndex) {
-            const itemName = prompt("Enter the item name to add:");
-            if (itemName) {
-                contentData["total-products"].sports[sportIndex].items.push(itemName);
-                showModal("total-products"); // Re-render the modal with updated list
-            }
-        }
-
-        // Function to delete an item from a specific sport
-        function deleteItem(sportIndex, itemIndex) {
-            if (confirm("Are you sure you want to delete this item?")) {
-                contentData["total-products"].sports[sportIndex].items.splice(itemIndex, 1); // Remove the item from the array
-                showModal("total-products"); // Re-render the modal with updated list
-            }
-        }
-
-        // Function to update an item in a specific sport
-        function updateItem(sportIndex, itemIndex) {
-            const newItemName = prompt("Enter the new item name:", contentData["total-products"].sports[sportIndex].items[itemIndex]);
-            if (newItemName) {
-                contentData["total-products"].sports[sportIndex].items[itemIndex] = newItemName; // Update the item
-                showModal("total-products"); // Re-render the modal with updated list
-            }
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            const modal = document.getElementById("modal");
-            modal.classList.add("hidden");
-        }
-    </script>
-
-
-
     <!-- Sales Chart -->
     <script>
         const salesCtx = document.getElementById('salesChart').getContext('2d');

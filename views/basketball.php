@@ -1,3 +1,24 @@
+<?php
+// Start the session at the top of the file
+session_start();
+
+// Initialize or retrieve the cart items array
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = []; // Default to an empty array if no cart exists
+}
+
+// Simulate adding an item to the cart (for example, when the user clicks "Add to Cart")
+if (isset($_POST['addToCart'])) {
+    $itemId = $_POST['itemId']; // You can pass the item ID dynamically
+    if (!isset($_SESSION['cart'][$itemId])) {
+        $_SESSION['cart'][$itemId] = 0; // Initialize count if not already set
+    }
+    $_SESSION['cart'][$itemId] += 1; // Increment the cart count for this item
+}
+
+// Get the total cart count (sum of all item counts)
+$cartCount = array_sum($_SESSION['cart']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Basketball</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -38,38 +60,74 @@
           <div class="relative flex items-center space-x-4">
               <!-- Cart Icon -->
               <a href="../views/cart.php" id="view-cart" class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                  </svg>
+                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
                   <!-- Cart Count Badge -->
                   <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      0
+                  </span>
+              </a>
+              <!-- Wish List Icon -->
+              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
+                  <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
+                  <!-- Wishlist Count Badge -->
+                  <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       0
                   </span>
               </a>
           </div>
 
           <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
-          </script>
+              document.addEventListener("DOMContentLoaded", () => {
+                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+                const cartCount = cartItems.length;
 
+                // Store the cart count in sessionStorage
+                sessionStorage.setItem("cartCount", cartCount);
+              });
+          </script>
           <!-- Sign In & Cart -->
-            <div class="flex space-x-4">
+          <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-user"></i>
-                    <span>Sign Up</span>
-                  </a>
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
+                      <i class="fas fa-user"></i>
+                      <span>Sign Up</span>
+                  </button>
+
 
                   <!-- Log In Button -->
-                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
-                  </a>
+            </button>
             </div>
+            <!-- Account Button -->
+            <button id="accountBtn" class="flex items-center px-4 py-2 bg-white rounded-lg shadow">
+                <i class="fas fa-user mr-2"></i> Account 
+                <i class="fas fa-caret-down ml-2"></i>
+            </button>
+
+            <!-- Dropdown Menu (with higher z-index) -->
+            <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg z-50">
+                <a href="../views/myaccount.php" class="block px-4 py-2 hover:bg-gray-700">My Account</a>
+                <a href="../views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
+                <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
+            </div>
+            <script>
+        const accountBtn = document.getElementById('accountBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        accountBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
         </div>
       </div>
     </div>
@@ -293,704 +351,395 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
             <h2 class="text-xl text-gray-500 font-semibold">Our Products</h2>
-            <h1 class="text-4xl font-bold text-gray-800">OUR BASKETBALL BOOTS & BALLS</h1>
+            <h1 class="text-4xl font-bold text-gray-800">OUR BASKETBALL BOOTS & SCOKS</h1>
             </div>
 
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Basketball Shoes Fast 900 Low-1</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 2</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 3</button>
-                        </li>
-                    </ul>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php
+          require 'connection.php'; // Include the database connection
+
+          // Fetch products from football table where item_type is 'Shoes'
+          $sql = "SELECT id, name, price, image_url, item_type, sizes, colors, stock_status, description FROM basketball WHERE item_type = 'Shoes'";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $id = $row['id'];
+                  $name = $row['name'];
+                  $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                  $sizes = explode(", ", $row['sizes']);
+                  $colors = explode(", ", $row['colors']);
+                  $stock_status = $row['stock_status'];
+                  $description = !empty($row['description']) ? $row['description'] : 'No description available';
+                  $price = isset($row['price']) ? $row['price'] : 0;
+
+                  echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                  echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                  echo '<div class="p-4 text-center">';
+                  echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                  echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<p class="text-gray-600">Stock: ';
+                  echo (strtolower($stock_status) === 'out of stock') ? '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>' : htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                  echo '</p>';
+
+                  // Star Ratings
+                  echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-gray-300 text-xl">☆</span>';
+                  echo '</div>';
+
+                  // Available Sizes
+                  echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($sizes as $size) {
+                      echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                  }
+                  echo '</ul>';
+
+                  // Available Colors
+                  echo '<div class="text-gray-700 text-sm mt-4">';
+                  echo '<p class="font-medium">Available Colors:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($colors as $color) {
+                      $colorClass = (strtolower($color) === 'black') ? "bg-black" : "bg-" . strtolower($color) . "-500";
+                      echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                  }
+                  echo '</ul></div>';
+
+                  // Add to Cart & Wishlist Buttons
+                  echo '<div class="flex justify-center mt-4 space-x-2">';
+                  echo '<button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>';
+                  echo '<button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">';
+                  echo '<i class="fas fa-heart text-red-500 text-xl"></i><span>Add to Wishlist</span></button>';
+                  echo '</div>';
+
+                  // Modal for Description
+                  echo '<button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">';
+                  echo '<i class="fas fa-arrow-right"></i></button>';
+
+                  echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">';
+                  echo '<div class="bg-white p-6 rounded-lg w-96">';
+                  echo '<h2 class="text-xl font-bold mb-4">Product Description</h2>';
+                  echo '<p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>';
+                  echo '</div></div></div></div>';
+              }
+          } else {
+              echo "<p class='text-center text-gray-500'>No products available.</p>";
+          }
+
+          $conn->close();
+        ?>
+</div>
+
+            <!-- Wishlist Modal -->
+            <div id="wishlist-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                    <h2 class="text-xl font-bold mb-4">Your Wishlist</h2>
+                    <div id="wishlist-items"></div>
+                    <button id="close-wishlist" class="mt-4 bg-gray-500 text-white p-2 rounded-full">Close</button>
                 </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-purple-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-orange-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="103" data-name="Kids' Basketball Shoes Fast 900 Low-1" data-price="9200">ADD TO CART</button>
-                </div>
-                </a>
+            </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                let wishlist = JSON.parse(sessionStorage.getItem("wishlist")) || [];
+
+                updateWishlistUI();
+                updateWishlistCount();
+
+                // Add to Wishlist
+                document.querySelectorAll(".add-to-wishlist").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const item = {
+                            id: this.getAttribute("data-id"),
+                            name: this.getAttribute("data-name"),
+                            price: this.getAttribute("data-price"),
+                            image: this.getAttribute("data-image")
+                        };
+
+                        if (!wishlist.find(i => i.id === item.id)) {
+                            wishlist.push(item);
+                            sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                            updateWishlistUI();
+                            updateWishlistCount();
+
+                            // ✅ Show alert message
+                            showAlert(`${item.name} added to wishlist!`, "success");
+                        } else {
+                            showAlert(`${item.name} is already in the wishlist!`, "info");
+                        }
+                    });
+                });
+                function showAlert(message, type) {
+                    const alertBox = document.createElement("div");
+                    alertBox.classList.add("fixed", "top-5", "right-5", "p-4", "rounded-lg", "shadow-lg", "text-white", "transition-all", "duration-500");
+
+                    // Set background color based on alert type
+                    if (type === "success") {
+                        alertBox.classList.add("bg-green-500");
+                    } else if (type === "info") {
+                        alertBox.classList.add("bg-blue-500");
+                    } else {
+                        alertBox.classList.add("bg-red-500");
+                    }
+
+                    alertBox.textContent = message;
+                    document.body.appendChild(alertBox);
+
+                    // Remove alert after 3 seconds
+                    setTimeout(() => {
+                        alertBox.classList.add("opacity-0");
+                        setTimeout(() => alertBox.remove(), 500);
+                    }, 3000);
+                }
+
+
+                // Update Wishlist UI
+                function updateWishlistUI() {
+                const wishlistItemsContainer = document.getElementById("wishlist-items");
+                wishlistItemsContainer.innerHTML = ""; // Clears previous items
+
+                wishlist.forEach(item => {
+                    const itemElement = document.createElement("div");
+                    itemElement.classList.add("flex", "items-center", "justify-between", "border-b", "py-2");
+                    itemElement.innerHTML = `
+                        <div class="flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
+                            <div>
+                                <p class="font-semibold">${item.name}</p>
+                                <p class="text-gray-500">$${item.price}</p>
+                            </div>
+                        </div>
+                        <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
+                            <i class="fas fa-trash-alt text-lg"></i> <!-- Delete Icon -->
+                        </button>
+                    `;
+                    wishlistItemsContainer.appendChild(itemElement);
+                });
+
+                document.querySelectorAll(".remove-item").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const itemId = this.getAttribute("data-id");
+                        wishlist = wishlist.filter(item => item.id !== itemId);
+                        sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                        updateWishlistUI();
+                        updateWishlistCount();
+                    });
+                });
+            }
+
+                // Update Wishlist Count
+                function updateWishlistCount() {
+                    document.getElementById("wishlist-count").textContent = wishlist.length;
+                }
+
+                // Show Wishlist Modal
+                document.getElementById("view-wishlist").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.getElementById("wishlist-modal").classList.remove("hidden");
+                });
+
+                // Close Wishlist Modal
+                document.getElementById("close-wishlist").addEventListener("click", function () {
+                    document.getElementById("wishlist-modal").classList.add("hidden");
+                });
+            });
+
+              </script>
+
+            <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mt-24">OUR BASKETBALL BALLS</h1>
             </div>
 
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Mid-Rise Beginner Basketball Shoes SE100</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 5000.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="104" data-name="Mid-Rise Beginner Basketball Shoes SE100" data-price="5000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php
+          require 'connection.php'; // Include the database connection
 
-            <!-- Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Men's/Women's Basketball Shoes SE900</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 4990.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                    <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="105" data-name="Men's/Women's Basketball Shoes SE900" data-price="4990">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+          // Fetch products from basketball table where item_type is 'Balls'
+          $sql = "SELECT id, name, price, image_url, item_type, sizes, colors, stock_status, description FROM basketball WHERE item_type = 'Balls'";
+          $result = $conn->query($sql);
 
-            <!-- Item 4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Intermediate Basketball Shoes SS500H</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="106" data-name="Kids' Intermediate Basketball Shoes" data-price="9200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Men's/Women's Basketball Shoes 900</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 7790.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose6.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Hoops 3.0 Mid Lifestyle Basketball Classic Vintage Shoes</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex flex-wrap justify-center gap-2 mt-2">
-                      <li>
-                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                      </li>
-                      <li>
-                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                      </li>
-                      <li>
-                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="6">Size 6</button>
-                      </li>
-                      <li>
-                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="7">Size 7</button>
-                      </li>
-                      <li>
-                          <button type="button" class="size-option px-4 py-2 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="8">Size 8</button>
-                      </li>
-                  </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="107" data-name="Basketball Classic Vintage Shoes" data-price="9100">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $id = $row['id'];
+                  $name = $row['name'];
+                  $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                  $sizes = explode(", ", $row['sizes']);
+                  $colors = explode(", ", $row['colors']);
+                  $stock_status = $row['stock_status'];
+                  $description = !empty($row['description']) ? $row['description'] : 'No description available';
+                  $price = isset($row['price']) ? $row['price'] : 0;
 
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose7.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Sneakers Nike Precision 5, Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8600.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="108" data-name="Sneakers Nike Precision 5, Black" data-price="8600">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+                  echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                  echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                  echo '<div class="p-4 text-center">';
+                  echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                  echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<p class="text-gray-600">Stock: ';
+                  echo (strtolower($stock_status) === 'out of stock') ? '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>' : htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                  echo '</p>';
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose8.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">2 Pairs Womens Walking Boot High Performance Polyester Running Socks</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
+                  // Star Ratings
+                  echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-yellow-500 text-xl">★</span>';
+                  echo '<span class="text-gray-300 text-xl">☆</span>';
+                  echo '</div>';
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose9.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">1 Pack Ladies Activ QTR Repreve Socks</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-gray-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-green-500 hover:ring-2 hover:ring-red-300" data-color="gray"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="109" data-name="1 Pack Ladies Activ QTR Repreve Socks" data-price="1200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+                  // Available Sizes
+                  echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($sizes as $size) {
+                      echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                  }
+                  echo '</ul>';
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bshose10.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">3 Pairs Mens Cotton Thick Cushioned Terry Sport Socks</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-black hover:ring-2 hover:ring-red-300" data-color="black"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="110" data-name="3 Pairs Mens Cotton Thick Cushioned Terry Sport Socks" data-price="1400">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            
-            
-            </div>
-        </div>
+                  // Available Colors
+                  echo '<div class="text-gray-700 text-sm mt-4">';
+                  echo '<p class="font-medium">Available Colors:</p>';
+                  echo '<ul class="flex justify-center space-x-2 mt-2">';
+                  foreach ($colors as $color) {
+                      $colorClass = (strtolower($color) === 'black') ? "bg-black" : "bg-" . strtolower($color) . "-500";
+                      echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                  }
+                  echo '</ul></div>';
 
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bball1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Size 7 Basketball BT500 - Brown/FIBA</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-yellow-500 hover:ring-2 hover:ring-red-300" data-color="yellow"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="111" data-name="Size 7 Basketball BT500 - Brown/FIBA" data-price="9100">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+                  // Add to Cart & Wishlist Buttons
+                  echo '<div class="flex justify-center mt-4 space-x-2">';
+                  echo '<button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>';
+                  echo '<button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">';
+                  echo '<i class="fas fa-heart text-red-500 text-xl"></i><span>Add to Wishlist</span></button>';
+                  echo '</div>';
 
-            <!-- Item 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bball2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Size 7 Basketball NBA Team Tribute Lakers - Purple/Black</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 8600.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                        
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-purple-500 hover:ring-2 hover:ring-red-300" data-color="purple"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="112" data-name="Size 7 Basketball NBA Team Tribute Lakers" data-price="8600">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+                  // Modal for Description
+                  echo '<button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">';
+                  echo '<i class="fas fa-arrow-right"></i></button>';
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bball3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Kids' Rubber Basketball Size 3 K500 - Blue/Red</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 920.00</h4>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
+                  echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">';
+                  echo '<div class="bg-white p-6 rounded-lg w-96">';
+                  echo '<h2 class="text-xl font-bold mb-4">Product Description</h2>';
+                  echo '<p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>';
+                  echo '<button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>';
+                  echo '</div></div></div></div>';
+              }
+          } else {
+              echo "<p class='text-center text-gray-500'>No products available.</p>";
+          }
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bball4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Kids'/Adult Size 7 Basketball R100 - Orange.</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1200.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="113" data-name="Kids'/Adult Size 7 Basketball R100 - Orange." data-price="1200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
+          $conn->close();
+        ?>
+</div>
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/bball5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">3Elite Championship 2.0 Logo Basketball</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
-                <!-- Sizes Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Sizes:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="4">Size 4</button>
-                        </li>
-                        <li>
-                            <button class="size-option px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300" data-size="5">Size 5</button>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Colors Section -->
-                <div class="text-gray-700 text-sm mt-4">
-                    <p class="font-medium">Available Colors:</p>
-                    <ul class="flex justify-center space-x-2 mt-2">
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-blue-500 hover:ring-2 hover:ring-blue-300" data-color="blue"></button>
-                        </li>
-                        <li>
-                            <button class="color-option w-6 h-6 rounded-full bg-red-500 hover:ring-2 hover:ring-red-300" data-color="red"></button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-center items-center mt-2 space-x-1">
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-yellow-500 text-xl">★</span>
-                  <span class="text-gray-300 text-xl">☆</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="114" data-name="3Elite Championship 2.0 Logo Basketball" data-price="1400">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            
-            
-            </div>
-        </div>
-      </div>
-      </div>
+
+<script>
+            //multiple images model
+          document.addEventListener('DOMContentLoaded', function() {
+              // Open modal
+              const openButtons = document.querySelectorAll('.open-modal');
+              openButtons.forEach(button => {
+                  button.addEventListener('click', function() {
+                      const productId = button.getAttribute('data-id');
+                      const modal = document.getElementById('modal-' + productId);
+                      modal.classList.remove('hidden');
+                  });
+              });
+
+              // Close modal
+              const closeButtons = document.querySelectorAll('.close-modal');
+              closeButtons.forEach(button => {
+                  button.addEventListener('click', function() {
+                      const productId = button.getAttribute('data-id');
+                      const modal = document.getElementById('modal-' + productId);
+                      modal.classList.add('hidden');
+                  });
+              });
+          });
+          </script>
+
 
       <script>
-        // Initialize cart from session storage
-        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cart-count');
-        const cartModal = document.getElementById('cart-modal');
-        const cartItems = document.getElementById('cart-items');
-        const cartTotal = document.getElementById('cart-total');
+        document.addEventListener('DOMContentLoaded', () => {
+          // Initialize cart from session storage
+          const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+          const cartCount = document.getElementById('cart-count');
+          const cartModal = document.getElementById('cart-modal');
+          const cartItems = document.getElementById('cart-items');
+          const cartTotal = document.getElementById('cart-total');
 
-        const updateCartCount = () => {
-            cartCount.textContent = cart.length;
-        };
+          // Function to update the cart count
+          const updateCartCount = () => {
+              if (cartCount) {
+                  cartCount.textContent = cart.length;
+              }
+          };
 
-        const renderCart = () => {
-            cartItems.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'flex justify-between mb-4';
-                div.innerHTML = `
-                    <span>${item.name}</span>
-                    <span>Rs. ${item.price}</span>
-                `;
-                cartItems.appendChild(div);
-                total += item.price;
-            });
-            cartTotal.textContent = `Total: Rs. ${total}`;
-        };
+          // Function to render cart items
+          const renderCart = () => {
+              if (cartItems && cartTotal) {
+                  cartItems.innerHTML = '';
+                  let total = 0;
 
-        // Handle adding items to the cart
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const id = button.getAttribute('data-id');
-                const name = button.getAttribute('data-name');
-                const price = parseInt(button.getAttribute('data-price'));
-                const item = { id, name, price };
+                  cart.forEach(item => {
+                      const div = document.createElement('div');
+                      div.className = 'flex justify-between mb-4';
+                      div.innerHTML = `
+                          <span>${item.name}</span>
+                          <span>Rs. ${item.price}</span>
+                      `;
+                      cartItems.appendChild(div);
+                      total += item.price;
+                  });
 
-                // Add to cart and update session storage
-                if (!cart.find(e => e.id === id)) {
-                    cart.push(item);
-                    sessionStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartCount();
-                    alert(`${name} added to cart!`);
-                } else {
-                    alert(`${name} is already in the cart.`);
-                }
-            });
-        });
+                  cartTotal.textContent = `Total: Rs. ${total}`;
+              }
+          };
 
-        // Open the cart modal
-        document.getElementById('view-cart').addEventListener('click', () => {
-            renderCart();
-            cartModal.classList.remove('hidden');
-        });
+          // Add to Cart Logic
+          document.querySelectorAll('.add-to-cart').forEach(button => {
+              button.addEventListener('click', () => {
+                  const id = button.getAttribute('data-id');
+                  const name = button.getAttribute('data-name');
+                  const price = parseInt(button.getAttribute('data-price'));
+                  const item = { id, name, price };
 
-        // Close the cart modal
-        document.getElementById('close-cart').addEventListener('click', () => {
-            cartModal.classList.add('hidden');
-        });
+                  // Add item to cart only if it's not already present
+                  if (!cart.find(e => e.id === id)) {
+                      cart.push(item);
+                      sessionStorage.setItem('cart', JSON.stringify(cart));
+                      updateCartCount();
+                      alert(`${name} added to cart!`);
+                  } else {
+                      alert(`${name} is already in the cart.`);
+                  }
+              });
+          });
 
-        // Initial update of cart count
-        updateCartCount();
+          // Open Cart Modal
+          const viewCart = document.getElementById('view-cart');
+          if (viewCart) {
+              viewCart.addEventListener('click', () => {
+                  renderCart();
+                  cartModal?.classList.remove('hidden');
+              });
+          }
+
+          // Close Cart Modal
+          const closeCart = document.getElementById('close-cart');
+          if (closeCart) {
+              closeCart.addEventListener('click', () => {
+                  cartModal?.classList.add('hidden');
+              });
+          }
+
+          // Initial Update of Cart Count
+          updateCartCount();
+      });
+
     </script>
 
 

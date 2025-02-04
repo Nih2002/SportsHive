@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volleyball</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -38,38 +39,75 @@
           <div class="relative flex items-center space-x-4">
               <!-- Cart Icon -->
               <a href="../views/cart.php" id="view-cart" class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                  </svg>
+                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
                   <!-- Cart Count Badge -->
                   <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      0
+                  </span>
+              </a>
+              <!-- Wish List Icon -->
+              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
+                  <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
+                  <!-- Wishlist Count Badge -->
+                  <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       0
                   </span>
               </a>
           </div>
 
           <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
+              document.addEventListener("DOMContentLoaded", () => {
+                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+                const cartCount = cartItems.length;
+
+                // Store the cart count in sessionStorage
+                sessionStorage.setItem("cartCount", cartCount);
+              });
           </script>
 
           <!-- Sign In & Cart -->
-            <div class="flex space-x-4">
+          <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-user"></i>
-                    <span>Sign Up</span>
-                  </a>
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
+                      <i class="fas fa-user"></i>
+                      <span>Sign Up</span>
+                  </button>
+
 
                   <!-- Log In Button -->
-                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
-                  </a>
+            </button>
             </div>
+            <!-- Account Button -->
+            <button id="accountBtn" class="flex items-center px-4 py-2 bg-white rounded-lg shadow">
+                <i class="fas fa-user mr-2"></i> Account 
+                <i class="fas fa-caret-down ml-2"></i>
+            </button>
+
+            <!-- Dropdown Menu (with higher z-index) -->
+            <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg z-50">
+                <a href="../views/myaccount.php" class="block px-4 py-2 hover:bg-gray-700">My Account</a>
+                <a href="../views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
+                <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
+            </div>
+            <script>
+        const accountBtn = document.getElementById('accountBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        accountBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
         </div>
       </div>
     </div>
@@ -211,163 +249,358 @@
 
             <!-- Catalog Section -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball1.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Volleyball V500 | Grey/Blue/Red</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3500.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="138" data-name="Volleyball V500 | Grey/Blue/Red" data-price="3500">ADD TO CART</button>
+            <!-- Wishlist Modal -->
+            <div id="wishlist-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                    <h2 class="text-xl font-bold mb-4">Your Wishlist</h2>
+                    <div id="wishlist-items"></div>
+                    <button id="close-wishlist" class="mt-4 bg-gray-500 text-white p-2 rounded-full">Close</button>
                 </div>
-                </a>
             </div>
-            <!-- Item 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball2.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">230-250 g Volleyball|V100 Soft - Blue/Orange</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3000.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="139" data-name="230-250 g Volleyball|V100 Soft" data-price="3000">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball3.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Outdoor Volleyball VBO100 - Yellow/Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1990.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball4.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Official Dimensions Beach Volleyball Set BV900 - Yellow</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 3200.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="140" data-name="Official Dimensions Beach Volleyball Set" data-price="3200">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            <!-- Item 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball5.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">V900 Volleyball Net</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 2790.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="141" data-name="V900 Volleyball Net" data-price="2790">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-        <div class="max-w-7xl mx-auto py-12 px-4 ">
-        
-            <!-- Catalog Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Item 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball6.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg tracking-wide font-bold">Volleyball Net with Official Dimensions BVN900</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 9100.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md">Out of Stock</button>
-                </div>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/vball7.png" class="w-full h-48 object-contain p-4">
-                <a href="#" class="p-4 text-center">
-                <h3 class="text-lg font-semibold">Starter Volleyball V100 - Turquoise Blue</h3>
-                <h4 class="text-lg font-bold text-yellow-500 font-serif">Rs. 1400.00</h4>
-                <div class="flex justify-center mt-4">
-                <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300 
-                animate-bounce shadow-md" data-id="142" data-name="Starter Volleyball V100" data-price="270">ADD TO CART</button>
-                </div>
-                </a>
-            </div>
-            
-            
-            </div>
-        </div>
-         
-        <script>
-        // Initialize cart from session storage
-        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cart-count');
-        const cartModal = document.getElementById('cart-modal');
-        const cartItems = document.getElementById('cart-items');
-        const cartTotal = document.getElementById('cart-total');
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                let wishlist = JSON.parse(sessionStorage.getItem("wishlist")) || [];
 
-        const updateCartCount = () => {
-            cartCount.textContent = cart.length;
-        };
+                updateWishlistUI();
+                updateWishlistCount();
 
-        const renderCart = () => {
-            cartItems.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'flex justify-between mb-4';
-                div.innerHTML = `
-                    <span>${item.name}</span>
-                    <span>Rs. ${item.price}</span>
-                `;
-                cartItems.appendChild(div);
-                total += item.price;
-            });
-            cartTotal.textContent = `Total: Rs. ${total}`;
-        };
+                // Add to Wishlist
+                document.querySelectorAll(".add-to-wishlist").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const item = {
+                            id: this.getAttribute("data-id"),
+                            name: this.getAttribute("data-name"),
+                            price: this.getAttribute("data-price"),
+                            image: this.getAttribute("data-image")
+                        };
 
-        // Handle adding items to the cart
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const id = button.getAttribute('data-id');
-                const name = button.getAttribute('data-name');
-                const price = parseInt(button.getAttribute('data-price'));
-                const item = { id, name, price };
+                        if (!wishlist.find(i => i.id === item.id)) {
+                            wishlist.push(item);
+                            sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                            updateWishlistUI();
+                            updateWishlistCount();
 
-                // Add to cart and update session storage
-                if (!cart.find(e => e.id === id)) {
-                    cart.push(item);
-                    sessionStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartCount();
-                    alert(`${name} added to cart!`);
-                } else {
-                    alert(`${name} is already in the cart.`);
+                            // ✅ Show alert message
+                            showAlert(`${item.name} added to wishlist!`, "success");
+                        } else {
+                            showAlert(`${item.name} is already in the wishlist!`, "info");
+                        }
+                    });
+                });
+                function showAlert(message, type) {
+                    const alertBox = document.createElement("div");
+                    alertBox.classList.add("fixed", "top-5", "right-5", "p-4", "rounded-lg", "shadow-lg", "text-white", "transition-all", "duration-500");
+
+                    // Set background color based on alert type
+                    if (type === "success") {
+                        alertBox.classList.add("bg-green-500");
+                    } else if (type === "info") {
+                        alertBox.classList.add("bg-blue-500");
+                    } else {
+                        alertBox.classList.add("bg-red-500");
+                    }
+
+                    alertBox.textContent = message;
+                    document.body.appendChild(alertBox);
+
+                    // Remove alert after 3 seconds
+                    setTimeout(() => {
+                        alertBox.classList.add("opacity-0");
+                        setTimeout(() => alertBox.remove(), 500);
+                    }, 3000);
                 }
+
+
+                // Update Wishlist UI
+                function updateWishlistUI() {
+                const wishlistItemsContainer = document.getElementById("wishlist-items");
+                wishlistItemsContainer.innerHTML = ""; // Clears previous items
+
+                wishlist.forEach(item => {
+                    const itemElement = document.createElement("div");
+                    itemElement.classList.add("flex", "items-center", "justify-between", "border-b", "py-2");
+                    itemElement.innerHTML = `
+                        <div class="flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
+                            <div>
+                                <p class="font-semibold">${item.name}</p>
+                                <p class="text-gray-500">$${item.price}</p>
+                            </div>
+                        </div>
+                        <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
+                            <i class="fas fa-trash-alt text-lg"></i> <!-- Delete Icon -->
+                        </button>
+                    `;
+                    wishlistItemsContainer.appendChild(itemElement);
+                });
+
+                document.querySelectorAll(".remove-item").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const itemId = this.getAttribute("data-id");
+                        wishlist = wishlist.filter(item => item.id !== itemId);
+                        sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                        updateWishlistUI();
+                        updateWishlistCount();
+                    });
+                });
+            }
+
+                // Update Wishlist Count
+                function updateWishlistCount() {
+                    document.getElementById("wishlist-count").textContent = wishlist.length;
+                }
+
+                // Show Wishlist Modal
+                document.getElementById("view-wishlist").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.getElementById("wishlist-modal").classList.remove("hidden");
+                });
+
+                // Close Wishlist Modal
+                document.getElementById("close-wishlist").addEventListener("click", function () {
+                    document.getElementById("wishlist-modal").classList.add("hidden");
+                });
             });
-        });
 
-        // Open the cart modal
-        document.getElementById('view-cart').addEventListener('click', () => {
-            renderCart();
-            cartModal.classList.remove('hidden');
-        });
+              </script>
+            </div>
 
-        // Close the cart modal
-        document.getElementById('close-cart').addEventListener('click', () => {
-            cartModal.classList.add('hidden');
-        });
 
-        // Initial update of cart count
-        updateCartCount();
-    </script> 
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <?php
+                    require 'connection.php'; // Include the database connection
+
+                    // Fetch products from cricket table
+                    $sql = "SELECT id, name, image_url, item_type, sizes, colors, stock_status, description, price FROM volleyball WHERE item_type = 'equipemt'";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            $main_image = !empty($row['image_url']) ? $row['image_url'] : 'images/no-image-available.png';
+                            $sizes = explode(", ", $row['sizes']);
+                            $colors = explode(", ", $row['colors']);
+                            $stock_status = $row['stock_status'];
+                            $description = !empty($row['description']) ? $row['description'] : 'No description available';  // Default if description is empty
+                            $price = isset($row['price']) ? $row['price'] : 0;  // Ensure price is set (set to 0 if not available)
+
+                            // Fetch images for this product
+                            $sql_images = "SELECT image_url FROM product_images WHERE product_id = $id";
+                            $result_images = $conn->query($sql_images);
+                            $images = [];
+                            while ($image_row = $result_images->fetch_assoc()) {
+                                $images[] = $image_row['image_url'];
+                            }
+
+                            // Display product details
+                            echo '<div class="bg-white rounded-lg shadow-md overflow-hidden p-4">';
+                            echo '<img src="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain">';
+                            echo '<div class="p-4 text-center">';
+                            echo '<h3 class="text-lg tracking-wide font-bold">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</h3>';
+                            echo '<p class="text-gray-800 text-xl font-semibold">$' . htmlspecialchars($price, ENT_QUOTES, 'UTF-8') . '</p>';
+                            echo '<p class="text-gray-600">Stock: ';
+                            if (strtolower($stock_status) === 'out of stock') {
+                                echo '<span class="text-red-500 font-bold">' . htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8') . '</span>';
+                            } else {
+                                echo htmlspecialchars($stock_status, ENT_QUOTES, 'UTF-8');
+                            }
+                            echo '</p>';
+
+                            // **Star Rating Display**
+                            echo '<div class="flex justify-center items-center mt-2 space-x-1">';
+                            echo '<span class="text-yellow-500 text-xl">★</span>';
+                            echo '<span class="text-yellow-500 text-xl">★</span>';
+                            echo '<span class="text-yellow-500 text-xl">★</span>';
+                            echo '<span class="text-yellow-500 text-xl">★</span>';
+                            echo '<span class="text-gray-300 text-xl">☆</span>';
+                            echo '</div>';
+
+
+
+                            // Display available sizes
+                            echo '<p class="font-medium mt-4">Available Sizes:</p>';
+                            echo '<ul class="flex justify-center space-x-2 mt-2">';
+                            foreach ($sizes as $size) {
+                                echo '<li><button class="px-2 py-1 bg-gray-200 rounded-full text-sm">' . htmlspecialchars($size, ENT_QUOTES, 'UTF-8') . '</button></li>';
+                            }
+                            echo '</ul>';
+
+                            // Colors Section
+                            echo '<div class="text-gray-700 text-sm mt-4">
+                            <p class="font-medium">Available Colors:</p>
+                            <ul class="flex justify-center space-x-2 mt-2">';
+                            foreach ($colors as $color) {
+                                // Special case for black color
+                                if (strtolower($color) === 'black') {
+                                    $colorClass = "bg-black";  // Tailwind class for black
+                                } else {
+                                    // Apply Tailwind class for other colors (e.g., bg-red-500, bg-blue-500)
+                                    $colorClass = "bg-" . strtolower($color) . "-500"; 
+                                }
+                                echo '<li><button class="w-6 h-6 rounded-full ' . $colorClass . ' hover:ring-2 hover:ring-red-300" data-color="' . htmlspecialchars($color, ENT_QUOTES, 'UTF-8') . '"></button></li>';
+                            }
+                            echo '</ul></div>';
+
+                            // Add to Cart & Wishlist buttons
+                            echo '<div class="flex justify-center mt-4 space-x-2">
+                            <button class="add-to-cart bg-red-500 text-red text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md"
+                                data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>
+
+                            <!-- Wishlist Button with Heart Icon and Name -->
+                            <button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300"
+                                data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">
+                                <!-- Heart Icon in Red -->
+                                <i class="fas fa-heart text-red-500 text-xl"></i>
+                                <!-- Name Text -->
+                                <span>Add to Wishlist</span>
+                            </button>
+                            </div>
+
+                            <!-- Right Arrow Icon to open the Modal -->
+                            <button class="open-modal text-blue-500 mt-2" data-id="' . $id . '" data-description="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '">
+                            <i class="fas fa-arrow-right"></i>
+                            </button>
+                            </div>
+                            </div>';
+
+
+
+                            // Modal Structure for Description and Images
+                            echo '<div id="modal-' . $id . '" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                            <div class="bg-white p-6 rounded-lg w-96">
+                                <h2 class="text-xl font-bold mb-4">Product Description</h2>
+                                <p id="modal-description-' . $id . '" class="text-gray-700">' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . '</p>
+                                <div id="modal-images-' . $id . '" class="mt-4">';
+
+                            // Display multiple images in the modal
+                            if (!empty($images)) {
+                                foreach ($images as $image) {
+                                    echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="w-full h-48 object-contain mb-2">';
+                                }
+                            } else {
+                                echo '<p class="text-gray-500 text-center">No additional images available.</p>';
+                            }
+
+                            echo '</div>
+                                <button class="close-modal bg-red-500 text-white py-2 px-4 rounded-full mt-4" data-id="' . $id . '">Close</button>
+                            </div>
+                        </div>';
+                        }
+                    } else {
+                        echo "<p class='text-center text-gray-500'>No products available.</p>";
+                    }
+
+                    $conn->close();
+                  ?>
+              </div>
+                  </div>
+
+                  
+                  <script>
+                  document.addEventListener('DOMContentLoaded', () => {
+                    // Initialize cart from session storage
+                    const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+                    const cartCount = document.getElementById('cart-count');
+                    const cartModal = document.getElementById('cart-modal');
+                    const cartItems = document.getElementById('cart-items');
+                    const cartTotal = document.getElementById('cart-total');
+
+                    // Function to update the cart count
+                    const updateCartCount = () => {
+                        if (cartCount) {
+                            cartCount.textContent = cart.length;
+                        }
+                    };
+
+                    // Function to render cart items
+                    const renderCart = () => {
+                        if (cartItems && cartTotal) {
+                            cartItems.innerHTML = '';
+                            let total = 0;
+
+                            cart.forEach(item => {
+                                const div = document.createElement('div');
+                                div.className = 'flex justify-between mb-4';
+                                div.innerHTML = `
+                                    <span>${item.name}</span>
+                                    <span>Rs. ${item.price}</span>
+                                `;
+                                cartItems.appendChild(div);
+                                total += item.price;
+                            });
+
+                            cartTotal.textContent = `Total: Rs. ${total}`;
+                        }
+                    };
+
+                    // Add to Cart Logic
+                    document.querySelectorAll('.add-to-cart').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const id = button.getAttribute('data-id');
+                            const name = button.getAttribute('data-name');
+                            const price = parseInt(button.getAttribute('data-price'));
+                            const item = { id, name, price };
+
+                            // Add item to cart only if it's not already present
+                            if (!cart.find(e => e.id === id)) {
+                                cart.push(item);
+                                sessionStorage.setItem('cart', JSON.stringify(cart));
+                                updateCartCount();
+                                alert(`${name} added to cart!`);
+                            } else {
+                                alert(`${name} is already in the cart.`);
+                            }
+                        });
+                    });
+
+                    // Open Cart Modal
+                    const viewCart = document.getElementById('view-cart');
+                    if (viewCart) {
+                        viewCart.addEventListener('click', () => {
+                            renderCart();
+                            cartModal?.classList.remove('hidden');
+                        });
+                    }
+
+                    // Close Cart Modal
+                    const closeCart = document.getElementById('close-cart');
+                    if (closeCart) {
+                        closeCart.addEventListener('click', () => {
+                            cartModal?.classList.add('hidden');
+                        });
+                    }
+
+                    // Initial Update of Cart Count
+                    updateCartCount();
+                });
+
+              </script>
+
+              <script>
+                  //multiple images model
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Open modal
+                    const openButtons = document.querySelectorAll('.open-modal');
+                    openButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const productId = button.getAttribute('data-id');
+                            const modal = document.getElementById('modal-' + productId);
+                            modal.classList.remove('hidden');
+                        });
+                    });
+
+                    // Close modal
+                    const closeButtons = document.querySelectorAll('.close-modal');
+                    closeButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const productId = button.getAttribute('data-id');
+                            const modal = document.getElementById('modal-' + productId);
+                            modal.classList.add('hidden');
+                        });
+                    });
+                });
+                </script>
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

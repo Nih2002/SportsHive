@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SportHive</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <header class="bg-blue-900 text-white">
 
@@ -13,7 +14,7 @@
       <div class="container mx-auto flex justify-between items-center py-3 px-4">
         <!-- Logo -->
         <a href="#" class="flex items-center space-x-2">
-          <img src="../images/logo12.png" alt="Logo" class="w-20 h-20">
+          <img src="../sportshive/images/logo12.png" alt="Logo" class="w-20 h-20">
         </a>
 
         <!-- Search Bar -->
@@ -38,38 +39,79 @@
           <div class="relative flex items-center space-x-4">
               <!-- Cart Icon -->
               <a href="../views/cart.php" id="view-cart" class="relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                  </svg>
+                  <button disabled class="cursor-not-allowed opacity-50">
+                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
+                  </button>
                   <!-- Cart Count Badge -->
                   <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      0
+                  </span>
+              </a>
+              <!-- Wish List Icon -->
+              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
+                  <button disabled class="cursor-not-allowed opacity-50">
+                  <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
+                  </button>
+                  <!-- Wishlist Count Badge -->
+                  <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       0
                   </span>
               </a>
           </div>
 
           <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
+              document.addEventListener("DOMContentLoaded", () => {
+                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+                const cartCount = cartItems.length;
+
+                // Store the cart count in sessionStorage
+                sessionStorage.setItem("cartCount", cartCount);
+              });
           </script>
 
-          <!-- Sign In & Cart -->
+          <!-- Sign In  -->
             <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-user"></i>
-                    <span>Sign Up</span>
-                  </a>
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
+                      <i class="fas fa-user"></i>
+                      <span>Sign Up</span>
+                  </button>
+
 
                   <!-- Log In Button -->
-                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
+                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
-                  </a>
+            </button>
             </div>
+            <!-- Account Button -->
+            <button id="accountBtn" class="flex items-center px-4 py-2 bg-white rounded-lg shadow">
+                <i class="fas fa-user mr-2"></i> Account 
+                <i class="fas fa-caret-down ml-2"></i>
+            </button>
+
+            <!-- Dropdown Menu (with higher z-index) -->
+            <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg z-50">
+                <a href="../views/myaccount.php" class="block px-4 py-2 hover:bg-gray-700">My Account</a>
+                <a href="../views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
+                <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
+            </div>
+            <script>
+        const accountBtn = document.getElementById('accountBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        accountBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
         </div>
       </div>
     </div>
@@ -105,15 +147,15 @@
       </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
-          <a href="../views/cycling.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cycling</a>
-          <a href="../views/cricket.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cricket</a>
-          <a href="../views/basketball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Basketball</a>
-          <a href="../views/football1.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Football</a>
-          <a href="../views/netball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Netball</a>
-          <a href="../views/rugby.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Rugby</a>
-          <a href="../views/swimming.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Swimming</a>
-          <a href="../views/vollyball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Volleyball</a>
+          <a href="../sportshive/views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
+          <a href="../sportshive/cycling.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cycling</a>
+          <a href="../sportshive/views/cricket.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cricket</a>
+          <a href="../sportshive/views/basketball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Basketball</a>
+          <a href="../sportshive/views/football1.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Football</a>
+          <a href="../sportshive/views/netball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Netball</a>
+          <a href="../sportshive/views/rugby.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Rugby</a>
+          <a href="../sportshive/views/swimming.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Swimming</a>
+          <a href="../sportshive/views/vollyball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Volleyball</a>
         </div>
       </div>
     </div>
@@ -227,7 +269,7 @@
     </p>
 
     <!-- Call to Action Button -->
-    <a href="../views/cricket.php" 
+    <a href="../sportshive/views/cricket.php" 
        class="mt-6 bg-gradient-to-r from-blue-500 to-lightBlue-400 text-white px-8 py-4 rounded-full shadow-lg transform hover:scale-105 hover:from-lightBlue-300 hover:to-blue-600 transition-all duration-300 ease-in-out">
         Shop Now
     </a>
@@ -265,7 +307,7 @@
       
       <!-- Product Sales Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../images/product.jpg" alt="Product Sales" 
+        <img src="../sportshive/images/product.jpg" alt="Product Sales" 
           class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Product Sales</h3>
@@ -282,7 +324,7 @@
 
       <!-- Repair Services Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
+        <img src="../sportshive/images/repair.jpg" class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300">Repair Services</h3>
           <!-- Plus Button -->
@@ -298,7 +340,7 @@
 
       <!-- Delivery System Section -->
       <div class="relative overflow-hidden rounded-lg shadow-lg">
-        <img src="../images/delivery.jpeg" alt="Delivery System" 
+        <img src="../sportshive/images/delivery.jpeg" alt="Delivery System" 
           class="w-full h-60 object-cover transition-transform duration-300 hover:scale-105 hover:opacity-75">
         <div class="absolute inset-0 flex flex-col justify-between p-4">
           <h3 class="text-2xl font-bold text-white opacity-0 hover:opacity-100 transition-opacity duration-300"> Delivery System</h3>
@@ -359,7 +401,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/backetball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -372,7 +414,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/cycling.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -385,7 +427,7 @@
          <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/boxing.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -398,7 +440,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/netball.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -411,7 +453,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/hiking.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -424,7 +466,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/athletic.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -437,7 +479,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/swimming.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -449,7 +491,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/tennis.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -460,7 +502,7 @@
         <!-- Product 7 - Soccer Ball -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/soccer.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -485,7 +527,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/adidas.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -498,7 +540,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/nike.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -511,7 +553,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/tex.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -524,7 +566,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/puma.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -537,7 +579,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/amor.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -550,7 +592,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/reebok.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -563,7 +605,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/stanford-sf.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -576,7 +618,7 @@
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
             <a href="https://example.com/basketball">
-              <img src="../images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+              <img src="../sportshive/images/cleto reyes.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
             </a>
           </div>
           <!-- Name Text -->
@@ -588,7 +630,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/salonom.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -599,7 +641,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/domyos.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -610,7 +652,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/finis.jpeg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -621,7 +663,7 @@
         <!-- Product 6 - Tennis Racket -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/bauer.png" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -632,7 +674,7 @@
         <!-- Product 7 - Soccer Ball -->
         <div class="relative group">
           <div class="w-48 h-48 rounded-full overflow-hidden mx-auto shadow-md">
-            <img src="../images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
+            <img src="../sportshive/images/linine.jpg" class="w-full h-full object-cover group-hover:opacity-50 transition-opacity duration-300">
           </div>
           <!-- Name Text -->
           <div class="absolute inset-0 flex items-center justify-center text-black text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">

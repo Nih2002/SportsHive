@@ -1,70 +1,58 @@
-<?php 
-session_start(); // Start the session
-require 'connection.php'; // Include the database connection
+<?php
+// Include database connection
+include 'connection.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the input values
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize and retrieve form data
+    $category = trim($_POST['category']);  // Category (like 'Cricket', 'Football', etc.)
+    $subcategory = trim($_POST['item_type']); // Subcategory (like 'Shoes', 'Clothing', etc.)
+    $item_name = trim($_POST['item_name']);
+    $price = trim($_POST['price']);
+    $image_url = trim($_POST['image_url']);
+    $description = trim($_POST['description']);
 
-    // Query to check if the email exists in the database
-    $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Ensure sizes and colors are properly formatted
+    $sizes = isset($_POST['size']) ? array_filter($_POST['size'], 'strlen') : [];
+    $colors = isset($_POST['color']) ? array_filter($_POST['color'], 'strlen') : [];
 
-    if ($result->num_rows > 0) {
-        // Fetch the user details
-        $user = $result->fetch_assoc();
+    // Convert array values into a comma-separated string
+    $sizes_string = !empty($sizes) ? implode(', ', $sizes) : NULL;
+    $colors_string = !empty($colors) ? implode(', ', $colors) : NULL;
 
-        // Verify the password using password_verify
-        if (password_verify($password, $user['password'])) {
-            // If password matches, store user details in session
-            $_SESSION['user_id'] = $user['id'];  // Store the user ID
-            $_SESSION['role'] = $user['role'];    // Store the user role
-
-            // Set login success flag
-            $_SESSION['login_success'] = true;
-
-            // Redirect based on user role
-            switch ($user['role']) {
-                case 'admin':
-                    header("Location: ../admin.php");
-                    exit(); // Ensure script stops after redirect
-                case 'user':
-                    header("Location: ../index.php");
-                    exit(); // Ensure script stops after redirect
-                case 'delivery':
-                    header("Location: delivery.php");
-                    exit(); // Ensure script stops after redirect
-                case 'Technician':
-                    header("Location: ../repair.php");
-                    exit(); // Ensure script stops after redirect
-                default:
-                    // Default to a safe page if no role matches
-                    //header("Location: ../index.php");
-                    //exit(); // Ensure script stops after redirect
-            }
-        } else {
-            // Incorrect password
-            $_SESSION['login_error'] = "Invalid credentials!";
-            // Redirect back to login page
-            header("Location: login.php");
-            exit(); // Ensure script stops after redirect
-        }
-    } else {
-        // Email not found
-        $_SESSION['login_error'] = "Invalid credentials!";
-        // Redirect back to login page
-        header("Location: login.php");
-        exit(); // Ensure script stops after redirect
+    // Determine the table based on the selected category
+    switch ($category) {
+        case 'Cricket': $table = 'cricket'; break;
+        case 'Netball': $table = 'netball'; break;
+        case 'Swimming': $table = 'swimming'; break;
+        case 'Athletic': $table = 'athletic'; break;
+        case 'Football': $table = 'football'; break;
+        case 'Volleyball': $table = 'volleyball'; break;
+        case 'Rugby': $table = 'rugby'; break;
+        case 'Cycling': $table = 'cycling'; break;
+        case 'Basketball': $table = 'basketball'; break;
+        default:
+            echo "<script>alert('Invalid category!');</script>";
+            exit();
     }
 
-    // Close the statement and connection
+    // Insert into the selected category table
+    $sql = "INSERT INTO $table (name, price, image_url, item_type, sizes, colors, description) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssss",  $item_name, $price, $image_url, $subcategory, $sizes_string, $colors_string, $description);
+
+    // Execute query and show success message
+    if ($stmt->execute()) {
+        echo "<script>alert('Product added successfully!'); window.location.href='admin.php';</script>";
+    } else {
+        echo "<script>alert('Error: " . $stmt->error . "');</script>";
+    }
+
     $stmt->close();
-    $conn->close();
 }
+
+$conn->close();
 ?>
 
 
@@ -72,13 +60,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create an Account</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin add product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-<body class="bg-gray-100 text-gray-800 bg-cover h-[25vh]" style="background-image: url('../images/sign1.jpg');">
 <header class="bg-blue-900 text-white">
 
     <!-- Main Header -->
@@ -107,63 +95,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <span class="text-xs">Need Help?</span>
             <span class="font-bold">CALL 0115 964 964</span>
           </div>
-          <!-- User Dropdown & Cart -->
-          <div class="relative flex items-center space-x-4">
-              <!-- Cart Icon -->
-              <a href="../views/cart.php" id="view-cart" class="relative">
-              <button disabled class="cursor-not-allowed opacity-50">
-                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
-                  </button>
-                  <!-- Cart Count Badge -->
-                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      0
-                  </span>
-              </a>
-              <!-- Wish List Icon -->
-              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
-              <button disabled class="cursor-not-allowed opacity-50">
-                  <i class="fas fa-heart h-8 w-8 text-yellow-500"></i>
-              </button>
-                  <!-- Wishlist Count Badge -->
-                  <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      0
-                  </span>
-              </a>
-          </div>
-
-          <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-                const cartCount = cartItems.length;
-
-                // Store the cart count in sessionStorage
-                sessionStorage.setItem("cartCount", cartCount);
-              });
-          </script>
 
           <!-- Sign In & Cart -->
-            <div class="flex space-x-4">
-                  <!-- Sign In Button -->
-                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition">
-                    <i class="fas fa-user"></i>
-                    <span>Sign Up</span>
-                  </a>
-            </div>
+          <div class="flex space-x-4">
+            <!-- Sign In Button -->
+            <a href="../sportshive/views/signin.php" 
+            class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
+                <i class="fas fa-user"></i>
+                <span>Sign Up</span>
+            </a>
+
+            <!-- Log In Button -->
+            <a href="../sportshive/views/login.php" 
+            class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Log In</span>
+            </a>
+        </div>
+
         </div>
       </div>
     </div>
 
   <!-- Top Bar -->
-  <div class="bg-cyan-100 relative">
-    <!-- Navigation Bar -->
-    <nav class="relative z-10 flex items-center justify-between px-4 py-2">
-      <!-- Hamburger Menu -->
-      <button id="menu-toggle" class="text-black focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <div class="hidden md:flex space-x-6">
+<div class="bg-cyan-100 relative">
+  <!-- Navigation Bar -->
+  <nav class="relative z-10 flex items-center justify-between px-4 py-2">
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" class="text-black focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <div class="hidden md:flex space-x-6">
         <a href="../index.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
         <a href="../views/services.php" 
@@ -262,57 +226,128 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   });
 </script>
 
-  </header>
+</header>
 
-  <!-- Main Section -->
-  <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
-    <div class="w-96 bg-gray-800 text-gray-100 rounded-lg shadow-xl p-8 space-y-6 mx-32">
-        <h2 class="text-3xl font-semibold text-center text-teal-400 mb-4">Login Form</h2>
-        <form method="POST" action="">
-        <div class="space-y-4 mb-6">
-            <!-- Email Input -->
-            <input 
-                type="text" 
-                name="email" 
-                placeholder="Email" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required 
-                pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" 
-            />
+<!-- Product Form -->
+<div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg mx-auto mt-10">
+    <h2 class="text-2xl font-bold mb-4">Add Products</h2>
+    <p class="mb-6">Manage product inventory.</p>
 
-            <!-- Password Input -->
-            <input 
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" 
-                required 
-                minlength="6"
-            />
+    <form id="product-form" class="modal-content overflow-y-auto" action="addproduct.php" method="POST" enctype="multipart/form-data">
+        <!-- Category Selection -->
+        <div class="mt-4">
+            <label class="block font-medium">Category</label>
+            <select id="category" name="category" class="w-full p-2 border rounded" onchange="updateSubcategories()">
+                <option value="Cricket">Cricket</option>
+                <option value="Netball">Netball</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Athletic">Athletic</option>
+                <option value="Football">Football</option>
+                <option value="Volleyball">Volleyball</option>
+                <option value="Rugby">Rugby</option>
+                <option value="Cycling">Cycling</option>
+                <option value="Basketball">Basketball</option>
+            </select>
         </div>
 
-        <!-- Submit Button -->
-        <button 
-            type="submit" 
-            class="w-full bg-teal-500 p-3 rounded-lg text-gray-100 font-semibold"
-            id="loginButton" 
-            name="login">
-            Login
-        </button>
+        <!-- Subcategory Selection (Updated) -->
+        <div class="mt-4">
+            <label class="block font-medium">Subcategory</label>
+            <select id="item_type" name="item_type" class="w-full p-2 border rounded">
+                <!-- Subcategories will be loaded dynamically here -->
+            </select>
+        </div>
 
+        <!-- Item Name -->
+        <div class="mt-4">
+            <label class="block font-medium">Item Name</label>
+            <input type="text" id="item_name" name="item_name" class="w-full p-2 border rounded" placeholder="Enter item name" required>
+        </div>
+
+        <!-- Price -->
+        <div class="mt-4">
+            <label for="price" class="block font-medium">Price</label>
+            <input type="number" id="price" name="price" class="w-full p-2 border rounded" placeholder="Enter price" min="0" required>
+        </div>
+
+        <!-- Image URL -->
+        <div class="mt-4">
+            <label class="block font-medium">Image URL</label>
+            <input type="text" name="image_url" class="w-full p-2 border rounded mb-3" placeholder="Enter image URL">
+        </div>
+
+        <!-- Sizes -->
+        <label class="block font-medium">Sizes:</label>
+        <div>
+            <input type="checkbox" name="size[]" value="S"> Small
+            <input type="checkbox" name="size[]" value="M"> Medium
+            <input type="checkbox" name="size[]" value="L"> Large
+            <input type="checkbox" name="size[]" value="XL"> Extra Large
+            <input type="checkbox" name="size[]" value="six"> Six
+            <input type="checkbox" name="size[]" value="seven"> Seven
+        </div>
+
+        <!-- Colors -->
+        <label class="block font-medium mt-4">Colors:</label>
+        <div>
+            <input type="checkbox" name="color[]" value="Red"> Red
+            <input type="checkbox" name="color[]" value="Blue"> Blue
+            <input type="checkbox" name="color[]" value="Green"> Green
+            <input type="checkbox" name="color[]" value="Black"> Black
+            <input type="checkbox" name="color[]" value="Yellow"> Yellow
+        </div>
+
+        <!-- Description -->
+        <div class="mt-4">
+            <label class="block font-medium">Description</label>
+            <textarea id="description" name="description" class="w-full p-2 border rounded" placeholder="Enter product description" required></textarea>
+        </div>
+
+        <!-- Add Product Button -->
+        <button type="submit" id="add-product-btn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Add Product</button>
     </form>
-
-
-        <p class="text-center text-gray-400">Don't have an account? 
-            <a href="signin.php" class="text-teal-400">Sign up</a>
-        </p>
-    </div>
 </div>
 
+<!-- JavaScript for Dynamic Subcategories -->
+<script>
+function updateSubcategories() {
+    const category = document.getElementById("category").value;
+    const subcategorySelect = document.getElementById("item_type");
+    
+    // Define subcategories for each category
+    const subcategories = {
+        "Cricket": ["Equipment", "Protection", "Shoes", "Clothing"],
+        "Netball": ["Equipment"],
+        "Swimming": ["Equipment"],
+        "Athletic": ["Shoes", "Equipment", "Colothings"],
+        "Football": ["Shoes", "Balls"],
+        "Volleyball": ["Equipment"],
+        "Rugby": ["Shoes", "Balls", "Protection"],
+        "Cycling": ["Shoes", "Cycling", "Protection", "Accessories"],
+        "Basketball": ["Shoes", "Balls"]
+    };
+
+    // Clear existing subcategories
+    subcategorySelect.innerHTML = "";
+
+    // Add new subcategories based on selected category
+    if (subcategories[category]) {
+        subcategories[category].forEach(sub => {
+            let option = document.createElement("option");
+            option.value = sub;
+            option.textContent = sub;
+            subcategorySelect.appendChild(option);
+        });
+    }
+}
+
+// Run function on page load to set default subcategories
+updateSubcategories();
+</script>
 
 
-  <!-- Footer Section -->
-  <footer class="bg-black text-white">
+</body>
+<footer class="bg-black text-white">
   <!-- Top Section -->
   <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">
     <!-- Feature 1 -->
@@ -358,7 +393,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
 
   <!-- Navigation Links -->
-  <div class="container mx-auto py-6 px-4 text-center text-gray-400 text-sm">
+  <div class="container mx-auto py-6 px-4 text-center text-black-400 text-sm">
     <a href="#" class="hover:underline">Home Office Desks</a> |
     <a href="#" class="hover:underline">Pet Supplies</a> |
     <a href="#" class="hover:underline">Sporting Goods</a> |
@@ -408,5 +443,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   </div>
 </footer>
-</body>
 </html>
