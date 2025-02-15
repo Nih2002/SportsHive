@@ -1,3 +1,61 @@
+<?php
+
+// Database connection
+$servername = "localhost";
+$username = "root"; // Change if needed
+$password = "";
+$dbname = "sportshive"; // Change to your actual database name
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch maintenance requests
+$sql = "SELECT request_id, request_title, issue_description, preferred_time, user_contact, submitted_at FROM maintenance_requests";
+$result = $conn->query($sql);
+
+// Check if query executed successfully
+if (!$result) {
+    die("Error retrieving data: " . $conn->error);
+}
+?>
+
+
+<?php
+include 'connection.php'; // Adjust the path accordingly
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["request_id"])) {
+        $request_id = intval($_POST["request_id"]);
+
+        if (isset($_POST["accept"])) {
+            $status = "Accepted";
+        } elseif (isset($_POST["deny"])) {
+            $status = "Denied";
+        } else {
+            $status = "Pending";
+        }
+
+        // Update query
+        $stmt = $conn->prepare("UPDATE maintenance_requests SET status = ? WHERE request_id = ?");
+        $stmt->bind_param("si", $status, $request_id);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Request status updated successfully.'); window.location.href='repair.php';</script>";
+        } else {
+            echo "<script>alert('Failed to update request status.');</script>";
+        }
+
+        $stmt->close();
+    }
+    $conn->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,334 +65,207 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<header class="bg-blue-900 text-white">
-
-    <!-- Main Header -->
-    <div class="bg-cyan-500 text-black">
-      <div class="container mx-auto flex justify-between items-center py-3 px-4">
+<body>
+<header class="bg-cyan-500 text-black shadow-lg py-4 px-6 flex justify-between items-center">
+        
         <!-- Logo -->
-        <a href="#" class="flex items-center space-x-2">
-          <img src="../images/logo12.png" alt="Logo" class="w-20 h-20">
-        </a>
+       <a href="#" class="flex items-center space-x-2">
+         <img src="../images/logo12.png" alt="Logo" class="w-20 h-20">
+       </a>
+       <div class="text-2xl font-bold tracking-wide">
+            Request Handling
+       </div>
+       
 
-        <!-- Search Bar -->
-        <div class="flex items-center w-full max-w-md mx-4">
-          <input 
-            type="text" 
-            placeholder="What are you looking for?" 
-            class="w-full bg-white text-black rounded-l-lg px-4 py-2 focus:outline-none">
-          <button class="bg-pink-600 text-white px-4 py-2 rounded-r-lg hover:bg-pink-500">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
+       <!-- Navigation Links -->
+       <nav class="flex space-x-6 text-lg font-semibold">
+           <a href="#" class="hover:text-yellow-400 transition">Dashboard</a>
+           <a href="#" class="hover:text-yellow-400 transition">Orders</a>
+           <a href="#" class="hover:text-yellow-400 transition">Products</a>
+           <a href="#" class="hover:text-yellow-400 transition">Users</a>
+           <a href="#" class="hover:text-yellow-400 transition">Reports</a>
+       </nav>
 
-        <!-- Right Section -->
-        <div class="flex items-center space-x-6">
-          <!-- Contact -->
-          <div class="flex flex-col text-right">
-            <span class="text-xs">Need Help?</span>
-            <span class="font-bold">CALL 0115 964 964</span>
-          </div>
-          <!-- User Dropdown & Cart -->
-          <div class="relative flex items-center space-x-4">
-                <!-- Cart Icon -->
-                <a href="../views/cart.php" id="view-cart" class="relative pointer-events-none opacity-70">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 7h11.2M7 13l-4-8H2M7 13h10m-4 0a1 1 0 112 0m-4 0a1 1 0 11-2 0" />
-                    </svg>
-                    <!-- Cart Count Badge -->
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                        0
-                    </span>
-                </a>
-            </div>
+       <!-- Admin Profile Dropdown -->
+       <div class="relative">
+           <button onclick="toggleDropdown()" class="flex items-center focus:outline-none">
+               <img src="https://via.placeholder.com/40" class="w-10 h-10 rounded-full border-2 border-yellow-400">
+               <span class="ml-2 font-semibold">Admin</span>
+               <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+               </svg>
+           </button>
 
+           <!-- Dropdown Menu -->
+           <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg hidden">
+               <a href="#" class="block px-4 py-2 hover:bg-gray-200">Profile</a>
+               <a href="#" class="block px-4 py-2 hover:bg-gray-200">Settings</a>
+               <a href="#" class="block px-4 py-2 text-red-600 hover:bg-gray-200">Logout</a>
+           </div>
+       </div>
+   </header>
 
-          <script>
-          // Example JavaScript to handle cart count
-          document.addEventListener("DOMContentLoaded", function () {
-              let cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count
-              document.getElementById("cart-count").textContent = cartCount; // Update count
-          });
-          </script>
+   <script>
+       function toggleDropdown() {
+           document.getElementById("dropdownMenu").classList.toggle("hidden");
+       }
+   </script>
+<div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-3xl">
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Maintenance Requests</h2>
 
-          <!-- Sign In & Cart -->
-          <div class="flex space-x-4">
-            <!-- Sign In Button -->
-            <a 
-                href="../views/signin.php" 
-                class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
-                <i class="fas fa-user"></i>
-                <span>Sign Up</span>
-            </a>
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-300 px-4 py-2">Request ID</th>
+                    <th class="border border-gray-300 px-4 py-2">Title</th>
+                    <th class="border border-gray-300 px-4 py-2">Preferred Time</th>
+                    <th class="border border-gray-300 px-4 py-2">Submitted At</th>
+                    <th class="border border-gray-300 px-4 py-2">Action</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr class="text-gray-700">
+                            <td class="border border-gray-300 px-4 py-2 text-center"><?php echo htmlspecialchars($row["request_id"]); ?></td>
+                            <td class="border border-gray-300 px-4 py-2"><?php echo htmlspecialchars($row["request_title"]); ?></td>
+                            <td class="border border-gray-300 px-4 py-2 text-center"><?php echo htmlspecialchars($row["preferred_time"]); ?></td>
+                            <td class="border border-gray-300 px-4 py-2 text-center"><?php echo htmlspecialchars($row["submitted_at"]); ?></td>
+                            <td class="border border-gray-300 px-4 py-2 text-center">
+                                <button onclick="openModal(<?php echo $row['request_id']; ?>)" 
+                                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition">
+                                    View Details
+                                </button>
+                            </td>
+                        </tr>
 
-            <!-- Log In Button -->
-            <a 
-                href="../views/login.php" 
-                class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none">
-                <i class="fas fa-sign-in-alt"></i>
-                <span>Log In</span>
-            </a>
-        </div>
+                        <!-- Modal (Initially Hidden) -->
+                        <div id="modal-<?php echo $row['request_id']; ?>" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center">
+                            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                                <h3 class="text-xl font-semibold">Maintenance Request Details</h3>
+                                <p class="text-gray-700 mt-2"><strong>Request ID:</strong> <?php echo htmlspecialchars($row["request_id"]); ?></p>
+                                <p class="text-gray-700"><strong>Title:</strong> <?php echo htmlspecialchars($row["request_title"]); ?></p>
+                                <p class="text-gray-700"><strong>Issue:</strong> <?php echo htmlspecialchars($row["issue_description"]); ?></p>
+                                <p class="text-gray-700"><strong>Preferred Time:</strong> <?php echo htmlspecialchars($row["preferred_time"]); ?></p>
+                                <p class="text-gray-700"><strong>Contact:</strong> <?php echo htmlspecialchars($row["user_contact"]); ?></p>
+                                <p class="text-gray-700"><strong>Submitted At:</strong> <?php echo htmlspecialchars($row["submitted_at"]); ?></p>
 
-        </div>
-      </div>
+                                <!-- Accept & Deny Buttons -->
+                                <div class="flex justify-between mt-4">
+                                    <button onclick="updateRequestStatus(<?php echo $row['request_id']; ?>, 'accepted')"
+                                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" name="accept">
+                                        Accept
+                                    </button>
+                                    <button onclick="updateRequestStatus(<?php echo $row['request_id']; ?>, 'denied')"
+                                        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" name="deny">
+                                        Deny
+                                    </button>
+                                </div>
+
+                                <!-- Close Modal Button -->
+                                <button onclick="closeModal(<?php echo $row['request_id']; ?>)" 
+                                    class="mt-4 text-gray-600 underline">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5" class="text-center text-gray-600 py-4">No maintenance requests found.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
-
-  <!-- Top Bar -->
-<div class="bg-cyan-100 relative">
-  <!-- Navigation Bar -->
-  <nav class="relative z-10 flex items-center justify-between px-4 py-2">
-    <!-- Hamburger Menu -->
-    <button id="menu-toggle" class="text-black focus:outline-none">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-    <div class="hidden md:flex space-x-6">
-        <a href="../index.php" 
-           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
-        <a href="../views/services.php" 
-           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
-        <a href="../views/contactus.php" 
-           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
-        <a href="../views/aboutus.php" 
-           class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
-      </div>
-  </nav>
-
-  <!-- Collapsible Menu -->
-  <div id="menu-links" class="hidden flex-col bg-gray-700 border border-gray-700 rounded-lg shadow-lg w-full z-40">
-    <!-- Sports Section -->
-    <div class="relative">
-      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
-        Sports
-      </h5>
-      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
-        <div class="space-y-2">
-          <a href="../views/athletic.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Athletic</a>
-          <a href="../views/cycling.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cycling</a>
-          <a href="../views/cricket.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Cricket</a>
-          <a href="../views/basketball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Basketball</a>
-          <a href="../views/football1.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Football</a>
-          <a href="../views/netball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Netball</a>
-          <a href="../views/rugby.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Rugby</a>
-          <a href="../views/swimming.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Swimming</a>
-          <a href="../views/vollyball.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Volleyball</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Brands Section -->
-    <div class="relative">
-      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
-        Brands
-      </h5>
-      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
-        <div class="grid grid-cols-3 gap-4">
-          <div class="flex flex-wrap gap-4">
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ADIDAS</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">SALOMON</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPRUN</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">PUMA</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">OLAIAN</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROKY</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROCKRIDER</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPSTA</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Repair and Services Section -->
-    <div class="relative">
-      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
-        Repair and Services
-      </h5>
-      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
-        <div class="space-y-2">
-          <a href="../views/requestmaintenance.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Maintenance Packages</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Others Section -->
-    <div class="relative">
-      <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
-        Others
-      </h5>
-      <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
-        <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
+<?php 
+if ($conn) {
+    $conn->close();
+}
+?>
+<?php
+include 'connection.php'; // Ensure this file correctly connects to your database
 
+// Fetch maintenance feedback with user names
+$query = "
+    SELECT u.name, mf.issue_description, mf.urgency, mf.created_at 
+    FROM maintenance_feedback mf
+    JOIN users u ON mf.user_id = u.id
+    ORDER BY mf.created_at DESC
+";
+
+$result = $conn->query($query);
+?>
+<!-- Page Title -->
+        <div class="text-center mb-12 mt-20">
+            <h1 class="text-5xl font-extrabold text-blue-500 bg-clip-text bg-white via-purple-500 to-pink-500">
+                User Feedback
+            </h1>
+            <p class="text-blue-800 text-lg mt-4">
+                Here's what our customers say about the maintenance services at our sports shop!
+            </p>
+        </div>
+
+        <!-- Feedback Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <?php
+                // Get user initials (First letter of name)
+                $user_initial = strtoupper(substr($row['name'], 0, 1));
+
+                // Assign a random color for user avatar
+                $colors = ['indigo', 'purple', 'pink', 'blue', 'green', 'yellow', 'red'];
+                $color = $colors[array_rand($colors)];
+                ?>
+
+                <!-- Feedback Card -->
+                <div class="relative p-6 bg-pink-200 rounded-lg shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-105 transition duration-300">
+                    <!-- User Initial Icon -->
+                    <div class="absolute top-0 -mt-5 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-<?php echo $color; ?>-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
+                            <i class="text-2xl"><?php echo $user_initial; ?></i>
+                        </div>
+                    </div>
+                    <!-- Card Content -->
+                    <div class="mt-6">
+                        <h3 class="text-lg font-bold text-gray-900 text-center"><?php echo $row['name']; ?></h3>
+                        <div class="text-center mt-2">
+                            <span class="px-3 py-1 rounded-full text-white text-sm bg-<?php echo ($row['urgency'] == 'High') ? 'red' : ($row['urgency'] == 'Medium' ? 'yellow' : 'blue'); ?>-500">
+                                <?php echo $row['urgency']; ?>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mt-4">
+                            <?php echo $row['issue_description']; ?>
+                        </p>
+                        <p class="text-sm text-black-400 mt-4 text-right"><?php echo date("F j, Y", strtotime($row['created_at'])); ?></p>
+                    </div>
+                </div>
+
+            <?php endwhile; ?>
+          </div>
+
+<!-- JavaScript for Modal & AJAX -->
 <script>
-  // Toggle main menu and expand all submenus
-  const menuToggle = document.getElementById('menu-toggle');
-  const menuLinks = document.getElementById('menu-links');
-  const submenus = document.querySelectorAll('.submenu');
+    function openModal(id) {
+        document.getElementById("modal-" + id).classList.remove("hidden");
+    }
 
-  menuToggle.addEventListener('click', () => {
-    // Toggle the main menu visibility
-    menuLinks.classList.toggle('hidden');
+    function closeModal(id) {
+        document.getElementById("modal-" + id).classList.add("hidden");
+    }
 
-    // Expand or collapse all submenus
-    submenus.forEach(submenu => {
-      submenu.classList.toggle('hidden');
-    });
-  });
+    function updateRequestStatus(requestId, status) {
+    alert(`Request ${status} successfully.`);
+    closeModal(requestId);
+}
+
 </script>
 
-</header>
-<body class="bg-gray-800">
-    <!-- Repair Man Dashboard -->
-    <main class="flex-1 container mx-auto py-8">
-        <h1 class="text-3xl font-semibold text-white mb-6">Maintenance Technician Dashboard</h1>
-
-        <!-- Maintenance Requests Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <!-- Card: Maintenance Requests -->
-            <div onclick="showModal('maintenance-requests')" class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 cursor-pointer">
-                <h2 class="text-xl font-semibold">Maintenance Requests</h2>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative">
-                <!-- Close Button -->
-                <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
-                    ✖
-                </button>
-                <!-- Modal Content -->
-                <h2 id="modal-title" class="text-2xl font-bold mb-4">Title</h2>
-                <div id="modal-body"></div>
-            </div>
-        </div>
-
-        <!-- JavaScript -->
-        <script>
-            // Data for maintenance requests
-            const maintenanceData = {
-                "maintenance-requests": [
-                    { id: 1, customer: "Damya", equipment: "Treadmill", issue: "Motor malfunction", status: "Pending" },
-                    { id: 2, customer: "Anjali", equipment: "Exercise Bike", issue: "Broken pedal", status: "Pending" }
-                ]
-            };
-
-            // Function to show the modal with content
-            function showModal(section) {
-                const modal = document.getElementById("modal");
-                const title = section === 'maintenance-requests' ? "Maintenance Requests" : "Repair History";
-                const data = maintenanceData[section] || [];
-
-                // Update modal content
-                document.getElementById("modal-title").textContent = title;
-
-                let content = `<ul class="space-y-4">`;
-                data.forEach((task) => {
-                    content += `
-                        <li class="border-b-2 pb-4">
-                            <strong>Customer:</strong> ${task.customer} <br>
-                            <strong>Equipment:</strong> ${task.equipment} <br>
-                            <strong>Issue:</strong> ${task.issue} <br>
-                            <strong>Status:</strong> ${task.status} <br>
-                            <button class="text-blue-500 mt-2" onclick="acceptRequest(${task.id}, '${section}')">Accept Request</button>
-                            <button class="text-green-500 mt-2 ml-2" onclick="updateStatus(${task.id}, '${section}')">Update Status</button>
-                        </li>
-                    `;
-                });
-                content += `</ul>`;
-
-                document.getElementById("modal-body").innerHTML = content;
-
-                // Display the modal
-                modal.classList.remove("hidden");
-            }
-
-            // Function to accept a maintenance request
-            function acceptRequest(id, section) {
-                const taskIndex = maintenanceData[section].findIndex(task => task.id === id);
-                if (taskIndex !== -1) {
-                    // Change the status to 'In Progress'
-                    maintenanceData[section][taskIndex].status = 'In Progress';
-
-                    // Refresh the modal to show the updated status
-                    showModal(section);
-                }
-            }
-
-            // Function to update the status of a maintenance task (e.g., mark it as completed)
-            function updateStatus(id, section) {
-                const newStatus = prompt("Enter new status (e.g., In Progress, Completed):");
-                if (newStatus) {
-                    const taskIndex = maintenanceData[section].findIndex(task => task.id === id);
-                    if (taskIndex !== -1) {
-                        maintenanceData[section][taskIndex].status = newStatus;
-
-                        // Refresh the modal to show the updated data
-                        showModal(section);
-                    }
-                }
-            }
-
-            // Function to close the modal
-            function closeModal() {
-                const modal = document.getElementById("modal");
-                modal.classList.add("hidden");
-            }
-        </script>
-    </main>
-    <div class="container mx-auto px-4">
-        <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Customer Feedback</h1>
-
-        <!-- Feedback List -->
-        <div class="space-y-6">
-            <!-- Feedback Card 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-blue-500">
-                <div class="flex items-center space-x-4 mb-4">
-                    <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center text-xl font-semibold">J</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Janithi</h3>
-                        <small class="text-sm text-gray-500">Customer</small>
-                    </div>
-                </div>
-                <p class="text-gray-700 mt-2">The service was excellent, and I am very satisfied with the product quality. Highly recommend!</p>
-                <small class="text-gray-500 block mt-4">Submitted on: 2025-01-12</small>
-            </div>
-
-            <!-- Feedback Card 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-green-500">
-                <div class="flex items-center space-x-4 mb-4">
-                    <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center text-xl font-semibold">J</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Jayani</h3>
-                        <small class="text-sm text-gray-500">Customer</small>
-                    </div>
-                </div>
-                <p class="text-gray-700 mt-2">The website was easy to navigate, and my order arrived on time. I will definitely order again.</p>
-                <small class="text-gray-500 block mt-4">Submitted on: 2025-01-11</small>
-            </div>
-
-            <!-- Feedback Card 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-purple-500">
-                <div class="flex items-center space-x-4 mb-4">
-                    <div class="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center text-xl font-semibold">S</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Sasanka</h3>
-                        <small class="text-sm text-gray-500">Customer</small>
-                    </div>
-                </div>
-                <p class="text-gray-700 mt-2">Great customer support! They resolved my issue quickly, and I am happy with the resolution.</p>
-                <small class="text-gray-500 block mt-4">Submitted on: 2025-01-10</small>
-            </div>
-        </div>
-    </div>
 </body>
 <footer class="bg-black text-white">
   <!-- Top Section -->

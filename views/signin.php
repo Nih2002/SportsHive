@@ -93,9 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "alert('" . implode("\\n", $errors) . "');"; // Join all errors with a new line for display in alert
         echo "</script>";
     } else {
-        // All inputs are valid, proceed to insert into the database
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password
-        $sql = "INSERT INTO users (name, address, username, email, password, role) VALUES (?, ?, ?, ?, ?, ?)";
+        // Hash the password before storing it in the database
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Prepare the SQL statement to insert data, including created_at
+        $sql = "INSERT INTO users (name, address, username, email, password, role, created_at) 
+                VALUES (?, ?, ?, ?, ?, ?, NOW())";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssss", $name, $address, $username, $email, $hashed_password, $role);
@@ -104,27 +107,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Retrieve and store the inserted user_id
             $user_id = $stmt->insert_id;
 
-            // Set session variables
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['username'] = $username;
-            $_SESSION['role'] = $role;
+            // Set success message
+            $successMessage = "Registration successful! Welcome to Sportshive Website...";
 
-            echo "<script>";
-            echo "alert('Registration successful! Redirecting...');";
-            echo "window.location.href = 'login.php';"; // Redirect to login page after success
-            echo "</script>";
-            exit;
+            // Close connection
+            $stmt->close();
+            $conn->close();
         } else {
             echo "<script>";
             echo "alert('Error: " . $stmt->error . "');"; // Show database error in alert
             echo "</script>";
         }
-
-        $stmt->close();
-        $conn->close();
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -338,7 +335,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <select name="role" class="w-full p-3 rounded-lg bg-gray-700 text-gray-100" required>
           <option value="" disabled selected>Select Role</option>
           <option value="user">User</option>
-          <option value="delivery">Delivery Person</option>
+          <option value="manager">Manager</option>
           <option value="Technician">Maintenance Technician</option>
         </select>
       </div>
@@ -349,6 +346,74 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <p class="text-center text-gray-400">Already have an account? <a href="login.php" class="text-teal-400">Log in</a></p>
     </div>
   </div>
+
+  <!-- Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <h2 class="text-2xl font-bold text-green-600" id="successMessage"><?php echo $successMessage; ?></h2>
+        <button id="closeModalBtn" class="mt-4 px-6 py-2 bg-blue-500 text-white rounded">Close</button>
+    </div>
+</div>
+
+<!-- Modal Styles -->
+<style>
+    /* Modal backdrop */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Make sure it sits on top of other content */
+    }
+
+    /* Modal content */
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px; /* Adjust width as needed */
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Close button */
+    #closeModalBtn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4CAF50; /* Green button */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #closeModalBtn:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<script>
+    window.onload = function() {
+        // If there is a success message, display the modal
+        const successMessage = "<?php echo $successMessage; ?>";
+        if (successMessage) {
+            document.getElementById('successMessage').innerText = successMessage;
+            document.getElementById('successModal').style.display = "flex";
+        }
+
+        // Close the modal when button is clicked
+        document.getElementById('closeModalBtn').onclick = function() {
+            document.getElementById('successModal').style.display = "none";
+            // Optionally redirect after closing modal
+            window.location.href = 'login.php'; // Redirect to login after closing the modal
+        }
+    }
+</script>
 
   <!-- Footer Section -->
   <footer class="bg-black text-white">

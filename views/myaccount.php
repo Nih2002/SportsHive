@@ -269,23 +269,23 @@ $conn->close();
 </script>
 
   </header>
-<body class="bg-gray-100 font-sans">
-    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
+  <div class="flex gap-6 mx-10 mt-10">
+    <!-- Left Side: Account Details -->
+    <div class="w-1/2 bg-white shadow-lg rounded-xl p-6">
         <div class="flex justify-between items-center border-b pb-4">
             <h1 class="text-xl font-bold"><?php echo htmlspecialchars($user_data['name']); ?> Account</h1>
-            <!-- Sign out form -->
             <form method="POST" action="">
                 <button type="submit" name="signout" class="px-4 py-2 bg-orange-500 text-white rounded-lg">Sign out</button>
             </form>
         </div>
-        
+
         <div class="flex mt-6">
             <!-- Sidebar -->
-            <div class="w-1/4 border-r pr-4">
+            <div class="w-1/3 border-r pr-4">
                 <div class="flex flex-col items-center">
                     <div class="w-20 h-20 bg-gray-300 rounded-full"></div>
-                    <h2 class="mt-2 font-semibold" id="user-name"><?php echo htmlspecialchars($user_data['username']); ?></h2>
-                    <p class="text-gray-500 text-sm" id="user-email"><?php echo htmlspecialchars($user_data['email']); ?></p>
+                    <h2 class="mt-2 font-semibold"><?php echo htmlspecialchars($user_data['username']); ?></h2>
+                    <p class="text-gray-500 text-sm"><?php echo htmlspecialchars($user_data['email']); ?></p>
                 </div>
                 <nav class="mt-6">
                     <ul class="space-y-3">
@@ -296,20 +296,20 @@ $conn->close();
                     </ul>
                 </nav>
             </div>
-            
+
             <!-- Main Content -->
-            <div class="w-3/4 pl-6">
+            <div class="w-2/3 pl-6">
                 <h2 class="text-xl font-semibold">Personal Information</h2>
                 <p class="text-gray-500 text-sm mt-1">Manage your personal information, including phone numbers and email addresses where you can be contacted.</p>
-                
+
                 <div class="grid grid-cols-2 gap-4 mt-4">
                     <div class="p-4 bg-gray-50 rounded-lg shadow-sm border">
                         <p class="text-gray-600 text-sm">Name</p>
-                        <p class="font-medium" id="info-name"><?php echo htmlspecialchars($user_data['name']); ?></p>
+                        <p class="font-medium"><?php echo htmlspecialchars($user_data['name']); ?></p>
                     </div>
                     <div class="p-4 bg-gray-50 rounded-lg shadow-sm border">
                         <p class="text-gray-600 text-sm">Address</p>
-                        <p class="font-medium" id="info-address"><?php echo htmlspecialchars($user_data['address']); ?></p>
+                        <p class="font-medium"><?php echo htmlspecialchars($user_data['address']); ?></p>
                     </div>
                     <div class="p-4 bg-gray-50 rounded-lg shadow-sm border">
                         <p class="text-gray-600 text-sm">Country/Region</p>
@@ -321,11 +321,53 @@ $conn->close();
                     </div>
                     <div class="p-4 bg-gray-50 rounded-lg shadow-sm border col-span-2">
                         <p class="text-gray-600 text-sm">Contactable at</p>
-                        <p class="font-medium" id="info-contact"><?php echo htmlspecialchars($user_data['email']); ?></p>
+                        <p class="font-medium"><?php echo htmlspecialchars($user_data['email']); ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <br><br>
+    <?php
+include 'connection.php';
+
+// Ensure user is logged in
+if (!isset($_SESSION['user_id'])) {
+    die("User not logged in.");
+}
+
+$user_id = $_SESSION['user_id']; // Get logged-in user ID
+
+// Prepare and execute the query
+$query = "SELECT ao.*, go.recipient_name, go.recipient_phone, go.recipient_address, go.delivery_datetime 
+          FROM accepted_orders ao
+          JOIN gift_orders go ON ao.order_id = go.id
+          WHERE ao.user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
+
+
+<div class="w-1/2 bg-white shadow-lg rounded-xl p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Accepted Orders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="bg-gray-50 p-4 rounded-lg shadow-md border-l-4 border-green-500">
+                <h3 class="text-lg font-bold text-gray-900">Order #<?= htmlspecialchars($row['order_id']) ?></h3>
+                <p class="text-gray-700"><strong>Recipient:</strong> <?= htmlspecialchars($row['recipient_name']) ?></p>
+                <p class="text-gray-700"><strong>Phone:</strong> <?= htmlspecialchars($row['recipient_phone']) ?></p>
+                <p class="text-gray-700"><strong>Address:</strong> <?= htmlspecialchars($row['recipient_address']) ?></p>
+                <p class="text-gray-700"><strong>Delivery Date:</strong> <?= htmlspecialchars($row['delivery_datetime']) ?></p>
+                <p class="text-gray-700"><strong>Message:</strong> <?= htmlspecialchars($row['message']) ?></p>
+                <p class="text-gray-500 text-sm"><i class="fas fa-clock"></i> Accepted At: <?= htmlspecialchars($row['accepted_at']) ?></p>
+            </div>
+            <?php endwhile; ?>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

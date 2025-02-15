@@ -1,3 +1,110 @@
+
+<?php
+session_start();
+require 'connection.php';
+
+// Ensure user is logged in
+if (!isset($_SESSION['user_id'])) {
+    echo "<p class='text-red-500 text-center mt-5'>Please log in to view your cart.</p>";
+    exit();
+}
+
+$user_id = $_SESSION['user_id']; // Get logged-in user ID
+
+// Fetch cart items for the logged-in user
+$sql = "SELECT item_name, price, quantity FROM cart WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$cart_items = [];
+$total = 0;
+
+// Store retrieved items in an array
+while ($row = $result->fetch_assoc()) {
+    $cart_items[] = $row;
+    $total += $row['price'] * $row['quantity'];
+}
+?>
+<?php
+// Include database connection
+require 'connection.php';
+
+$user_id = $_SESSION['user_id'];
+
+// Handle quantity update before outputting anything
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update_quantity'])) {
+    $cart_id = $_POST['cart_id'];
+    $new_quantity = $_POST['quantity'];
+
+    $update_sql = "UPDATE cart SET quantity = ? WHERE id = ?";
+    $stmt = $conn->prepare($update_sql);
+    $stmt->bind_param("ii", $new_quantity, $cart_id);
+    $stmt->execute();
+
+    // Redirect before any HTML is sent
+    header("Location: cart.php");
+    exit;
+}
+
+// Handle item removal before outputting anything
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['remove_item'])) {
+    $cart_id = $_POST['cart_id'];
+
+    $delete_sql = "DELETE FROM cart WHERE id = ?";
+    $stmt = $conn->prepare($delete_sql);
+    $stmt->bind_param("i", $cart_id);
+    $stmt->execute();
+
+    // Redirect before any HTML is sent
+    header("Location: cart.php");
+    exit;
+}
+
+// Fetch cart items from the database
+// Fetch cart items with images
+$cart_items = [];
+$total = 0;
+
+$sql = "SELECT c.id, c.item_name, c.price, c.quantity, c.category,
+        COALESCE(n.image, a.image_url, cr.image_url, r.image_url, b.image_url, cy.image_url, f.image_url, s.image_url, v.image_url) AS image
+        FROM cart c
+        LEFT JOIN netball n ON c.category = 'netball' AND n.name = c.item_name
+        LEFT JOIN athletic a ON c.category = 'athletic' AND a.name = c.item_name
+        LEFT JOIN rugby r ON c.category = 'rugby' AND r.name = c.item_name
+        LEFT JOIN basketball b ON c.category = 'basketball' AND b.name = c.item_name
+        LEFT JOIN cricket cr ON c.category = 'cricket' AND cr.name = c.item_name
+        LEFT JOIN football f ON c.category = 'football' AND f.name = c.item_name
+        LEFT JOIN swimming s ON c.category = 'swimming' AND s.name = c.item_name
+        LEFT JOIN volleyball v ON c.category = 'volleyball' AND v.name = c.item_name
+        LEFT JOIN cycling cy ON c.category = 'cycling' AND cy.name = c.item_name
+        WHERE c.user_id = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$cart_items = [];
+while ($row = $result->fetch_assoc()) {
+    $cart_items[] = $row; // Store cart items
+}
+
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$cart_items = [];
+$total = 0;
+while ($row = $result->fetch_assoc()) {
+    $cart_items[] = $row;
+    $total += $row['price'] * $row['quantity'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,16 +144,60 @@
           </div>
           <!-- User Dropdown & Cart -->
           <div class="relative flex items-center space-x-4">
-              <!-- Cart Icon -->
-              <a href="../views/cart.php" id="view-cart" class="relative">
-                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
-                  <!-- Cart Count Badge -->
-                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      0
-                  </span>
-              </a>
+          <?php
+           
+            require 'connection.php';
+
+            $user_id = $_SESSION['user_id'] ?? null;
+            $cart_count = 0;
+
+            if ($user_id) {
+                $sql = "SELECT SUM(quantity) AS total FROM cart WHERE user_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+                $cart_count = $row['total'] ?? 0;
+            }
+            ?>
+
+            <!-- Cart Icon -->
+            <a href="../views/cart.php" id="view-cart" class="relative">
+                <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
+                <!-- Cart Count Badge -->
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    <?php echo $cart_count; ?>
+                </span>
+            </a>
+
+
+            <script>
+            $(document).ready(function() {
+                $("#add-to-cart-form").submit(function(event) {
+                    event.preventDefault(); // Prevent page reload
+
+                    $.ajax({
+                        url: "../views/add_to_cart.php",
+                        method: "POST",
+                        data: $(this).serialize(),
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                $("#cart-count").text(response.cart_count); // Update cart count
+                                alert("Item added to cart!");
+                            } else {
+                                alert("Error adding item to cart.");
+                            }
+                        }
+                    });
+                });
+            });
+            </script>
+
+
               <!-- Wish List Icon -->
-              <a href="../views/wishlist.php" id="view-wishlist" class="relative">
+              <a href="#" id="view-wishlist" class="relative">
                   <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
                   <!-- Wishlist Count Badge -->
                   <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -55,31 +206,24 @@
               </a>
           </div>
 
-          <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-                const cartCount = cartItems.length;
 
-                // Store the cart count in sessionStorage
-                sessionStorage.setItem("cartCount", cartCount);
-              });
-          </script>
+          
 
           <!-- Sign In & Cart -->
-          <div class="flex space-x-4">
+            <div class="flex space-x-4">
                   <!-- Sign In Button -->
-                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
-                      <i class="fas fa-user"></i>
-                      <span>Sign Up</span>
-                  </button>
-
+                  <a href="../views/signin.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
+                    <i class="fas fa-user"></i>
+                    <span>Sign Up</span>
+                  </a>
 
                   <!-- Log In Button -->
-                  <button class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition cursor-not-allowed opacity-50" disabled>
+                  <a href="../views/login.php" class="flex items-center space-x-2 px-4 py-2 bg-red-400 text-white rounded-lg shadow-md hover:bg-yellow-50 hover:shadow-lg transition opacity-50 pointer-events-none disabled">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Log In</span>
-            </button>
+                  </a>
             </div>
+
             <!-- Account Button -->
             <button id="accountBtn" class="flex items-center px-4 py-2 bg-white rounded-lg shadow">
                 <i class="fas fa-user mr-2"></i> Account 
@@ -92,37 +236,40 @@
                 <a href="../views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
                 <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
             </div>
-            <script>
-              const accountBtn = document.getElementById('accountBtn');
-              const dropdownMenu = document.getElementById('dropdownMenu');
+        </div>
+    </nav>
 
-              accountBtn.addEventListener('click', (event) => {
-                  event.stopPropagation();
-                  dropdownMenu.classList.toggle('hidden');
-              });
+    <script>
+        const accountBtn = document.getElementById('accountBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
 
-              // Close dropdown when clicking outside
-              document.addEventListener('click', (event) => {
-                  if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                      dropdownMenu.classList.add('hidden');
-                  }
-              });
-           </script>
+        accountBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!accountBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
         </div>
       </div>
     </div>
 
   <!-- Top Bar -->
-  <div class="bg-cyan-100 relative">
-    <!-- Navigation Bar -->
-    <nav class="relative z-10 flex items-center justify-between px-4 py-2">
-      <!-- Hamburger Menu -->
-      <button id="menu-toggle" class="text-black focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <div class="hidden md:flex space-x-6">
+<div class="bg-cyan-100 relative">
+  <!-- Navigation Bar -->
+  <nav class="relative z-10 flex items-center justify-between px-4 py-2">
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" class="text-black focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <div class="hidden md:flex space-x-6">
         <a href="../index.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
         <a href="../views/services.php" 
@@ -224,7 +371,7 @@
   </header>
 <body class="bg-gray-100">
 
-  <!-- Centered Cart Content -->
+<!-- Cart Page HTML -->
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
   <div class="bg-white rounded-lg w-full max-w-lg shadow-lg overflow-hidden">
 
@@ -235,59 +382,63 @@
 
     <!-- Cart Items -->
     <div id="cart-items" class="p-5 space-y-4">
-      <!-- Cart items will be dynamically injected here -->
+      <?php if (empty($cart_items)): ?>
+        <p class='text-gray-600'>Your cart is empty.</p>
+      <?php else: ?>
+        <?php foreach ($cart_items as $item): ?>
+          <div class="flex justify-between items-center mb-4 border p-2">
+            <span class="font-medium"><?= htmlspecialchars($item['item_name']) ?></span>
+            
+
+             <!-- Item Image -->
+             <img src="<?= htmlspecialchars($item['image'] ?? $item['image_url'] ?? 'default.jpg') ?>" alt="Product Image" class="w-16 h-16 object-cover rounded">
+
+
+
+            <!-- Quantity Form -->
+            <form method="POST" class="flex items-center space-x-2">
+              <input type="hidden" name="cart_id" value="<?= $item['id'] ?>">
+              <input type="number" name="quantity" min="1" value="<?= $item['quantity'] ?>" class="w-12 text-center border">
+              <button type="submit" name="update_quantity" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                Update
+              </button>
+            </form>
+
+            <span class="text-gray-600">Rs. <?= number_format($item['price'] * $item['quantity'], 2) ?></span>
+            
+            
+            
+
+            <!-- Remove Button -->
+            <form method="POST">
+              <input type="hidden" name="cart_id" value="<?= $item['id'] ?>">
+              <button type="submit" name="remove_item" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                X
+              </button>
+            </form>
+          </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </div>
 
     <!-- Cart Total and Buttons -->
     <div class="p-5 border-t flex justify-between items-center bg-gray-50">
-      <button id="go-back" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 focus:outline-none">
+      <button id="go-back" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600">
         Go Back
       </button>
       <div>
-        <span id="cart-total" class="text-lg font-bold">Total: Rs. 0.00</span>
+        <span class="text-lg font-bold">Total: Rs. <?= number_format($total, 2) ?></span>
       </div>
-      <a href="../views/checkout.php" id="checkout" class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-400 focus:outline-none">
+      <a href="../views/checkout.php" class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-400">
         Checkout
-      </button>
+      </a>
     </div>
 
   </div>
 </div>
 
 <script>
-  // Load cart data from sessionStorage
-  const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-  const cartContainer = document.getElementById("cart-items");
-  const cartTotalElement = document.getElementById("cart-total");
-
-  // Populate cart items
-  if (cartItems.length === 0) {
-    cartContainer.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
-  } else {
-    let total = 0;
-    cartContainer.innerHTML = cartItems
-      .map(item => {
-        total += item.price; // Sum up the individual item prices
-        return `
-          <div class="flex justify-between items-center mb-4">
-            <span class="font-medium">${item.name}</span>
-            <span class="text-gray-600">Rs. ${item.price}</span>
-          </div>
-        `;
-      })
-      .join("");
-    cartTotalElement.textContent = `Total: Rs. ${total.toFixed(2)}`;
-  }
-
-  // Go back button
-  document.getElementById("go-back").addEventListener("click", () => {
-    window.history.back();
-  });
-
-  // Checkout button
-  document.getElementById("checkout").addEventListener("click", () => {
-    alert("Proceeding to checkout...");
-  });
+document.getElementById("go-back").addEventListener("click", () => window.history.back());
 </script>
 
    <footer class="bg-black text-white">

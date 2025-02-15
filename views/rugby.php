@@ -57,15 +57,55 @@ $cartCount = array_sum($_SESSION['cart']);
             <span class="font-bold">CALL 0115 964 964</span>
           </div>
           <!-- User Dropdown & Cart -->
-          <div class="relative flex items-center space-x-4">
-              <!-- Cart Icon -->
-              <a href="../views/cart.php" id="view-cart" class="relative">
-                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
-                  <!-- Cart Count Badge -->
-                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      0
-                  </span>
-              </a>
+          <?php
+            require 'connection.php';
+
+            $user_id = $_SESSION['user_id'] ?? null;
+            $cart_count = 0;
+
+            if ($user_id) {
+                $sql = "SELECT SUM(quantity) AS total FROM cart WHERE user_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+                $cart_count = $row['total'] ?? 0;
+            }
+            ?>
+
+            <!-- Cart Icon -->
+            <a href="../views/cart.php" id="view-cart" class="relative">
+                <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
+                <!-- Cart Count Badge -->
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    <?php echo $cart_count; ?>
+                </span>
+            </a>
+
+
+            <script>
+            $(document).ready(function() {
+                $("#add-to-cart-form").submit(function(event) {
+                    event.preventDefault(); // Prevent page reload
+
+                    $.ajax({
+                        url: "../views/add_to_cart.php",
+                        method: "POST",
+                        data: $(this).serialize(),
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                $("#cart-count").text(response.cart_count); // Update cart count
+                                alert("Item added to cart!");
+                            } else {
+                                alert("Error adding item to cart.");
+                            }
+                        }
+                    });
+                });
+            });
+            </script>
               <!-- Wish List Icon -->
               <a href="../views/wishlist.php" id="view-wishlist" class="relative">
                   <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
@@ -76,15 +116,6 @@ $cartCount = array_sum($_SESSION['cart']);
               </a>
           </div>
 
-          <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-                const cartCount = cartItems.length;
-
-                // Store the cart count in sessionStorage
-                sessionStorage.setItem("cartCount", cartCount);
-              });
-          </script>
 
           <!-- Sign In & Cart -->
           <div class="flex space-x-4">
@@ -411,9 +442,18 @@ $cartCount = array_sum($_SESSION['cart']);
                   echo '</ul></div>';
 
                   // Add to Cart & Wishlist Buttons
-                  echo '<div class="flex justify-center mt-4 space-x-2">';
-                  echo '<button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>';
-                  echo '<button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">';
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <form action="add_to_cart.php" method="post">
+                      <input type="hidden" name="item_name" value="' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '">
+                      <input type="hidden" name="price" value="' . $price . '">
+                      <input type="hidden" name="quantity" value="1">
+                      <button type="submit" class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md">
+                          ADD TO CART
+                      </button>
+                  </form>';
+
+                  echo '<button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300" 
+                  data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">';
                   echo '<i class="fas fa-heart text-red-500 text-xl"></i><span>Add to Wishlist</span></button>';
                   echo '</div>';
 
@@ -449,94 +489,65 @@ $cartCount = array_sum($_SESSION['cart']);
 
             <script>
               document.addEventListener("DOMContentLoaded", function () {
-                let wishlist = JSON.parse(sessionStorage.getItem("wishlist")) || [];
-
+                let wishlist = getWishlistFromCookie();
                 updateWishlistUI();
-                updateWishlistCount();
 
                 // Add to Wishlist
                 document.querySelectorAll(".add-to-wishlist").forEach(button => {
                     button.addEventListener("click", function () {
                         const item = {
-                            id: this.getAttribute("data-id"),
-                            name: this.getAttribute("data-name"),
-                            price: this.getAttribute("data-price"),
-                            image: this.getAttribute("data-image")
+                            id: this.dataset.id,
+                            name: this.dataset.name,
+                            price: this.dataset.price,
+                            image: this.dataset.image
                         };
 
-                        if (!wishlist.find(i => i.id === item.id)) {
+                        if (!wishlist.some(i => i.id === item.id)) {
                             wishlist.push(item);
-                            sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                            setWishlistToCookie(wishlist);
                             updateWishlistUI();
-                            updateWishlistCount();
-
-                            // ✅ Show alert message
                             showAlert(`${item.name} added to wishlist!`, "success");
                         } else {
                             showAlert(`${item.name} is already in the wishlist!`, "info");
                         }
                     });
                 });
+
+                // Show Alert
                 function showAlert(message, type) {
                     const alertBox = document.createElement("div");
-                    alertBox.classList.add("fixed", "top-5", "right-5", "p-4", "rounded-lg", "shadow-lg", "text-white", "transition-all", "duration-500");
-
-                    // Set background color based on alert type
-                    if (type === "success") {
-                        alertBox.classList.add("bg-green-500");
-                    } else if (type === "info") {
-                        alertBox.classList.add("bg-blue-500");
-                    } else {
-                        alertBox.classList.add("bg-red-500");
-                    }
-
+                    alertBox.className = `fixed top-5 right-5 p-4 rounded-lg shadow-lg text-white transition-all duration-500 ${type === 'success' ? 'bg-green-500' : type === 'info' ? 'bg-blue-500' : 'bg-red-500'}`;
                     alertBox.textContent = message;
                     document.body.appendChild(alertBox);
-
-                    // Remove alert after 3 seconds
-                    setTimeout(() => {
-                        alertBox.classList.add("opacity-0");
-                        setTimeout(() => alertBox.remove(), 500);
-                    }, 3000);
+                    setTimeout(() => alertBox.remove(), 3000);
                 }
-
 
                 // Update Wishlist UI
                 function updateWishlistUI() {
-                const wishlistItemsContainer = document.getElementById("wishlist-items");
-                wishlistItemsContainer.innerHTML = ""; // Clears previous items
-
-                wishlist.forEach(item => {
-                    const itemElement = document.createElement("div");
-                    itemElement.classList.add("flex", "items-center", "justify-between", "border-b", "py-2");
-                    itemElement.innerHTML = `
-                        <div class="flex items-center">
-                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
-                            <div>
-                                <p class="font-semibold">${item.name}</p>
-                                <p class="text-gray-500">$${item.price}</p>
+                    const wishlistItemsContainer = document.getElementById("wishlist-items");
+                    wishlistItemsContainer.innerHTML = wishlist.map(item => `
+                        <div class="flex items-center justify-between border-b py-2">
+                            <div class="flex items-center">
+                                <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
+                                <div>
+                                    <p class="font-semibold">${item.name}</p>
+                                    <p class="text-gray-500">$${item.price}</p>
+                                </div>
                             </div>
-                        </div>
-                        <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
-                            <i class="fas fa-trash-alt text-lg"></i> <!-- Delete Icon -->
-                        </button>
-                    `;
-                    wishlistItemsContainer.appendChild(itemElement);
-                });
+                            <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
+                                <i class="fas fa-trash-alt text-lg"></i>
+                            </button>
+                        </div>`).join('');
 
-                document.querySelectorAll(".remove-item").forEach(button => {
-                    button.addEventListener("click", function () {
-                        const itemId = this.getAttribute("data-id");
-                        wishlist = wishlist.filter(item => item.id !== itemId);
-                        sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
-                        updateWishlistUI();
-                        updateWishlistCount();
+                    document.querySelectorAll(".remove-item").forEach(button => {
+                        button.addEventListener("click", function () {
+                            const itemId = this.dataset.id;
+                            wishlist = wishlist.filter(item => item.id !== itemId);
+                            setWishlistToCookie(wishlist);
+                            updateWishlistUI();
+                        });
                     });
-                });
-            }
 
-                // Update Wishlist Count
-                function updateWishlistCount() {
                     document.getElementById("wishlist-count").textContent = wishlist.length;
                 }
 
@@ -550,6 +561,22 @@ $cartCount = array_sum($_SESSION['cart']);
                 document.getElementById("close-wishlist").addEventListener("click", function () {
                     document.getElementById("wishlist-modal").classList.add("hidden");
                 });
+
+                // Cookie functions
+                function setWishlistToCookie(wishlist) {
+                    document.cookie = `wishlist=${JSON.stringify(wishlist)};path=/;max-age=${60 * 60 * 24 * 30}`;
+                }
+
+                function getWishlistFromCookie() {
+                    const cookies = document.cookie.split(';');
+                    for (let cookie of cookies) {
+                        cookie = cookie.trim();
+                        if (cookie.startsWith('wishlist=')) {
+                            return JSON.parse(cookie.substring('wishlist='.length));
+                        }
+                    }
+                    return [];
+                }
             });
 
             </script>
@@ -617,8 +644,16 @@ $cartCount = array_sum($_SESSION['cart']);
                   echo '</ul></div>';
 
                   // Add to Cart & Wishlist Buttons
-                  echo '<div class="flex justify-center mt-4 space-x-2">';
-                  echo '<button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>';
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <form action="add_to_cart.php" method="post">
+                      <input type="hidden" name="item_name" value="' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '">
+                      <input type="hidden" name="price" value="' . $price . '">
+                      <input type="hidden" name="quantity" value="1">
+                      <button type="submit" class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md">
+                          ADD TO CART
+                      </button>
+                  </form>';
+
                   echo '<button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">';
                   echo '<i class="fas fa-heart text-red-500 text-xl"></i><span>Add to Wishlist</span></button>';
                   echo '</div>';
@@ -706,8 +741,15 @@ $cartCount = array_sum($_SESSION['cart']);
                   echo '</ul></div>';
 
                   // Add to Cart & Wishlist Buttons
-                  echo '<div class="flex justify-center mt-4 space-x-2">';
-                  echo '<button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>';
+                  echo '<div class="flex justify-center mt-4 space-x-2">
+                  <form action="add_to_cart.php" method="post">
+                      <input type="hidden" name="item_name" value="' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '">
+                      <input type="hidden" name="price" value="' . $price . '">
+                      <input type="hidden" name="quantity" value="1">
+                      <button type="submit" class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md">
+                          ADD TO CART
+                      </button>
+                  </form>';
                   echo '<button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium text-red-500 transition duration-300" data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '" data-image="' . htmlspecialchars($main_image, ENT_QUOTES, 'UTF-8') . '">';
                   echo '<i class="fas fa-heart text-red-500 text-xl"></i><span>Add to Wishlist</span></button>';
                   echo '</div>';
@@ -756,85 +798,46 @@ $cartCount = array_sum($_SESSION['cart']);
               });
           });
           </script>
-            <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          // Initialize cart from session storage
-          const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-          const cartCount = document.getElementById('cart-count');
-          const cartModal = document.getElementById('cart-modal');
-          const cartItems = document.getElementById('cart-items');
-          const cartTotal = document.getElementById('cart-total');
+             <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                    function updateCartCount() {
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.cart_count !== undefined) {
+                                    document.getElementById("cart-count").innerText = data.cart_count;
+                                }
+                            })
+                            .catch(error => console.error("Error updating cart count:", error));
+                    }
 
-          // Function to update the cart count
-          const updateCartCount = () => {
-              if (cartCount) {
-                  cartCount.textContent = cart.length;
-              }
-          };
+                    // Auto-update cart count when the page loads
+                    updateCartCount();
 
-          // Function to render cart items
-          const renderCart = () => {
-              if (cartItems && cartTotal) {
-                  cartItems.innerHTML = '';
-                  let total = 0;
+                    // Periodically check for cart updates (every 5 seconds)
+                    setInterval(updateCartCount, 5000);
 
-                  cart.forEach(item => {
-                      const div = document.createElement('div');
-                      div.className = 'flex justify-between mb-4';
-                      div.innerHTML = `
-                          <span>${item.name}</span>
-                          <span>Rs. ${item.price}</span>
-                      `;
-                      cartItems.appendChild(div);
-                      total += item.price;
-                  });
+                    // Update cart count immediately after adding an item
+                    document.querySelectorAll(".add-to-cart-form").forEach(form => {
+                        form.addEventListener("submit", function (event) {
+                            event.preventDefault();
 
-                  cartTotal.textContent = `Total: Rs. ${total}`;
-              }
-          };
+                            const formData = new FormData(this);
+                            fetch("add_to_cart.php", {
+                                method: "POST",
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.cart_count !== undefined) {
+                                    document.getElementById("cart-count").innerText = data.cart_count;
+                                }
+                            })
+                            .catch(error => console.error("Error:", error));
+                        });
+                    });
+                    });
+                  </script>
 
-          // Add to Cart Logic
-          document.querySelectorAll('.add-to-cart').forEach(button => {
-              button.addEventListener('click', () => {
-                  const id = button.getAttribute('data-id');
-                  const name = button.getAttribute('data-name');
-                  const price = parseInt(button.getAttribute('data-price'));
-                  const item = { id, name, price };
-
-                  // Add item to cart only if it's not already present
-                  if (!cart.find(e => e.id === id)) {
-                      cart.push(item);
-                      sessionStorage.setItem('cart', JSON.stringify(cart));
-                      updateCartCount();
-                      alert(`${name} added to cart!`);
-                  } else {
-                      alert(`${name} is already in the cart.`);
-                  }
-              });
-          });
-
-          // Open Cart Modal
-          const viewCart = document.getElementById('view-cart');
-          if (viewCart) {
-              viewCart.addEventListener('click', () => {
-                  renderCart();
-                  cartModal?.classList.remove('hidden');
-              });
-          }
-
-          // Close Cart Modal
-          const closeCart = document.getElementById('close-cart');
-          if (closeCart) {
-              closeCart.addEventListener('click', () => {
-                  cartModal?.classList.add('hidden');
-              });
-          }
-
-          // Initial Update of Cart Count
-          updateCartCount();
-      });
-
-    </script>
         <footer class="bg-black text-white">
         <!-- Top Section -->
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 text-sm border-b border-gray-700">

@@ -1,67 +1,35 @@
 <?php 
-session_start(); // Start the session
-require 'connection.php'; // Include the database connection
+session_start();
+require 'connection.php'; // Database connection
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the input values
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Query to check if the email exists in the database
-    $sql = "SELECT * FROM users WHERE email = ?";
+    $sql = "SELECT id, name, address, username, email, password, role FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Fetch the user details
         $user = $result->fetch_assoc();
 
-        // Verify the password using password_verify
         if (password_verify($password, $user['password'])) {
-            // If password matches, store user details in session
-            $_SESSION['user_id'] = $user['id'];  // Store the user ID
-            $_SESSION['role'] = $user['role'];    // Store the user role
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['role'] = $user['role'];
+            $_SESSION['success_message'] = "Login successful!";
 
-            // Set login success flag
-            $_SESSION['login_success'] = true;
-
-            // Redirect based on user role
-            switch ($user['role']) {
-                case 'admin':
-                    header("Location: ../admin.php");
-                    exit(); // Ensure script stops after redirect
-                case 'user':
-                    header("Location: ../index.php");
-                    exit(); // Ensure script stops after redirect
-                case 'delivery':
-                    header("Location: delivery.php");
-                    exit(); // Ensure script stops after redirect
-                case 'Technician':
-                    header("Location: ../repair.php");
-                    exit(); // Ensure script stops after redirect
-                default:
-                    // Default to a safe page if no role matches
-                    //header("Location: ../index.php");
-                    //exit(); // Ensure script stops after redirect
-            }
-        } else {
-            // Incorrect password
-            $_SESSION['login_error'] = "Invalid credentials!";
-            // Redirect back to login page
+            // Redirect to the same page to trigger the modal
             header("Location: login.php");
-            exit(); // Ensure script stops after redirect
+            exit();
+        } else {
+            $_SESSION['success_message'] = "Invalid credentials!";
         }
     } else {
-        // Email not found
-        $_SESSION['login_error'] = "Invalid credentials!";
-        // Redirect back to login page
-        header("Location: login.php");
-        exit(); // Ensure script stops after redirect
+        $_SESSION['success_message'] = "Invalid credentials!";
     }
 
-    // Close the statement and connection
     $stmt->close();
     $conn->close();
 }
@@ -77,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>Create an Account</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
 </head>
 <body class="bg-gray-100 text-gray-800 bg-cover h-[25vh]" style="background-image: url('../images/sign1.jpg');">
 <header class="bg-blue-900 text-white">
@@ -264,8 +233,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   </header>
 
-  <!-- Main Section -->
-  <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
+   <!-- Main Section -->
+   <div class="h-screen justify-center items-center mt-52 ml-96 p-6">
     <div class="w-96 bg-gray-800 text-gray-100 rounded-lg shadow-xl p-8 space-y-6 mx-32">
         <h2 class="text-3xl font-semibold text-center text-teal-400 mb-4">Login Form</h2>
         <form method="POST" action="">
@@ -299,16 +268,97 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             name="login">
             Login
         </button>
-
     </form>
-
 
         <p class="text-center text-gray-400">Don't have an account? 
             <a href="signin.php" class="text-teal-400">Sign up</a>
         </p>
     </div>
-</div>
+  </div>
+<!-- Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+      <h2 class="text-2xl font-bold text-green-600" id="successMessage"></h2>
+      <button id="closeModalBtn" class="mt-4 px-6 py-2 bg-blue-500 text-white rounded">Close</button>
+    </div>
+  </div>
 
+  <!-- Modal Styles -->
+  <style>
+    /* Modal backdrop */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Make sure it sits on top of other content */
+    }
+
+    /* Modal content */
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px; /* Adjust width as needed */
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Close button */
+    #closeModalBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* Green button */
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #closeModalBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+<script>
+    window.onload = function() {
+        // Fetch the success message from PHP session
+        const successMessage = "<?php echo isset($_SESSION['success_message']) ? $_SESSION['success_message'] : ''; ?>";
+        const userRole = "<?php echo isset($_SESSION['role']) ? $_SESSION['role'] : ''; ?>";
+
+        if (successMessage) {
+            // Display the success message in the modal
+            document.getElementById('successMessage').innerText = successMessage;
+            document.getElementById('successModal').style.display = "flex";
+
+            // Clear the session variable after displaying the message
+            <?php unset($_SESSION['success_message']); ?>
+        }
+
+        // Close the modal when button is clicked
+        document.getElementById('closeModalBtn').onclick = function() {
+            document.getElementById('successModal').style.display = "none";
+
+            // Redirect based on user role
+            if (userRole === 'admin') {
+                window.location.href = 'admin.php';
+            } else if (userRole === 'user') {
+                window.location.href = '/sportshive/index.php'; ;
+            } else if (userRole === 'manager') {
+                window.location.href = 'manager.php';
+            } else if (userRole === 'Technician') {
+                window.location.href = 'repair.php';
+            } else {
+                window.location.href = 'index.php'; // Default fallback
+            }
+        }
+    }
+</script>
 
 
   <!-- Footer Section -->

@@ -1,24 +1,3 @@
-<?php
-// Start the session at the top of the file
-session_start();
-
-// Initialize or retrieve the cart items array
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = []; // Default to an empty array if no cart exists
-}
-
-// Simulate adding an item to the cart (for example, when the user clicks "Add to Cart")
-if (isset($_POST['addToCart'])) {
-    $itemId = $_POST['itemId']; // You can pass the item ID dynamically
-    if (!isset($_SESSION['cart'][$itemId])) {
-        $_SESSION['cart'][$itemId] = 0; // Initialize count if not already set
-    }
-    $_SESSION['cart'][$itemId] += 1; // Increment the cart count for this item
-}
-
-// Get the total cart count (sum of all item counts)
-$cartCount = array_sum($_SESSION['cart']);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +6,7 @@ $cartCount = array_sum($_SESSION['cart']);
   <title>Netball</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <header class="bg-blue-900 text-white">
@@ -59,14 +39,59 @@ $cartCount = array_sum($_SESSION['cart']);
           </div>
           <!-- User Dropdown & Cart -->
           <div class="relative flex items-center space-x-4">
-              <!-- Cart Icon -->
-              <a href="../views/cart.php" id="view-cart" class="relative">
-                  <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
-                  <!-- Cart Count Badge -->
-                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      0
-                  </span>
-              </a>
+          <?php
+            session_start();
+            require 'connection.php';
+
+            $user_id = $_SESSION['user_id'] ?? null;
+            $cart_count = 0;
+
+            if ($user_id) {
+                $sql = "SELECT SUM(quantity) AS total FROM cart WHERE user_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+                $cart_count = $row['total'] ?? 0;
+            }
+            ?>
+
+            <!-- Cart Icon -->
+            <a href="../views/cart.php" id="view-cart" class="relative">
+                <i class="fas fa-shopping-cart h-8 w-8 text-blue-500 hover:text-blue-600"></i>
+                <!-- Cart Count Badge -->
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    <?php echo $cart_count; ?>
+                </span>
+            </a>
+
+
+            <script>
+            $(document).ready(function() {
+                $("#add-to-cart-form").submit(function(event) {
+                    event.preventDefault(); // Prevent page reload
+
+                    $.ajax({
+                        url: "../views/add_to_cart.php",
+                        method: "POST",
+                        data: $(this).serialize(),
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                $("#cart-count").text(response.cart_count); // Update cart count
+                                alert("Item added to cart!");
+                            } else {
+                                alert("Error adding item to cart.");
+                            }
+                        }
+                    });
+                });
+            });
+            </script>
+
+
+              <!-- Wish List Icon -->
               <!-- Wish List Icon -->
               <a href="#" id="view-wishlist" class="relative">
                   <i class="fas fa-heart h-8 w-8 text-yellow-500 hover:text-yellow-600"></i>
@@ -77,16 +102,6 @@ $cartCount = array_sum($_SESSION['cart']);
               </a>
           </div>
 
-          <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-                const cartCount = cartItems.length;
-
-                // Store the cart count in sessionStorage
-                sessionStorage.setItem("cartCount", cartCount);
-              });
-          </script>
-          
 
           <!-- Sign In & Cart -->
             <div class="flex space-x-4">
@@ -139,7 +154,7 @@ $cartCount = array_sum($_SESSION['cart']);
     </div>
 
   <!-- Top Bar -->
-<div class="bg-cyan-100 relative">
+  <div class="bg-cyan-100 relative">
   <!-- Navigation Bar -->
   <nav class="relative z-10 flex items-center justify-between px-4 py-2">
     <!-- Hamburger Menu -->
@@ -185,23 +200,15 @@ $cartCount = array_sum($_SESSION['cart']);
     <!-- Brands Section -->
     <div class="relative">
       <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
-        Brands
+        Special Brands
       </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
-        <div class="grid grid-cols-3 gap-4">
-          <div class="flex flex-wrap gap-4">
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ADIDAS</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">SALOMON</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPRUN</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">PUMA</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">OLAIAN</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROKY</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROCKRIDER</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPSTA</a>
-          </div>
+        <div class="space-y-2">
+          <a href="../views/new.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Brands</a>
         </div>
       </div>
     </div>
+
 
     <!-- Repair and Services Section -->
     <div class="relative">
@@ -222,12 +229,14 @@ $cartCount = array_sum($_SESSION['cart']);
       </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
-          <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
+          <a href="../views/feedback.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
+          <a href="../views/gift_order.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Request Gifts</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <script>
@@ -317,39 +326,25 @@ $cartCount = array_sum($_SESSION['cart']);
               Athletic <span class="text-gray-500">+</span>
             </a>
           </li>
+          <li>
+            <a href="../views/new.php" class="flex justify-between items-center text-gray-700 hover:text-green-600">
+              brands <span class="text-gray-500">+</span>
+            </a>
+          </li>
         </ul>
       </div>
 
   <!-- Brands Section -->
-      <div>
-        <h3 class="text-lg font-bold mb-4">Brands</h3>
-        <ul class="space-y-2">
-          <li class="flex items-center">
-            <input type="checkbox" id="yonex" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="yonex" class="ml-2 text-sm text-gray-700">Yonex (75)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="stanfords" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="stanfords" class="ml-2 text-sm text-gray-700">Stanfords - SF (116)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="kaygee" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="kaygee" class="ml-2 text-sm text-gray-700">Kay Gee (23)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="texstretch" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="texstretch" class="ml-2 text-sm text-gray-700">Texstretch (36)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="lining" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="lining" class="ml-2 text-sm text-gray-700">Li-Ning (60)</label>
-          </li>
-          <li class="flex items-center">
-            <input type="checkbox" id="ss" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
-            <label for="ss" class="ml-2 text-sm text-gray-700">SS (1)</label>
-          </li>
-        </ul>
-      </div>
+  <form method="GET" action="">
+    <div class="brands">
+        <label><input type="checkbox" name="brands[]" value="Yonex" > Yonex (75)</label>
+        <label><input type="checkbox" name="brands[]" value="Stanfords - SF" > Stanfords - SF (116)</label>
+        <label><input type="checkbox" name="brands[]" value="Kay Gee" > Kay Gee (23)</label>
+        <label><input type="checkbox" name="brands[]" value="Texstretch" > Texstretch (36)</label>
+        <label><input type="checkbox" name="brands[]" value="Li-Ning" > Li-Ning (60)</label>
+    </div>
+</form>
+
 </div>
 </div>
 <div class="col-span-3 max-w-7xl mx-auto py-12 px-4">
@@ -368,96 +363,68 @@ $cartCount = array_sum($_SESSION['cart']);
                     <button id="close-wishlist" class="mt-4 bg-gray-500 text-white p-2 rounded-full">Close</button>
                 </div>
             </div>
+
             <script>
               document.addEventListener("DOMContentLoaded", function () {
-                let wishlist = JSON.parse(sessionStorage.getItem("wishlist")) || [];
-
+                let wishlist = getWishlistFromCookie();
                 updateWishlistUI();
-                updateWishlistCount();
 
                 // Add to Wishlist
                 document.querySelectorAll(".add-to-wishlist").forEach(button => {
                     button.addEventListener("click", function () {
                         const item = {
-                            id: this.getAttribute("data-id"),
-                            name: this.getAttribute("data-name"),
-                            price: this.getAttribute("data-price"),
-                            image: this.getAttribute("data-image")
+                            id: this.dataset.id,
+                            name: this.dataset.name,
+                            price: this.dataset.price,
+                            image: this.dataset.image
                         };
 
-                        if (!wishlist.find(i => i.id === item.id)) {
+                        if (!wishlist.some(i => i.id === item.id)) {
                             wishlist.push(item);
-                            sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+                            setWishlistToCookie(wishlist);
                             updateWishlistUI();
-                            updateWishlistCount();
-
-                            // ✅ Show alert message
                             showAlert(`${item.name} added to wishlist!`, "success");
                         } else {
                             showAlert(`${item.name} is already in the wishlist!`, "info");
                         }
                     });
                 });
+
+                // Show Alert
                 function showAlert(message, type) {
                     const alertBox = document.createElement("div");
-                    alertBox.classList.add("fixed", "top-5", "right-5", "p-4", "rounded-lg", "shadow-lg", "text-white", "transition-all", "duration-500");
-
-                    // Set background color based on alert type
-                    if (type === "success") {
-                        alertBox.classList.add("bg-green-500");
-                    } else if (type === "info") {
-                        alertBox.classList.add("bg-blue-500");
-                    } else {
-                        alertBox.classList.add("bg-red-500");
-                    }
-
+                    alertBox.className = `fixed top-5 right-5 p-4 rounded-lg shadow-lg text-white transition-all duration-500 ${type === 'success' ? 'bg-green-500' : type === 'info' ? 'bg-blue-500' : 'bg-red-500'}`;
                     alertBox.textContent = message;
                     document.body.appendChild(alertBox);
-
-                    // Remove alert after 3 seconds
-                    setTimeout(() => {
-                        alertBox.classList.add("opacity-0");
-                        setTimeout(() => alertBox.remove(), 500);
-                    }, 3000);
+                    setTimeout(() => alertBox.remove(), 3000);
                 }
-
 
                 // Update Wishlist UI
                 function updateWishlistUI() {
-                const wishlistItemsContainer = document.getElementById("wishlist-items");
-                wishlistItemsContainer.innerHTML = ""; // Clears previous items
-
-                wishlist.forEach(item => {
-                    const itemElement = document.createElement("div");
-                    itemElement.classList.add("flex", "items-center", "justify-between", "border-b", "py-2");
-                    itemElement.innerHTML = `
-                        <div class="flex items-center">
-                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
-                            <div>
-                                <p class="font-semibold">${item.name}</p>
-                                <p class="text-gray-500">$${item.price}</p>
+                    const wishlistItemsContainer = document.getElementById("wishlist-items");
+                    wishlistItemsContainer.innerHTML = wishlist.map(item => `
+                        <div class="flex items-center justify-between border-b py-2">
+                            <div class="flex items-center">
+                                <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded mr-3">
+                                <div>
+                                    <p class="font-semibold">${item.name}</p>
+                                    <p class="text-gray-500">$${item.price}</p>
+                                </div>
                             </div>
-                        </div>
-                        <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
-                            <i class="fas fa-trash-alt text-lg"></i> <!-- Delete Icon -->
-                        </button>
-                    `;
-                    wishlistItemsContainer.appendChild(itemElement);
-                });
+                            <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
+                                <i class="fas fa-trash-alt text-lg"></i>
+                            </button>
+                        </div>`).join('');
 
-                document.querySelectorAll(".remove-item").forEach(button => {
-                    button.addEventListener("click", function () {
-                        const itemId = this.getAttribute("data-id");
-                        wishlist = wishlist.filter(item => item.id !== itemId);
-                        sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
-                        updateWishlistUI();
-                        updateWishlistCount();
+                    document.querySelectorAll(".remove-item").forEach(button => {
+                        button.addEventListener("click", function () {
+                            const itemId = this.dataset.id;
+                            wishlist = wishlist.filter(item => item.id !== itemId);
+                            setWishlistToCookie(wishlist);
+                            updateWishlistUI();
+                        });
                     });
-                });
-            }
 
-                // Update Wishlist Count
-                function updateWishlistCount() {
                     document.getElementById("wishlist-count").textContent = wishlist.length;
                 }
 
@@ -471,9 +438,25 @@ $cartCount = array_sum($_SESSION['cart']);
                 document.getElementById("close-wishlist").addEventListener("click", function () {
                     document.getElementById("wishlist-modal").classList.add("hidden");
                 });
+
+                // Cookie functions
+                function setWishlistToCookie(wishlist) {
+                    document.cookie = `wishlist=${JSON.stringify(wishlist)};path=/;max-age=${60 * 60 * 24 * 30}`;
+                }
+
+                function getWishlistFromCookie() {
+                    const cookies = document.cookie.split(';');
+                    for (let cookie of cookies) {
+                        cookie = cookie.trim();
+                        if (cookie.startsWith('wishlist=')) {
+                            return JSON.parse(cookie.substring('wishlist='.length));
+                        }
+                    }
+                    return [];
+                }
             });
 
-              </script>
+            </script>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 // Database connection
@@ -545,9 +528,17 @@ $cartCount = array_sum($_SESSION['cart']);
                         echo '</ul></div>';
 
                        // Add to Cart & Wishlist
-                        echo '<div class="flex justify-center mt-4 space-x-2">
-                        <button class="add-to-cart bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md"
-                            data-id="' . $id . '" data-name="' . $name . '" data-price="' . $price . '">ADD TO CART</button>
+                       echo '<div class="flex justify-center mt-4 space-x-2">
+                        <form action="add_to_cart.php" method="post">
+                            <input type="hidden" name="item_name" value="' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '">
+                            <input type="hidden" name="price" value="' . $price . '">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="bg-red-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 shadow-md">
+                                ADD TO CART
+                            </button>
+                        </form>
+
+                   
 
                         <!-- Wishlist Button with Heart Icon in Red -->
                         <button class="add-to-wishlist flex items-center space-x-2 text-sm font-medium hover:text-red-500 transition duration-300"
@@ -618,86 +609,45 @@ $cartCount = array_sum($_SESSION['cart']);
             </div>
                   </div>
                   <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                      // Initialize cart from session storage
-                      const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-                      const cartCount = document.getElementById('cart-count');
-                      const cartModal = document.getElementById('cart-modal');
-                      const cartItems = document.getElementById('cart-items');
-                      const cartTotal = document.getElementById('cart-total');
+                    document.addEventListener("DOMContentLoaded", function () {
+                    function updateCartCount() {
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.cart_count !== undefined) {
+                                    document.getElementById("cart-count").innerText = data.cart_count;
+                                }
+                            })
+                            .catch(error => console.error("Error updating cart count:", error));
+                    }
 
-                      // Function to update the cart count
-                      const updateCartCount = () => {
-                          if (cartCount) {
-                              cartCount.textContent = cart.length;
-                          }
-                      };
+                    // Auto-update cart count when the page loads
+                    updateCartCount();
 
-                      // Function to render cart items
-                      const renderCart = () => {
-                          if (cartItems && cartTotal) {
-                              cartItems.innerHTML = '';
-                              let total = 0;
+                    // Periodically check for cart updates (every 5 seconds)
+                    setInterval(updateCartCount, 5000);
 
-                              cart.forEach(item => {
-                                  const div = document.createElement('div');
-                                  div.className = 'flex justify-between mb-4';
-                                  div.innerHTML = `
-                                      <span>${item.name}</span>
-                                      <span>Rs. ${item.price}</span>
-                                  `;
-                                  cartItems.appendChild(div);
-                                  total += item.price;
-                              });
+                    // Update cart count immediately after adding an item
+                    document.querySelectorAll(".add-to-cart-form").forEach(form => {
+                        form.addEventListener("submit", function (event) {
+                            event.preventDefault();
 
-                              cartTotal.textContent = `Total: Rs. ${total}`;
-                          }
-                      };
-
-                      // Add to Cart Logic
-                      document.querySelectorAll('.add-to-cart').forEach(button => {
-                          button.addEventListener('click', () => {
-                              const id = button.getAttribute('data-id');
-                              const name = button.getAttribute('data-name');
-                              const price = parseInt(button.getAttribute('data-price'));
-                              const item = { id, name, price };
-
-                              // Add item to cart only if it's not already present
-                              if (!cart.find(e => e.id === id)) {
-                                  cart.push(item);
-                                  sessionStorage.setItem('cart', JSON.stringify(cart));
-                                  updateCartCount();
-                                  alert(`${name} added to cart!`);
-                              } else {
-                                  alert(`${name} is already in the cart.`);
-                              }
-                          });
-                      });
-
-                      // Open Cart Modal
-                      const viewCart = document.getElementById('view-cart');
-                      if (viewCart) {
-                          viewCart.addEventListener('click', () => {
-                              renderCart();
-                              cartModal?.classList.remove('hidden');
-                          });
-                      }
-
-                      // Close Cart Modal
-                      const closeCart = document.getElementById('close-cart');
-                      if (closeCart) {
-                          closeCart.addEventListener('click', () => {
-                              cartModal?.classList.add('hidden');
-                          });
-                      }
-
-                      // Initial Update of Cart Count
-                      updateCartCount();
-                  });
-
-                </script>
-         
-        
+                            const formData = new FormData(this);
+                            fetch("add_to_cart.php", {
+                                method: "POST",
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.cart_count !== undefined) {
+                                    document.getElementById("cart-count").innerText = data.cart_count;
+                                }
+                            })
+                            .catch(error => console.error("Error:", error));
+                        });
+                    });
+                    });
+                  </script>
+                  
 
         <footer class="bg-black text-white">
         <!-- Top Section -->

@@ -92,9 +92,9 @@
 
             <!-- Dropdown Menu (with higher z-index) -->
             <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg z-50">
-                <a href="../views/myaccount.php" class="block px-4 py-2 hover:bg-gray-700">My Account</a>
-                <a href="../views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
-                <a href="../views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
+                <a href="../sportshive/views/myaccount.php" class="block px-4 py-2 hover:bg-gray-700">My Account</a>
+                <a href="../sportshive/views/settings.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Settings</a>
+                <a href="../sportshive/views/logout.php" class="block px-4 py-2 bg-red-600 hover:bg-red-700">Sign Out</a>
             </div>
             <script>
         const accountBtn = document.getElementById('accountBtn');
@@ -129,11 +129,11 @@
     <div class="hidden md:flex space-x-6">
         <a href="../index.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Home</a>
-        <a href="../views/services.php" 
+        <a href="../sportshive/views/services.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Services</a>
-        <a href="../views/contactus.php" 
+        <a href="../sportshive/views/contactus.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
-        <a href="../views/aboutus.php" 
+        <a href="../sportshive/views/aboutus.php" 
            class="text-black font-medium hover:bg-red-200 hover:text-white px-4 py-2 rounded-lg transition duration-300">About Us</a>
       </div>
   </nav>
@@ -163,20 +163,11 @@
     <!-- Brands Section -->
     <div class="relative">
       <h5 class="block w-full px-4 py-2 text-white font-semibold hover:bg-gray-700 transition">
-        Brands
+        Special Brands
       </h5>
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
-        <div class="grid grid-cols-3 gap-4">
-          <div class="flex flex-wrap gap-4">
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ADIDAS</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">SALOMON</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPRUN</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">PUMA</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">OLAIAN</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROKY</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">ROCKRIDER</a>
-            <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">KIPSTA</a>
-          </div>
+        <div class="space-y-2">
+          <a href="../views/new.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Brands</a>
         </div>
       </div>
     </div>
@@ -201,6 +192,7 @@
       <div class="hidden submenu bg-gray-800 p-4 rounded-lg shadow-lg">
         <div class="space-y-2">
           <a href="#" class="px-4 py-2 text-white hover:bg-gray-900 transition">Special Offers</a>
+          <a href="../views/gift_order.php" class="px-4 py-2 text-white hover:bg-gray-900 transition">Request Gifts</a>
         </div>
       </div>
     </div>
